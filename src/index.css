@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+:root {
+  --bgPalevioletred: #eb477e;
+  --bgLavender: #fde6ee;
+}
+
+.swiper-pagination-bullet {
+  background-color: #000000 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #000;
+  opacity: 1;
+}
+
+input[type="range"].slider-pink::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: white !important;
+  border: 3px solid white !important;
+  margin-top: -5px;
+  cursor: pointer;
+}
+
+input[type="range"].slider-pink::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: white !important;
+  border: 3px solid #ec4899 !important;
+  cursor: pointer;
+}
+
+.react-calendar {
+  border: none !important ;
+}
+
+.react-calendar__tile--active {
+  background-color: transparent !important;
+  border-radius: 50%;
+  padding: 2px !important;
+  border: 2px solid #ec4899 !important;
+  color: black !important;
+}
+
+.react-calendar__tile--now {
+  background: transparent !important;
+  color: #ec4899 !important;
+}
+
