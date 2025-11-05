@@ -29,12 +29,8 @@ const App = () => {
         <Route path='/get-ready' element={<GetReady />} />
         <Route path='/home' element={<Home />} />
         <Route path='/log-entry' element={<LogEntry1 />} />
-        <Route path='/calendar' element={<CalendarComponent />} />
         <Route path='/record-data' element={<LogEntry2 />} />
         <Route path='/success' element={<SuccessPage />} />
-
-
-
 
       </Routes>
 

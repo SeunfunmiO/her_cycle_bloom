@@ -10,7 +10,7 @@ const LogEntry2 = () => {
         <div className='bg-pink-100 p-6 h-full'>
             <div className='flex items-center gap-5 mb-3'>
                 <img src="./caret.svg" alt="" />
-                <h2 className='font-medium text-lggit '>Record Data</h2>
+                <h2 className='font-medium text-lg'>Record Data</h2>
             </div>
 
             <hr className='text-black mt-5' />
@@ -19,10 +19,12 @@ const LogEntry2 = () => {
                 <div className='bg-white max-w-100 rounded-xl p-5 flex flex-col lg:flex-row lg:justify-between lg:items-center gap-5'>
                     <h1 className="font-semibold text-xl lg:text-2xl">Period Type</h1>
                     <div className='flex gap-8'>
-                        <button className='border-2 lg:text-lg border-gray-400 hover:bg-gray-100 px-3 py-2 rounded-xl font-medium text-gray-400'>
+                        <button className='border-2 lg:text-lg border-gray-400 hover:bg-gray-100 px-3 py-2 rounded-xl
+                         font-medium text-gray-400'>
                             Start
                         </button>
-                        <button className='border-2 lg:text-lg border-gray-400 hover:bg-gray-100 px-3 py-2 rounded-xl font-medium text-gray-400'>
+                        <button className='border-2 lg:text-lg border-gray-400 hover:bg-gray-100 px-3 py-2 rounded-xl 
+                        font-medium text-gray-400'>
                             End
                         </button>
                     </div>
@@ -31,17 +33,26 @@ const LogEntry2 = () => {
                 <div className='bg-white max-w-100 rounded-xl p-5 flex flex-col gap-5'>
                     <h1 className="font-semibold text-xl lg:text-2xl">Flow Intensity</h1>
                     <div className='flex gap-5 flex-wrap'>
-                        <button className='border-2 lg:text-lg flex gap-2 items-center border-pink-300 hover:bg-pink-300 px-3  hover:text-white py-2 rounded-xl font-medium'>
+                        <button
+                            style={{ border: "2px solid #ff8be0" }}
+                            className='border-2 lg:text-lg flex gap-2 items-center hover:bg-pink-300 px-3  hover:text-white 
+                            py-2 rounded-xl font-medium'>
                             Light <Droplet color='#ff8be0' fill='#ff8be0' />
                         </button>
-                        <button className='border-2 flex gap-2 items-center lg:text-lg border-pink-500 hover:bg-pink-500 px-3 hover:text-white py-2 rounded-xl font-medium'>
+                        <button
+                            style={{ border: "2px solid #e365c1" }}
+                            className='border-2 flex gap-2 items-center lg:text-lg hover:bg-pink-500 px-3 hover:text-white 
+                            py-2 rounded-xl font-medium'>
                             Medium
                             <div className="flex">
                                 <Droplet color='#e365c1' fill='#e365c1' />
                                 <Droplet color='#e365c1' fill='#e365c1' />
                             </div>
                         </button>
-                        <button className='border-2 flex gap-2 items-center lg:text-lg border-pink-700 hover:bg-pink-700  hover:text-white px-3 py-2 rounded-xl font-medium'>
+                        <button
+                            style={{ border: "2px solid #e210a9" }}
+                            className='border-2 flex gap-2 items-center lg:text-lg hover:bg-pink-700 
+                         hover:text-white px-3 py-2 rounded-xl font-medium'>
                             Heavy
                             <div className="flex">
                                 <Droplet color='#e210a9' fill='#e210a9' />
@@ -53,7 +64,7 @@ const LogEntry2 = () => {
                 </div>
 
                 <div className='bg-white max-w-100 rounded-xl p-5 flex flex-col gap-3'>
-                    <div className='flex flex-col gap-5 md:flex-row md:justify-between md:items-center'>
+                    <div className='flex flex-col gap-5 md:flex-row lg:justify-between md:items-center'>
                         <h1 className="font-semibold text-xl lg:text-2xl">Symptoms</h1>
 
                         <input type="text" className=" border-2 border-gray-200 px-3 py-2 rounded-xl placeholder:text-gray-100"
@@ -64,40 +75,40 @@ const LogEntry2 = () => {
                         <div className="flex flex-col gap-10">
                             <div className='flex items-center gap-4'>
                                 <span className="border-pink-500 border-2 p-3 rounded-full"></span>
-                                <img className='w-7 h-7' src="./Vector (1).svg" alt="svg" />
-                                <h1 className='font-medium text-xl'>Cramps</h1>
+                                <img className='w-5 h-5 lg:w-7 lg:h-7' src="./Vector (1).svg" alt="svg" />
+                                <h1 className='font-medium lg:text-xl'>Cramps</h1>
                             </div>
 
                             <div className='flex items-center gap-4'>
                                 <span className="border-pink-500 border-2 p-3 rounded-full"></span>
-                                <img className='w-7 h-7' src="./Vector (2).svg" alt="svg" />
-                                <h1 className='font-medium text-xl'>Back Pain</h1>
+                                <img className='w-5 h-5 lg:w-7 lg:h-7' src="./Vector (2).svg" alt="svg" />
+                                <h1 className='font-medium lg:text-xl'>Back Pain</h1>
                             </div>
 
                             <div className='flex items-center gap-4'>
                                 <span className="border-pink-500 border-2 p-3 rounded-full"></span>
-                                <img className='w-7 h-7' src="./vector (3).svg" alt="svg" />
-                                <h1 className='font-medium text-xl'>Nausea</h1>
+                                <img className='w-5 h-5 lg:w-7 lg:h-7' src="./vector (3).svg" alt="svg" />
+                                <h1 className='font-medium lg:text-xl'>Nausea</h1>
                             </div>
                         </div>
 
                         <div className="flex flex-col gap-10">
                             <div className='flex items-center gap-4'>
                                 <span className="border-pink-500 border-2 p-3 rounded-full"></span>
-                                <img className='w-7 h-7' src="./Vector (4).svg" alt="svg" />
-                                <h1 className='font-medium text-xl'>Headache</h1>
+                                <img className='w-5 h-5 lg:w-7 lg:h-7' src="./Vector (4).svg" alt="svg" />
+                                <h1 className='font-medium lg:text-xl'>Headache</h1>
                             </div>
 
                             <div className='flex items-center gap-4'>
                                 <span className="border-pink-500 border-2 p-3 rounded-full"></span>
-                                <img className='w-7 h-7' src="./Vector (5).svg" alt="svg" />
-                                <h1 className='font-medium text-xl'>Fatigue</h1>
+                                <img className='w-5 h-5 lg:w-7 lg:h-7' src="./Vector (5).svg" alt="svg" />
+                                <h1 className='font-medium lg:text-xl'>Fatigue</h1>
                             </div>
 
                             <div className='flex items-center gap-4'>
                                 <span className="border-pink-500 border-2 p-3 rounded-full"></span>
-                                <img className='w-7 h-7' src="./Vector (6).svg" alt="svg" />
-                                <h1 className='font-medium text-xl'>Bloating</h1>
+                                <img className='w-5 h-5 lg:w-7 lg:h-7' src="./Vector (6).svg" alt="svg" />
+                                <h1 className='font-medium lg:text-xl'>Bloating</h1>
                             </div>
                         </div>
                     </div>
@@ -107,28 +118,28 @@ const LogEntry2 = () => {
                     <h1 className="font-semibold text-xl lg:text-2xl">Mood</h1>
                     <div className='flex gap-5 flex-wrap'>
                         <button className='border-2 lg:text-lg border-gray-400 flex items-center gap-3 hover:bg-gray-100 px-3 py-2 rounded-xl font-medium'>
-                            <img className='w-7 h-7' src="./Group.svg" alt="svg" />
+                            <img className='w-5 h-5 md:w-7 md:h-7' src="./Group.svg" alt="svg" />
                             Happy
                         </button>
                         <button className='border-2 lg:text-lg border-gray-400 flex items-center gap-3 hover:bg-gray-100 px-3 py-2 rounded-xl font-medium'>
-                            <img className='w-7 h-7' src="./Group (1).svg" alt="svg" />
+                            <img className='w-5 h-5 md:w-7 md:h-7' src="./Group (1).svg" alt="svg" />
 
                             Sad
                         </button>
                         <button className='border-2 lg:text-lg border-gray-400 flex items-center gap-3 hover:bg-gray-100 px-3 py-2 rounded-xl font-medium'>
-                            <img className='w-7 h-7' src="./Vector (8).svg" alt="svg" />
+                            <img className='w-5 h-5 md:w-7 md:h-7' src="./Vector (8).svg" alt="svg" />
                             Irritable
                         </button>
                         <button className='border-2 lg:text-lg border-gray-400 flex items-center gap-3 hover:bg-gray-100 px-3 py-2 rounded-xl font-medium'>
-                            <img className='w-7 h-7' src="./Group (3).svg" alt="svg" />
+                            <img className='w-5 h-5 md:w-7 md:h-7' src="./Group (3).svg" alt="svg" />
                             Anxious
                         </button>
                         <button className='border-2 lg:text-lg border-gray-400 flex items-center gap-3 hover:bg-gray-100 px-3 py-2 rounded-xl font-medium'>
-                            <img className='w-7 h-7' src="./Group (2).svg" alt="svg" />
+                            <img className='w-5 h-5 md:w-7 md:h-7' src="./Group (2).svg" alt="svg" />
                             Emotional
                         </button>
                         <button className='border-2 lg:text-lg border-gray-400 flex items-center hover:bg-gray-100 px-3 py-2 rounded-xl font-medium gap-3'>
-                            <img className='w-7 h-7' src="./Vector (7).svg" alt="svg" />
+                            <img className='w-5 h-5 md:w-7 md:h-7' src="./Vector (7).svg" alt="svg" />
                             Energetic
                         </button>
                     </div>
