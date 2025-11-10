@@ -22,6 +22,7 @@ import CycleInformation from './pages/CycleInformation'
 import EditPeriodDuration from './pages/EditPeriodDuration'
 import Account from './pages/Account'
 import ImportFile from './pages/ImportFile'
+import ChangePassword from './pages/ChangePassword'
 
 
 const App = () => {
@@ -50,6 +51,8 @@ const App = () => {
         <Route path='/period-duration' element={<EditPeriodDuration />} />
         <Route path='/account' element={<Account />} />
         <Route path='/import-file' element={<ImportFile />} />
+        <Route path='/change-password' element={<ChangePassword />} />
+
        
 
 

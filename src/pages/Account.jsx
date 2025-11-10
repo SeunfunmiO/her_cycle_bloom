@@ -10,14 +10,16 @@ const Account = () => {
 
     return (
         <div className='bg-[#f9f9f9] lg:h-screen flex flex-col gap-5'>
-            <button className="bg-white flex w-full items-center pt-10 pb-5 mb-4 px-3">
+            <div className="bg-white flex w-full items-center pt-10 pb-5 mb-4 px-3">
                 <img
+                    className='cursor-pointer'
                     onClick={() => navigate(-1)}
-                    src="./Arrow Left.svg" alt="arrow left" />
+                    src="./Arrow Left.svg" alt="arrow left"
+                />
                 <h1 className="font-bold text-xl md:text-2xl w-full text-center">
                     Account
                 </h1>
-            </button>
+            </div>
 
             <div className='px-3 pb-8'>
                 <h1 className="font-bold text-palevioletred text-lg md:text-xl lg:text-2xl">Manage Data</h1>
@@ -49,6 +51,7 @@ const Account = () => {
 
                 <div className="bg-white shadow my-3 h-30 rounded-xl px-3 flex flex-col justify-center gap-3">
                     <button
+                        onClick={() => navigate('/change-password')}
                         className="flex items-center justify-between cursor-pointer">
                         <div className='flex items-center gap-5'>
                             <LucideLockKeyhole className='text-darkslategray size-5 lg:size-6' />
