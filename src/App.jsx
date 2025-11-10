@@ -10,9 +10,18 @@ import AllowNotification from './pages/AllowNotification'
 import GetReady from './pages/GetReady'
 import LandingPage from './pages/LandingPage'
 import LogEntry1 from './pages/LogEntry1'
-import CalendarComponent from './components/Calendar'
 import LogEntry2 from './pages/LogEntry2'
 import SuccessPage from './pages/SuccessPage'
+import ViewCalendar from './pages/ViewCalendar'
+import Settings from './pages/Settings'
+import SettingsProfile from './pages/SettingsProfile'
+import EditName from './pages/EditName'
+import EditGmail from './pages/EditGmail'
+import CountryStateSelect from './pages/EditAddress'
+import CycleInformation from './pages/CycleInformation'
+import EditPeriodDuration from './pages/EditPeriodDuration'
+import Account from './pages/Account'
+import ImportFile from './pages/ImportFile'
 
 
 const App = () => {
@@ -31,6 +40,24 @@ const App = () => {
         <Route path='/log-entry' element={<LogEntry1 />} />
         <Route path='/record-data' element={<LogEntry2 />} />
         <Route path='/success' element={<SuccessPage />} />
+        <Route path='/view-calendar' element={<ViewCalendar />} />
+        <Route path='/settings' element={<Settings />} />
+        <Route path='/profile-settings' element={<SettingsProfile />} />
+        <Route path='/edit-name' element={<EditName />} />
+        <Route path='/edit-gmail' element={<EditGmail />} />
+        <Route path='/edit-address' element={<CountryStateSelect />} />
+        <Route path='/cycle-information' element={<CycleInformation />} />
+        <Route path='/period-duration' element={<EditPeriodDuration />} />
+        <Route path='/account' element={<Account />} />
+        <Route path='/import-file' element={<ImportFile />} />
+       
+
+
+
+
+
+
+
 
       </Routes>
 

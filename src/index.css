@@ -1,12 +1,14 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 
-
-:root {
-  --bgPalevioletred: #eb477e;
-  --bgLavender: #fde6ee;
+@theme {
+  --color-palevioletred: #eb477e;
+  --color-lavender: #fde6ee;
+  --color-babypink: #fbbecf;
+  --color-darkslategray:#252b37
+  --breakpoint-xs: 320px;
+  --breakpoint-xsm: 375px;
+  --breakpoint-smd: 430px;
 }
 
 .swiper-pagination-bullet {
@@ -40,7 +42,7 @@ input[type="range"].slider-pink::-moz-range-thumb {
 }
 
 .react-calendar {
-  border: none !important ;
+  border: none !important;
 }
 
 .react-calendar__tile--active {
@@ -55,4 +57,3 @@ input[type="range"].slider-pink::-moz-range-thumb {
   background: transparent !important;
   color: #ec4899 !important;
 }
-
