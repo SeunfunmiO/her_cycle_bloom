@@ -3,12 +3,12 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebas
 import { GoogleAuthProvider, getAuth, OAuthProvider } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDfcTWGhOGk7wNfgj7duFNTX6t-1FXEbGg",
-    authDomain: "her-cycle-bloom-1e43d.firebaseapp.com",
-    projectId: "her-cycle-bloom-1e43d",
-    storageBucket: "her-cycle-bloom-1e43d.firebasestorage.app",
-    messagingSenderId: "850330741446",
-    appId: "1:850330741446:web:9b031ffaabdfb6bad0c5c7"
+    apiKey: import.meta.env.VITE_API_KEY,
+    authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+    projectId:import.meta.env.VITE_PROJECT_ID,
+    storageBucket:import.meta.env.VITE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_SENDER_ID,
+    appId: import.meta.env.VITE_APP_ID
 };
 
 
