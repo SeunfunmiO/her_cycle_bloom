@@ -53,7 +53,16 @@ const Signup = () => {
         }),
         onSubmit: async (values) => {
             setLoading(true)
-            const response = await axios.post("https://her-cycle-bloom-backend.onrender.com/user/signup", values)
+            const response = await axios.post("https://her-cycle-bloom-backend.onrender.com/user/signup", {
+                email: values.email,
+                password: values.password
+            },
+                {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                }
+            )
             const data = response.data
 
             localStorage.setItem('token', response.data.token)
