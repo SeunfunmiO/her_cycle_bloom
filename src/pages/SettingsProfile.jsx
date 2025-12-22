@@ -25,7 +25,7 @@ const SettingsProfile = () => {
                     toast.error("User ID not found")
                 }
 
-                const response = await axios.get(`http://localhost:5500/user/get-user/${id}`)
+                const response = await axios.get(`https://her-cycle-bloom-backend.onrender.com/user/get-user/${id}`)
                 const data = response.data.user
 
                 const dateOfBirth = new Date(data.dateOfBirth).toLocaleDateString()

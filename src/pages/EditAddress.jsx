@@ -26,7 +26,7 @@ export default function CountryStateSelect() {
 
             if (!id) return;
 
-            await axios.put(`http://localhost:5500/user/create-profile/${id}`, {
+            await axios.put(`https://her-cycle-bloom-backend.onrender.com/user/create-profile/${id}`, {
                 selectedLocation
             })
             setSaved(true);

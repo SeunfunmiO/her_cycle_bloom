@@ -79,7 +79,7 @@ const LogEntry2 = () => {
 
             const token = localStorage.getItem("token");
 
-            await axios.put('http://localhost:5500/period/save-entry', {
+            await axios.put('https://her-cycle-bloom-backend.onrender.com/period/save-entry', {
                 symptoms: symptomsSelected,
                 flowIntensity: flow,
                 mood: moodsSelected,

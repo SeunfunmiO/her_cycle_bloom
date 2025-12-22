@@ -26,7 +26,7 @@ const AllowNotification = () => {
             const isGranted = permission === "granted";
 
             const response = await axios.put(
-                `http://localhost:5500/user/enable-notification/${id}`,
+                `https://her-cycle-bloom-backend.onrender.com/user/enable-notification/${id}`,
                 { isNotification: isGranted }
             );
             const data = response.data;

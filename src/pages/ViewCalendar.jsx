@@ -14,7 +14,7 @@ const ViewCalendar = () => {
                 const user = JSON.parse(localStorage.getItem('user'))
                 const id = user?.id
 
-                const res = await axios.get(`http://localhost:5500/period/get-entry/${id}`)
+                const res = await axios.get(`https://her-cycle-bloom-backend.onrender.com/period/get-entry/${id}`)
                 const data = res.data.entry
 
                 console.log(data);
@@ -52,7 +52,7 @@ const ViewCalendar = () => {
                     return;
                 }
 
-                const response = await axios.get(`http://localhost:5500/user/get-user/${id}`)
+                const response = await axios.get(`https://her-cycle-bloom-backend.onrender.com/user/get-user/${id}`)
                 const data = response.data.user
 
                 if (data) {

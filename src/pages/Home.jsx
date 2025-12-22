@@ -76,7 +76,7 @@ const Home = () => {
           return
         }
 
-        const response = await axios.get(`http://localhost:5500/user/get-user/${id}`)
+        const response = await axios.get(`https://her-cycle-bloom-backend.onrender.com/user/get-user/${id}`)
         const data = response.data
 
 

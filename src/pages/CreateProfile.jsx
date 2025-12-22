@@ -63,7 +63,7 @@ const CreateProfile = () => {
                 }
 
                 const response = await axios.put(
-                    `http://localhost:5500/user/create-profile/${id}`,
+                    `https://her-cycle-bloom-backend.onrender.com/user/create-profile/${id}`,
                     values
                 )
                 const data = response.data

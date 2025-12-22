@@ -44,7 +44,7 @@ const CalendarComponent = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.post(
-                'http://localhost:5500/period/create-period-details',
+                'https://her-cycle-bloom-backend.onrender.com/period/create-period-details',
                 { periodStart: selectedDate },
                 {
                     headers: {

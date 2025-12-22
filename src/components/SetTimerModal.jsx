@@ -26,7 +26,7 @@ const SetTimeModal = () => {
                 return;
             }
 
-            await axios.put("http://localhost:5500/user/set-reminder", {
+            await axios.put("https://her-cycle-bloom-backend.onrender.com/user/set-reminder", {
                 reminderTime: true,
                 reminderTypes: {
                     periodStartAlarm: true,

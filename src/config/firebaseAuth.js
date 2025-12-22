@@ -12,7 +12,7 @@ const GoogleSignIn = async () => {
         localStorage.setItem('user', JSON.stringify(user))
         localStorage.setItem('token', user.accessToken)
 
-        await axios.post('http://localhost:5500/user/google-signin', {
+        await axios.post('https://her-cycle-bloom-backend.onrender.com/user/google-signin', {
             email: user.email,
             name: user.displayName,
             uid: user.uid,
@@ -44,7 +44,7 @@ const AppleSignIn = async () => {
         localStorage.setItem('user', JSON.stringify(user))
         localStorage.setItem('token', user.accessToken)
 
-        await axios.post('http://localhost:5500/user/apple-signin', {
+        await axios.post('https://her-cycle-bloom-backend.onrender.com/user/apple-signin', {
             email: user.email,
             name: user.displayName,
             uid: user.uid,
