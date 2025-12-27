@@ -148,7 +148,7 @@ const Signup = () => {
                         type='submit'
                         className={`mt-10 mb-14 w-full py-2 shadow-lg text-lg font-bold lg:text-xl rounded-3xl
                       ${loading ? 'bg-pink-300 cursor-not-allowed' : 'bg-palevioletred'}`}
-                        disabled={loading}
+                        disabled={loading && !formik.values}
                     >
                         {loading ? 'Creating...' : 'Create Account'}
                     </button>
