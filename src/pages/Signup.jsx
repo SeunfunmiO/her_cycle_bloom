@@ -53,29 +53,39 @@ const Signup = () => {
         }),
         onSubmit: async (values) => {
             setLoading(true)
-            const response = await axios.post("https://her-cycle-bloom-backend.onrender.com/user/signup", {
-                email: values.email,
-                password: values.password
-            },
-                {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
+            try {
+                const payload = {
+                    email: values.email,
+                    password: values.password
                 }
-            )
-            const data = response.data
+                const response = await axios.post("https://her-cycle-bloom-backend.onrender.com/user/sign-up", payload,
+                    {
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    }
+                )
+                const data = response.data
 
-            localStorage.setItem('token', response.data.token)
-            localStorage.setItem('user', JSON.stringify(response.data.user))
+                console.log(data);
+
+                localStorage.setItem('token', response.data.token)
+                localStorage.setItem('user', JSON.stringify(response.data.user))
 
 
-            if (data?.existingUser) {
-                toast.error(data.message || "Email already in use");
-            } else {
-                toast.success(data.message || 'Account created successfully');
-                navigate('/create-profile');
+                if (data?.existingUser) {
+                    toast.error(data.message || "Email already in use");
+                } else {
+                    toast.success(data.message || 'Account created successfully');
+                    navigate('/create-profile');
+                }
+            } catch (error) {
+                console.log("Error signing up user : ", error);
+                toast.error('Something went wrong , please try again')
+            } finally {
+                setLoading(false)
             }
-            setLoading(false)
+
         }
     });
 
