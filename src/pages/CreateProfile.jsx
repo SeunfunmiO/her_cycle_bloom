@@ -1,5 +1,5 @@
 import { useFormik } from 'formik';
-import { Camera } from 'lucide-react';
+import { Camera, InfoIcon } from 'lucide-react';
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import * as yup from 'yup';
@@ -123,6 +123,13 @@ const CreateProfile = () => {
                             />
                         </label>
                     </div>
+                    <small 
+                    className="text-gray-200 flex items-center font-bold
+                    "
+                    >
+                        <InfoIcon/>
+                        Image shouldn't be larger than 5mb
+                    </small>
 
                     <div className="flex flex-col gap-2">
                         <label className="font-medium">Name</label>
