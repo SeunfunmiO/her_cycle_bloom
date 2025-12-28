@@ -73,12 +73,12 @@ const Signup = () => {
                 localStorage.setItem('user', JSON.stringify(response.data.user))
 
 
-                if (data?.existingUser) {
-                    toast.error(data.message || "Email already in use");
-                } else {
-                    toast.success(data.message || 'Account created successfully');
-                    navigate('/create-profile');
-                }
+                // if (data) {
+                //     toast.error(data.message || "Email already in use");
+                // } else {
+                //     toast.success(data.message || 'Account created successfully');
+                //     navigate('/create-profile');
+                // }
             } catch (error) {
                 console.log("Error signing up user : ", error);
                 toast.error('Something went wrong , please try again')
