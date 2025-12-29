@@ -18,19 +18,27 @@ const SettingsProfile = () => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const user = JSON.parse(localStorage.getItem('user'))
-                const id = user?.id
+                // const user = JSON.parse(localStorage.getItem('user'))
+                // const id = user?.id
 
-                if (!user) {
-                    toast.error("User ID not found")
-                }
+                // if (!user) {
+                //     toast.error("User ID not found")
+                // }
 
-                const response = await axios.get(`https://her-cycle-bloom-backend.onrender.com/user/get-user/${id}`)
+                const response = await axios.get(`https://her-cycle-bloom-backend.onrender.com/user/get-user`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem("token")}`
+                        }
+                    }
+                )
                 const data = response.data.user
 
                 const dateOfBirth = new Date(data.dateOfBirth).toLocaleDateString()
 
-                if (data) {
+                if (!data) {
+                   return toast.error("Unable to load data")
+                } else {
                     setName(data.name)
                     setPhoto(data.profilePicture)
                     setEmail(data.email)

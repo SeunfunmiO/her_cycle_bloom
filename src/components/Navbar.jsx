@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 
 
 const tabs = [
-    { id: 1, label: "Overview", icon: "./Vector - 0.svg", path: '/' },
+    { id: 1, label: "Overview", icon: "./Vector - 0.svg", path: '/home' },
     { id: 2, label: "Calendar", icon: "./Vector - 1.svg", path: '/view-calendar' },
     { id: 3, label: "History", icon: "./Vector - 2.svg", path: '/history' },
     { id: 4, label: "Settings", icon: "./Vector - 3.svg", path: "/settings" }

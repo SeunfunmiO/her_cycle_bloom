@@ -30,17 +30,24 @@ const Settings = () => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const user = JSON.parse(localStorage.getItem('user'))
-                const id = user?.id
+                // const user = JSON.parse(localStorage.getItem('user'))
+                // const id = user?.id
 
-                if (!user) {
-                    toast.error("User ID not found")
-                }
+                // if (!user) {
+                //     toast.error("User ID not found")
+                // }
 
-                const response = await axios.get(`https://her-cycle-bloom-backend.onrender.com/user/get-user/${id}`)
+                const response = await axios.get(`https://her-cycle-bloom-backend.onrender.com/user/get-user`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem("token")}`
+                        }
+                    }
+                )
                 const data = response.data.user
-
-                if (data) {
+                if (!data) {
+                    return null
+                } else {
                     setName(data.name)
                     setPhoto(data.profilePicture)
                     setEmail(maskEmail(data.email))
@@ -74,12 +81,12 @@ const Settings = () => {
                         </div>
                         <div>
                             <h1
-                             className="text-lg lg:text-xl font-semibold text-neutral-900 dark:text-neutral-100"
-                             >
+                                className="text-lg lg:text-xl font-semibold text-neutral-900 dark:text-neutral-100"
+                            >
                                 {name || 'User'}
                             </h1>
                             <p className='text-[#535862] dark:text-neutral-600 font-bold text-sm lg:text-base'>
-                                {email || maskEmail("jamiesue12@gmail.com")}
+                                {email || ""}
                             </p>
                         </div>
                     </div>

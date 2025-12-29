@@ -76,7 +76,13 @@ const Home = () => {
           return
         }
 
-        const response = await axios.get(`https://her-cycle-bloom-backend.onrender.com/user/get-user/${id}`)
+        const response = await axios.get(`https://her-cycle-bloom-backend.onrender.com/user/get-user`,
+           {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`
+            }
+          }
+        )
         const data = response.data
 
 
@@ -127,7 +133,7 @@ const Home = () => {
 
   return (
     <div
-      className=' bg-white dark:bg-neutral-900 
+      className='pb-50 bg-white dark:bg-neutral-900 
       transition-colors duration-300'
     >
       <div className='max-w-md mx-auto mt-5 px-4 flex flex-col gap-5'>
