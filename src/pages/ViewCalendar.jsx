@@ -5,7 +5,9 @@ import axios from 'axios'
 
 const ViewCalendar = () => {
     const [daysUntilPeriod, setDaysUntilPeriod] = useState("")
-    const [averageCycleLength, setAverageCycleLength] = useState("")
+    const [follicularPhase, setFollicularPhase] = useState(0)
+    const [averageCycleLength, setAverageCycleLength] = useState(28)
+
 
 
     useEffect(() => {
@@ -19,7 +21,7 @@ const ViewCalendar = () => {
 
                 console.log(data);
 
-                if (!data.periodStart || data.periodStart < 2) return null
+                if (!Array.isArray(data.periodStart) || data.periodStart.length < 2) return
 
                 const dates = data.periodStart.map(date => new Date(date))
                 dates.sort((a, b) => a - b)
@@ -31,65 +33,109 @@ const ViewCalendar = () => {
                     cycleLengths.push(diffInDays)
                 }
 
-                const averageCycleLength = cycleLengths.reduce((acc, curr) => acc + curr, 0 / cycleLengths.length)
-                setAverageCycleLength(averageCycleLength)
-                return Math.round(averageCycleLength)
+                const average =
+                    cycleLengths.reduce((acc, curr) => acc + curr, 0) / cycleLengths.length
+
+                setAverageCycleLength(Math.round(average))
+
             } catch (error) {
                 console.error("Error fetching entry:", error)
             }
 
         }
-        fetchEntry
+        fetchEntry()
     }, [])
 
+    // useEffect(() => {
+    //     const fetchUser = async () => {
+    //         try {
+    //             const user = JSON.parse(localStorage.getItem('user'))
+    //             const id = user?.id
+
+    //             if (!id) {
+    //                 return;
+    //             }
+
+    //             const response = await axios.get(`https://her-cycle-bloom-backend.onrender.com/user/get-user/${id}`)
+    //             const data = response.data.user
+
+    //             if (data) {
+    //                 const lastPeriod = data.lastPeriodDate
+    //                 const userCycleLength = data.cycleLength || 28
+
+    //                 if (lastPeriod) {
+    //                     // Calculate next period date
+    //                     const userLastPeriodDate = new Date(lastPeriod)
+    //                     const nextPeriod = new Date(lastPeriod)
+    //                     nextPeriod.setDate(nextPeriod.getDate() + userCycleLength)
+
+
+    //                     // Calculate days until next period
+    //                     const today = new Date()
+    //                     today.setHours(0, 0, 0, 0)
+    //                     nextPeriod.setHours(0, 0, 0, 0)
+
+    //                     const daysRemaining = Math.ceil((nextPeriod - today) / (1000 * 60 * 60 * 24))
+    //                     setDaysUntilPeriod(daysRemaining > 0 ? daysRemaining : 0)
+
+    //                     userLastPeriodDate.setHours(0, 0, 0, 0)
+
+    //                 }
+    //             }
+    //         } catch (error) {
+    //             console.error("Error fetching user:", error)
+    //         }
+    //     }
+
+    //     fetchUser()
+    // }, [])
     useEffect(() => {
-        const fetchUser = async () => {
+        const fetchUserData = async () => {
             try {
                 const user = JSON.parse(localStorage.getItem('user'))
                 const id = user?.id
+                if (!id) return;
 
-                if (!id) {
-                    return;
-                }
+                const res = await axios.get(`https://her-cycle-bloom-backend.onrender.com/user/user-profile/${id}`)
+                const userData = res.data.user
+                if (!userData?.lastPeriodDate) return;
+                
+                const lastPeriod = new Date(userData.lastPeriodDate)
+                lastPeriod.setHours(0, 0, 0, 0)
+                const cycleLength = averageCycleLength || 28
 
-                const response = await axios.get(`https://her-cycle-bloom-backend.onrender.com/user/get-user/${id}`)
-                const data = response.data.user
+                // Next period
+                const nextPeriod = new Date(lastPeriod)
+                nextPeriod.setDate(nextPeriod.getDate() + cycleLength)
 
-                if (data) {
-                    const lastPeriod = data.lastPeriodDate
-                    const userCycleLength = data.cycleLength || 28
+                // Days until next period
+                const today = new Date()
+                today.setHours(0, 0, 0, 0)
+                nextPeriod.setHours(0, 0, 0, 0)
+                const daysRemaining = Math.ceil((nextPeriod - today) / (1000 * 60 * 60 * 24))
+                setDaysUntilPeriod(daysRemaining > 0 ? daysRemaining : 0)
 
-                    if (lastPeriod) {
-                        // Calculate next period date
-                        const userLastPeriodDate = new Date(lastPeriod)
-                        const nextPeriod = new Date(lastPeriod)
-                        nextPeriod.setDate(nextPeriod.getDate() + userCycleLength)
+                // Follicular phase
+                const ovulationDate = new Date(nextPeriod)
+                ovulationDate.setDate(ovulationDate.getDate() - 14)
 
-                        // Format date as "Month Day" (e.g., "August 15")
-                        const formattedDate = nextPeriod.toLocaleDateString('en-US', {
-                            month: 'long',
-                            day: 'numeric'
-                        })
+                today.setHours(0, 0, 0, 0)
 
-                        // Calculate days until next period
-                        const today = new Date()
-                        today.setHours(0, 0, 0, 0)
-                        nextPeriod.setHours(0, 0, 0, 0)
+                const follicularDay = Math.ceil(
+                    (today - lastPeriod) / (1000 * 60 * 60 * 24)
+                )
 
-                        const daysRemaining = Math.ceil((nextPeriod - today) / (1000 * 60 * 60 * 24))
-                        setDaysUntilPeriod(daysRemaining > 0 ? daysRemaining : 0)
+                setFollicularPhase(
+                    follicularDay > 0 && follicularDay <= 14 ? follicularDay : 0
+                )
 
-                        userLastPeriodDate.setHours(0, 0, 0, 0)
-
-                    }
-                }
-            } catch (error) {
-                console.error("Error fetching user:", error)
+            } catch (err) {
+                console.error(err)
             }
         }
 
-        fetchUser()
-    }, [])
+        fetchUserData()
+    }, [averageCycleLength])
 
 
 
@@ -119,7 +165,11 @@ const ViewCalendar = () => {
                                 <h3 className="font-semibold lg:text-lg text-neutral-900 dark:text-neutral-100">
                                     Follicular Phase
                                 </h3>
-                                <small className="text-[#b49ea5] dark:text-[#e0c9cf] font-medium">Day 12</small>
+                                <small
+                                    className="text-[#b49ea5] dark:text-[#e0c9cf] font-medium"
+                                >
+                                    Day {follicularPhase || 0}
+                                </small>
                             </div>
                         </div>
                         <div className="flex gap-3 items-center">
@@ -130,7 +180,7 @@ const ViewCalendar = () => {
                             <div>
                                 <h3 className="font-semibold lg:text-lg text-neutral-900 dark:text-neutral-100">Next Period</h3>
                                 <small className="text-[#b49ea5] dark:text-[#e0c9cf] font-medium">
-                                    {daysUntilPeriod || ''} day{daysUntilPeriod.length <= 1 ? '' : "s"} until the next period
+                                    {daysUntilPeriod || 0} day{daysUntilPeriod === 1 ? '' : "s"} until the next period
                                 </small>
                             </div>
                         </div>
@@ -142,7 +192,7 @@ const ViewCalendar = () => {
                             <div>
                                 <h3 className="font-semibold lg:text-lg text-neutral-900 dark:text-neutral-100">Cycle Length</h3>
                                 <small className="text-[#b49ea5] font-medium dark:text-[#e0c9cf]">
-                                    Average cycle length: {averageCycleLength}days
+                                    Average cycle length: {averageCycleLength} days
                                 </small>
                             </div>
                         </div>

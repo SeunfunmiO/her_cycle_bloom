@@ -127,7 +127,7 @@ const Home = () => {
 
   return (
     <div
-      className='max-h-128 pb-5 lg:max-h-145 overflow-y-auto custom-scrollbar scrollbar-hide bg-white dark:bg-neutral-900 
+      className=' bg-white dark:bg-neutral-900 
       transition-colors duration-300'
     >
       <div className='max-w-md mx-auto mt-5 px-4 flex flex-col gap-5'>

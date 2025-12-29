@@ -124,9 +124,9 @@ const CreateProfile = () => {
                         </label>
                     </div>
                     <small 
-                    className="text-neutral-700 flex items-center font-bold gap-2"
+                    className="text-neutral-700 flex items-center font-bold gap-2 text-[10px]"
                     >
-                        <InfoIcon size={18}/>
+                        <InfoIcon size={15}/>
                         Image shouldn't be larger than 5mb
                     </small>
 

@@ -15,7 +15,6 @@ const Login = () => {
     try {
       const user = await GoogleSignIn()
       if (user) {
-        toast.success(user.message || 'User signed in successfully')
         navigate('/home');
       } else {
         toast.error(user.message || "User not found")
@@ -40,7 +39,6 @@ const Login = () => {
 
 
         if (data?.user) {
-          toast.success(data.message || 'Logged in successfully');
           navigate('/home');
         } else {
           toast.error(data.message || 'Invalid email or password');
