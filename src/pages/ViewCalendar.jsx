@@ -13,10 +13,16 @@ const ViewCalendar = () => {
     useEffect(() => {
         const fetchEntry = async () => {
             try {
-                const user = JSON.parse(localStorage.getItem('user'))
-                const id = user?.id
+                // const user = JSON.parse(localStorage.getItem('user'))
+                // const id = user?.id
 
-                const res = await axios.get(`https://her-cycle-bloom-backend.onrender.com/period/get-entry/${id}`)
+                const res = await axios.get(`https://her-cycle-bloom-backend.onrender.com/period/get-entry`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem("token")}`
+                        }
+                    }
+                )
                 const data = res.data.entry
 
                 console.log(data);
@@ -92,14 +98,22 @@ const ViewCalendar = () => {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const user = JSON.parse(localStorage.getItem('user'))
-                const id = user?.id
-                if (!id) return;
+                // const user = JSON.parse(localStorage.getItem('user'))
+                // const id = user?.id
+                // if (!id) return;
 
-                const res = await axios.get(`https://her-cycle-bloom-backend.onrender.com/user/user-profile/${id}`)
+                const res = await axios.get(
+                    "https://her-cycle-bloom-backend.onrender.com/user/user-profile",
+                    {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem("token")}`
+                        }
+                    }
+                );
+
                 const userData = res.data.user
                 if (!userData?.lastPeriodDate) return;
-                
+
                 const lastPeriod = new Date(userData.lastPeriodDate)
                 lastPeriod.setHours(0, 0, 0, 0)
                 const cycleLength = averageCycleLength || 28
