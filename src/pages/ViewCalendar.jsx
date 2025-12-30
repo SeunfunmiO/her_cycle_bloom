@@ -105,6 +105,8 @@ const ViewCalendar = () => {
                     }
                 );
 
+                console.log(res);
+                
                 const userData = res.data.user
                 console.log(userData);
                 
