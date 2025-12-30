@@ -44,7 +44,7 @@ const Signup = () => {
         },
         validationSchema: yup.object({
             email: yup.string().required("Email is required!").email("Please enter a valid email address"),
-            password: yup.string().required("Password is required!")
+            password: yup.string()
                 .required("Password is required!").matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&])[A-Za-z\d@$!%?&]{6,}$/,
                     'Password must contain at least 6 characters, one uppercase, one lowercase, one number, and one special character')
                 .min(6, 'Password must be at least 6 characters'),
@@ -69,19 +69,21 @@ const Signup = () => {
 
                 localStorage.setItem('token', response.data.token)
 
-                if (data.success) {
+                if (!data.success) {
                     toast.error(data.message || "Email already in use");
                 } else {
                     toast.success(data.message || 'Account created successfully');
-                    navigate('/create-profile');
+
+                    setLoading(false)
+
+                    setTimeout(() => {
+                        navigate('/create-profile');
+                    }, 1200);
                 }
             } catch (error) {
                 console.log("Error signing up user : ", error);
                 toast.error('Something went wrong , please try again')
-            } finally {
-                setLoading(false)
             }
-
         }
     });
 
@@ -169,7 +171,7 @@ const Signup = () => {
 
                 <div className='mx-4 gap-5 flex flex-col py-14 items-center justify-center'>
                     <button
-                        type='submit'
+                        type='button'
                         onClick={handleGoogleSignIn}
                         className='gap-3 font-medium items-center justify-center rounded-full w-full flex py-3 border border-black
                          dark:border-neutral-100  outline-0'
@@ -179,7 +181,7 @@ const Signup = () => {
                         sign-up with google
                     </button>
                     <button
-                        type='submit'
+                        type='button'
                         className="flex font-medium items-center justify-center gap-3 w-full rounded-full py-3 border border-black 
                         dark:border-neutral-100 ">
                         <img className='w-3 h-3 dark:invert' src="./Vector.svg" alt="Apple Icon" />
