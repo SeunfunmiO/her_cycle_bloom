@@ -54,9 +54,15 @@ const CreateProfile = () => {
         }),
         onSubmit: async (values) => {
             try {
+                const payload = {
+                    name: values.name,
+                    dateOfBirth: values.dateOfBirth,
+                    cycleLength: values.cycleLength,
+                    lastPeriodDate: values.lastPeriodDate
+                }
                 const response = await axios.put(
                     `https://her-cycle-bloom-backend.onrender.com/user/create-profile`,
-                   values,
+                    payload,
                     {
                         headers: {
                             Authorization: `Bearer ${localStorage.getItem("token")}`

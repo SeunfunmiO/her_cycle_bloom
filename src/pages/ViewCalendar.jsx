@@ -13,9 +13,6 @@ const ViewCalendar = () => {
     useEffect(() => {
         const fetchEntry = async () => {
             try {
-                // const user = JSON.parse(localStorage.getItem('user'))
-                // const id = user?.id
-
                 const res = await axios.get(`https://her-cycle-bloom-backend.onrender.com/period/get-entry`,
                     {
                         headers: {
@@ -24,8 +21,6 @@ const ViewCalendar = () => {
                     }
                 )
                 const data = res.data.entry
-
-                console.log(data);
 
                 if (!Array.isArray(data.periodStart) || data.periodStart.length < 2) return
 
@@ -43,6 +38,9 @@ const ViewCalendar = () => {
                     cycleLengths.reduce((acc, curr) => acc + curr, 0) / cycleLengths.length
 
                 setAverageCycleLength(Math.round(average))
+
+                console.log(average);
+                
 
             } catch (error) {
                 console.error("Error fetching entry:", error)
@@ -108,11 +106,13 @@ const ViewCalendar = () => {
                 );
 
                 const userData = res.data.user
+                console.log(userData);
+                
                 if (!userData?.lastPeriodDate) return;
 
                 const lastPeriod = new Date(userData.lastPeriodDate)
                 lastPeriod.setHours(0, 0, 0, 0)
-                const cycleLength = averageCycleLength || 28
+                const cycleLength = averageCycleLength || 29
 
                 // Next period
                 const nextPeriod = new Date(lastPeriod)
