@@ -30,13 +30,6 @@ const Settings = () => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                // const user = JSON.parse(localStorage.getItem('user'))
-                // const id = user?.id
-
-                // if (!user) {
-                //     toast.error("User ID not found")
-                // }
-
                 const response = await axios.get(`https://her-cycle-bloom-backend.onrender.com/user/get-user`,
                     {
                         headers: {

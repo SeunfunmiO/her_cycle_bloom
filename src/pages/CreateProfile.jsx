@@ -54,15 +54,9 @@ const CreateProfile = () => {
         }),
         onSubmit: async (values) => {
             try {
-                const payload = {
-                    name: values.name,
-                    dateOfBirth: values.dateOfBirth,
-                    cycleLength: values.cycleLength,
-                    lastPeriodDate: values.lastPeriodDate
-                }
                 const response = await axios.put(
                     `https://her-cycle-bloom-backend.onrender.com/user/create-profile`,
-                    payload,
+                   values,
                     {
                         headers: {
                             Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -70,7 +64,6 @@ const CreateProfile = () => {
                     }
                 )
                 const data = response.data.user
-                console.log(data)
 
                 if (data.success) {
                     toast.success(data.message || "Profile saved!");

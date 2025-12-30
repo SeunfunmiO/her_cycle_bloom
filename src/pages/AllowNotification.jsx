@@ -26,10 +26,15 @@ const AllowNotification = () => {
             const isGranted = permission === "granted";
 
             const response = await axios.put(
-                `https://her-cycle-bloom-backend.onrender.com/user/enable-notification/${id}`,
-                { isNotification: isGranted }
+                `https://her-cycle-bloom-backend.onrender.com/user/enable-notification`,
+                { isNotification: isGranted },
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
+                    }
+                }
             );
-            const data = response.data;
+            const data = response.data.user;
 
             if (isGranted) {
                 toast.success(data.message || "Notifications enabled!");
@@ -39,7 +44,7 @@ const AllowNotification = () => {
                 toast.info("Notifications permission dismissed.");
             }
 
-            if (data?.status) {
+            if (data?.success) {
                 navigate('/get-ready');
             }
         } catch (error) {

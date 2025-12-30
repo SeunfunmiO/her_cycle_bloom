@@ -35,17 +35,18 @@ const Login = () => {
       setLoading(true)
       try {
         const response = await axios.post("https://her-cycle-bloom-backend.onrender.com/user/sign-in", values)
-        const data = response.data
+        const data = response.data.user
 
 
-        if (data?.user) {
+        if (data.success) {
           navigate('/home');
         } else {
           toast.error(data.message || 'Invalid email or password');
         }
       } catch (error) {
         toast.error('Something went wrong , please try again')
-        return error
+        console.log("Error logging in : ",error);
+        
       }
     }
   });
