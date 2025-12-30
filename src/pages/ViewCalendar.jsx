@@ -50,49 +50,6 @@ const ViewCalendar = () => {
         fetchEntry()
     }, [])
 
-    // useEffect(() => {
-    //     const fetchUser = async () => {
-    //         try {
-    //             const user = JSON.parse(localStorage.getItem('user'))
-    //             const id = user?.id
-
-    //             if (!id) {
-    //                 return;
-    //             }
-
-    //             const response = await axios.get(`https://her-cycle-bloom-backend.onrender.com/user/get-user/${id}`)
-    //             const data = response.data.user
-
-    //             if (data) {
-    //                 const lastPeriod = data.lastPeriodDate
-    //                 const userCycleLength = data.cycleLength || 28
-
-    //                 if (lastPeriod) {
-    //                     // Calculate next period date
-    //                     const userLastPeriodDate = new Date(lastPeriod)
-    //                     const nextPeriod = new Date(lastPeriod)
-    //                     nextPeriod.setDate(nextPeriod.getDate() + userCycleLength)
-
-
-    //                     // Calculate days until next period
-    //                     const today = new Date()
-    //                     today.setHours(0, 0, 0, 0)
-    //                     nextPeriod.setHours(0, 0, 0, 0)
-
-    //                     const daysRemaining = Math.ceil((nextPeriod - today) / (1000 * 60 * 60 * 24))
-    //                     setDaysUntilPeriod(daysRemaining > 0 ? daysRemaining : 0)
-
-    //                     userLastPeriodDate.setHours(0, 0, 0, 0)
-
-    //                 }
-    //             }
-    //         } catch (error) {
-    //             console.error("Error fetching user:", error)
-    //         }
-    //     }
-
-    //     fetchUser()
-    // }, [])
     useEffect(() => {
         const fetchUserData = async () => {
             try {
@@ -105,17 +62,14 @@ const ViewCalendar = () => {
                     }
                 );
 
-                console.log(res);
-                
+                 
                 const userData = res.data.userData
-                
-                console.log(userData);
-                
+        
                 if (!userData?.lastPeriodDate) return;
 
                 const lastPeriod = new Date(userData.lastPeriodDate)
                 lastPeriod.setHours(0, 0, 0, 0)
-                const cycleLength = averageCycleLength || 29
+                const cycleLength = averageCycleLength || 28
 
                 // Next period
                 const nextPeriod = new Date(lastPeriod)
@@ -138,6 +92,8 @@ const ViewCalendar = () => {
                     (today - lastPeriod) / (1000 * 60 * 60 * 24)
                 )
 
+                console.log(follicularDay);
+                
                 setFollicularPhase(
                     follicularDay > 0 && follicularDay <= 14 ? follicularDay : 0
                 )
