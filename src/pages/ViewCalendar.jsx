@@ -107,7 +107,8 @@ const ViewCalendar = () => {
 
                 console.log(res);
                 
-                const userData = res.data.user
+                const userData = res.data.userData
+                
                 console.log(userData);
                 
                 if (!userData?.lastPeriodDate) return;
