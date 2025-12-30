@@ -68,10 +68,8 @@ const Signup = () => {
                 const data = response.data
 
                 localStorage.setItem('token', response.data.token)
-                localStorage.setItem('user', JSON.stringify(response.data.user))
 
-
-                if (data.user) {
+                if (data.success) {
                     toast.error(data.message || "Email already in use");
                 } else {
                     toast.success(data.message || 'Account created successfully');
