@@ -98,10 +98,6 @@ const ViewCalendar = () => {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                // const user = JSON.parse(localStorage.getItem('user'))
-                // const id = user?.id
-                // if (!id) return;
-
                 const res = await axios.get(
                     "https://her-cycle-bloom-backend.onrender.com/user/user-profile",
                     {

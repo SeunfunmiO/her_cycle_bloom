@@ -54,21 +54,25 @@ const CreateProfile = () => {
         }),
         onSubmit: async (values) => {
             try {
-                const user = JSON.parse(localStorage.getItem('user'))
-                const id = user?.id
-
-                if (!id) {
-                    toast.error("User not found. Please log in again.");
-                    return;
+                const payload = {
+                    name: values.name,
+                    dateOfBirth: values.dateOfBirth,
+                    cycleLength: values.cycleLength,
+                    lastPeriodDate: values.lastPeriodDate
                 }
-
                 const response = await axios.put(
-                    `https://her-cycle-bloom-backend.onrender.com/user/create-profile/${id}`,
-                    values
+                    `https://her-cycle-bloom-backend.onrender.com/user/create-profile`,
+                    payload,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem("token")}`
+                        }
+                    }
                 )
-                const data = response.data
+                const data = response.data.user
+                console.log(data)
 
-                if (data?.user) {
+                if (data.success) {
                     toast.success(data.message || "Profile saved!");
                     navigate("/allow-notification");
                 } else {
@@ -123,10 +127,10 @@ const CreateProfile = () => {
                             />
                         </label>
                     </div>
-                    <small 
-                    className="text-neutral-700 flex items-center font-bold gap-2 text-[10px]"
+                    <small
+                        className="text-neutral-700 flex items-center font-bold gap-2 text-[10px]"
                     >
-                        <InfoIcon size={15}/>
+                        <InfoIcon size={15} />
                         Image shouldn't be larger than 5mb
                     </small>
 
