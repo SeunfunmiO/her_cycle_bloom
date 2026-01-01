@@ -15,7 +15,6 @@ const LogOutModal = () => {
             navigate('/log-in')
         } catch (error) {
             console.log("error logging out : ", error);
-
         }
     }
 

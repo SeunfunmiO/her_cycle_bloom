@@ -1,6 +1,6 @@
 import { ChevronRight, LucideRefreshCcw } from 'lucide-react'
 import React, { useState } from 'react'
-import LabelProps from './LabelProps'
+import LabelProps from '../components/LabelProps'
 
 const ResetDataModal = () => {
     const [openResetModal, setOpenResetModal] = useState(false)

@@ -13,8 +13,6 @@ const SettingsProfile = () => {
     const [dateOfBirth, setDateOfBirth] = useState("")
 
 
-
-
     useEffect(() => {
         const fetchUser = async () => {
             try {

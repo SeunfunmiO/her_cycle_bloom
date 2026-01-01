@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import LabelProps from '../components/LabelProps'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import axios from 'axios'
