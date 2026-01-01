@@ -3,23 +3,12 @@ import { useNavigate } from 'react-router-dom'
 import LabelProps from '../components/LabelProps'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
+import axios from 'axios'
+import { toast } from 'react-toastify'
 const ChangePassword = () => {
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false);
     const [saved, setSaved] = useState(false);
-
-    const handleLoader = () => {
-        setTimeout(() => {
-            if (loading) {
-                setLoading(true)
-                setSaved(false)
-            } else {
-                setLoading(false)
-                setSaved(true)
-            }
-
-        }, 2000)
-    }
 
     const formik = useFormik({
         initialValues: {
@@ -28,7 +17,48 @@ const ChangePassword = () => {
             confirmNewPassword: "",
         },
         onSubmit: async (values) => {
-            console.log(values);
+            try {
+                setLoading(true)
+                setSaved(false)
+
+                const token = localStorage.getItem('token')
+                const payload = {
+                    oldPassword: values.oldPassword,
+                    newPassword: values.newPassword
+                }
+                const res = await axios.put(`https://her-cycle-bloom-backend.onrender.com/user/change-password`,
+                    payload,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    }
+                )
+                console.log(res);
+
+                const data = res.data
+
+                if (!data.success) {
+                    toast.error(data.message)
+                } else {
+                    setSaved(true)
+                    formik.resetForm()
+                    toast.success(data.message)
+                    setTimeout(() => {
+                        localStorage.removeItem("token")
+                        navigate("/log-in")
+                    }, 1500)
+                }
+            } catch (error) {
+                console.log("Error changing password: ", error);
+                const message =
+                    error.response?.data?.message ||
+                    "Error changing password"
+
+                toast.error(message)
+            } finally {
+                setLoading(false)
+            }
         },
         validationSchema: yup.object({
             oldPassword: yup
@@ -49,9 +79,6 @@ const ChangePassword = () => {
                 .string()
                 .required("Please confirm your new password")
                 .oneOf([yup.ref("newPassword")], "Password must match new password!"),
-            agree: yup
-                .boolean()
-                .oneOf([true], "You must accept the Terms & Conditions"),
         }),
     });
 
@@ -176,14 +203,18 @@ const ChangePassword = () => {
                     </div>
 
                     <button
-                        onClick={handleLoader}
+                        type="submit"
                         disabled={loading || saved}
-                        className={` w-full py-3 rounded-2xl text-white font-medium 
-     
-                            ${saved ? "bg-pink-300 cursor-not-allowed" : "bg-palevioletred cursor-pointer"}
-                    `}>
+                        className={`w-full py-3 rounded-2xl text-white font-medium
+                          ${loading || saved
+                                ? "bg-pink-300 cursor-not-allowed"
+                                : "bg-palevioletred cursor-pointer"
+                          }
+                    `}
+                    >
                         {loading ? "Saving..." : saved ? "Saved" : "Save"}
                     </button>
+
                 </form>
 
             </div>

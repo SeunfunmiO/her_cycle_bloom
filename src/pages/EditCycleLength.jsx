@@ -1,29 +1,31 @@
-
 import axios from 'axios';
 import { Minus, Plus } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const EditPeriodDuration = () => {
+const EditCycleLength = () => {
+
+
     const [value, setValue] = useState(0);
     const [loading, setLoading] = useState(false);
     const [saved, setSaved] = useState(false);
+    const [cycleLength, setCycleLength] = useState('')
     const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchPeriodData = async () => {
+        const fetchCycleLength = async () => {
             try {
                 const response = await axios.get(
-                    'https://her-cycle-bloom-backend.onrender.com/user/profile'
+                    'https://her-cycle-bloom-backend.onrender.com/user/user-profile'
                 );
-                const currentDuration = response.data.user.periodDuration || 0;
-                setValue(currentDuration);
+                const initialLength = response.data.user.cycleLength || 0;
+                setValue(initialLength);
+                setCycleLength(initialLength);
             } catch (error) {
-                console.error("Failed to fetch period duration:", error);
+                console.error("Failed to fetch cycle length:", error);
             }
         };
-
-        fetchPeriodData();
+        fetchCycleLength();
     }, []);
 
     const handleSave = async () => {
@@ -35,15 +37,17 @@ const EditPeriodDuration = () => {
         try {
             const response = await axios.put(
                 'https://her-cycle-bloom-backend.onrender.com/user/create-profile',
-                { periodDuration: value }
+                { cycleLength: value }
             );
 
-            console.log("Saved period duration:", response.data.user.periodDuration);
-
+            const savedLength = response.data.user.cycleLength;
+            setCycleLength(savedLength);
+            setValue(savedLength); 
             setSaved(true);
+
             setTimeout(() => setSaved(false), 2000);
         } catch (error) {
-            console.error("Failed to save period duration:", error);
+            console.error("Failed to save cycle length:", error);
         } finally {
             setLoading(false);
         }
@@ -62,7 +66,7 @@ const EditPeriodDuration = () => {
                         alt="arrow left"
                         className="cursor-pointer dark:invert"
                     />
-                    <h1 className="text-lg font-bold">Period Duration</h1>
+                    <h1 className="text-lg font-bold">Cycle Length</h1>
                     <button
                         onClick={handleSave}
                         className={`font-bold ${saved ? "text-pink-300" : "text-palevioletred"}`}
@@ -95,4 +99,5 @@ const EditPeriodDuration = () => {
     );
 };
 
-export default EditPeriodDuration;
+
+export default EditCycleLength

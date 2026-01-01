@@ -7,6 +7,7 @@ const ViewCalendar = () => {
     const [daysUntilPeriod, setDaysUntilPeriod] = useState("")
     const [follicularPhase, setFollicularPhase] = useState(0)
     const [averageCycleLength, setAverageCycleLength] = useState(28)
+    const [phase, setPhase] = useState('')
 
 
 
@@ -40,7 +41,7 @@ const ViewCalendar = () => {
                 setAverageCycleLength(Math.round(average))
 
                 console.log(average);
-                
+
 
             } catch (error) {
                 console.error("Error fetching entry:", error)
@@ -62,9 +63,9 @@ const ViewCalendar = () => {
                     }
                 );
 
-                 
+
                 const userData = res.data.userData
-        
+
                 if (!userData?.lastPeriodDate) return;
 
                 const lastPeriod = new Date(userData.lastPeriodDate)
@@ -83,20 +84,39 @@ const ViewCalendar = () => {
                 setDaysUntilPeriod(daysRemaining > 0 ? daysRemaining : 0)
 
                 // Follicular phase
+                const cycleDay = Math.ceil((today - lastPeriod) / (1000 * 60 * 60 * 24)) + 1
+                const ovulationDay = cycleLength - 14
+
                 const ovulationDate = new Date(nextPeriod)
                 ovulationDate.setDate(ovulationDate.getDate() - 14)
 
                 today.setHours(0, 0, 0, 0)
 
-                const follicularDay = Math.ceil(
-                    (today - lastPeriod) / (1000 * 60 * 60 * 24)
+
+                // const follicularDay = Math.ceil(
+                //     (today - lastPeriod) / (1000 * 60 * 60 * 24)
+                // )
+
+                setFollicularPhase(
+                    cycleDay >= 1 && cycleDay < ovulationDay ? cycleDay : 0
                 )
 
-                console.log(follicularDay);
-                
-                setFollicularPhase(
-                    follicularDay > 0 && follicularDay <= 14 ? follicularDay : 0
-                )
+
+                if (cycleDay >= 1 && cycleDay < ovulationDay) {
+                    setFollicularPhase(cycleDay)
+                    setPhase("Follicular")
+                } else if (cycleDay === ovulationDay) {
+                    setFollicularPhase(0)
+                    setPhase("Ovulation")
+                } else if (cycleDay > ovulationDay && cycleDay <= cycleLength) {
+                    setFollicularPhase(0)
+                    setPhase("Luteal")
+                } else {
+                    setFollicularPhase(0)
+                    setPhase("Menstrual")
+                }
+
+
 
             } catch (err) {
                 console.error(err)

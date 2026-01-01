@@ -6,6 +6,25 @@ import HistoryFilter from '../components/HistoryFilter'
 
 const History = () => {
     const navigate = useNavigate()
+//         < div className = "flex flex-col gap-1" >
+//         {
+//             formattedPeriod.length > 0 ? (
+//                 formattedPeriod.map((period, index) => (
+//                     <h2
+//                         key={index}
+//                         className='text-gray-400 dark:invert font-medium text-sm lg:text-base'
+//                     >
+//                         {period}
+//                     </h2>
+//                 ))
+//             ) : (
+//                 <h2 className='text-gray-400 dark:invert font-medium text-sm lg:text-base'>
+//                     No period data
+//                 </h2>
+//             )
+//         }
+// </div >
+
 
     return (
 

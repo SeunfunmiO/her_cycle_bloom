@@ -32,6 +32,9 @@ import AiChat from './pages/AiChat'
 import ToastContainer from './toast/ToastContainer'
 import SplashScreen from './components/SplashScreen'
 import SetRemainder from './pages/SetRemainder'
+import ForgotPassword from './pages/ForgotPassword'
+import OtpPage from './pages/OtpPage'
+import ResetPassword from './pages/ResetPassword'
 
 
 const lightOnlyRoutes = [
@@ -100,10 +103,15 @@ const App = () => {
         <Route path='/export-data' element={<ExportDataCycle />} />
         <Route path='/flow-care' element={<FlowCare />} />
         <Route path='/ai-chat' element={<AiChat />} />
+        <Route path='/forgot-password' element={<ForgotPassword />} />
+        <Route path='/verify-otp' element={<OtpPage />} />
+        <Route path='/reset-password' element={<ResetPassword />} />
 
       </Routes>
     </>
   )
 }
-
+// agree: yup
+//   .boolean()
+//   .oneOf([true], "You must accept the Terms & Conditions"),
 export default App

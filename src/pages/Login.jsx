@@ -26,7 +26,10 @@ const Login = () => {
   }
 
   const formik = useFormik({
-    initialValues: { email: '', password: '' },
+    initialValues: {
+      email: '',
+      password: ''
+    },
     validationSchema: yup.object({
       email: yup.string().required('Email is required!').email('Please enter a valid email'),
       password: yup.string().required('Password is required!'),
@@ -34,19 +37,24 @@ const Login = () => {
     onSubmit: async (values) => {
       setLoading(true)
       try {
-        const response = await axios.post("https://her-cycle-bloom-backend.onrender.com/user/sign-in", values)
+        const payload = {
+          email: values.email,
+          password: values.password
+        }
+        const response = await axios.post("https://her-cycle-bloom-backend.onrender.com/user/sign-in", payload)
         const data = response.data.user
 
-
-        if (data.success) {
-          navigate('/home');
-        } else {
+        if (!data.success) {
           toast.error(data.message || 'Invalid email or password');
+        } else {
+          navigate('/home');
         }
       } catch (error) {
         toast.error('Something went wrong , please try again')
-        console.log("Error logging in : ",error);
-        
+        console.log("Error logging in : ", error);
+
+      } finally {
+        setLoading(false)
       }
     }
   });
@@ -93,7 +101,11 @@ const Login = () => {
               value={formik.values.password}
             />
             {formik.touched.password ? <small className="text-red-600 dark:text-red-500">{formik.errors.password}</small> : ''}
-            <p className="text-sm font-medium gap-0">Forgot password ?</p>
+            <p
+            onClick={()=>navigate('/forgot-password')}
+              className="text-sm font-medium gap-0">
+              Forgot password ?
+            </p>
           </div>
 
           <button
