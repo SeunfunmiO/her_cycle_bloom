@@ -101,11 +101,12 @@ const Login = () => {
               value={formik.values.password}
             />
             {formik.touched.password ? <small className="text-red-600 dark:text-red-500">{formik.errors.password}</small> : ''}
-            <p
+            <button
               onClick={() => navigate('/forgot-password')}
-              className="text-sm font-medium gap-0 cursor-pointer">
+              type='button'
+              className="text-sm font-medium gap-0 outline-none border-0 hover:underline">
               Forgot password ?
-            </p>
+            </button>
           </div>
 
           <button
