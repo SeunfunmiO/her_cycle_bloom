@@ -35,8 +35,8 @@ const Login = () => {
       password: yup.string().required('Password is required!'),
     }),
     onSubmit: async (values) => {
-      setLoading(true)
       try {
+        setLoading(true)
         const payload = {
           email: values.email,
           password: values.password
@@ -52,7 +52,7 @@ const Login = () => {
       } catch (error) {
         toast.error('Something went wrong , please try again')
         console.log("Error logging in : ", error);
-
+        setLoading(false)
       } finally {
         setLoading(false)
       }
@@ -102,8 +102,8 @@ const Login = () => {
             />
             {formik.touched.password ? <small className="text-red-600 dark:text-red-500">{formik.errors.password}</small> : ''}
             <p
-            onClick={()=>navigate('/forgot-password')}
-              className="text-sm font-medium gap-0">
+              onClick={() => navigate('/forgot-password')}
+              className="text-sm font-medium gap-0 cursor-pointer">
               Forgot password ?
             </p>
           </div>
