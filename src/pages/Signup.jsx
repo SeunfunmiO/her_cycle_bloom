@@ -71,6 +71,7 @@ const Signup = () => {
 
                 if (!data.success) {
                     toast.error(data.message || "Email already in use");
+                    setLoading(false)
                 } else {
                     toast.success(data.message || 'Account created successfully');
 
@@ -83,6 +84,7 @@ const Signup = () => {
             } catch (error) {
                 console.log("Error signing up user : ", error);
                 toast.error('Something went wrong , please try again')
+                setLoading(false)
             }
         }
     });
