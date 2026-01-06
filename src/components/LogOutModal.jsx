@@ -7,7 +7,6 @@ const LogOutModal = () => {
     const [openLogoutModal, setOpenLogoutModal] = useState(false);
     const navigate = useNavigate();
 
-    // Close modal with Esc key
     useEffect(() => {
         const handleEsc = (e) => {
             if (e.key === "Escape") setOpenLogoutModal(false);
@@ -30,7 +29,6 @@ const LogOutModal = () => {
 
     return (
         <div>
-            {/* Trigger Button */}
             <button
                 onClick={() => setOpenLogoutModal(true)}
                 className="flex items-center justify-between cursor-pointer w-full p-2 hover:bg-gray-100 dark:hover:bg-neutral-700 rounded-lg"
@@ -42,7 +40,6 @@ const LogOutModal = () => {
                 <ChevronRight className="text-gray-300 dark:text-white" size={24} />
             </button>
 
-            {/* Modal */}
             {openLogoutModal && (
                 <div
                     className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"

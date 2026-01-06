@@ -1,6 +1,6 @@
 import { ChevronRight, LucideRefreshCcw } from 'lucide-react'
 import React, { useState } from 'react'
-import LabelProps from '../components/LabelProps.jsx'
+// import LabelProps from '../components/LabelProps.jsx'
 
 const ResetDataModal = () => {
     const [openResetModal, setOpenResetModal] = useState(false)
@@ -32,8 +32,8 @@ const ResetDataModal = () => {
                     >
                         <h2 className="text-lg font-bold text-gray-800 dark:text-neutral-100 text-center mb-4">
                             Reset Data
-                            
-                            </h2>
+
+                        </h2>
                         <div className='border-gray-200 dark:border-neutral-700 border-b ml-10'></div>
 
                         <p className="text-gray-800 my-5 dark:text-neutral-200 text-center text-sm lg:text-base">
@@ -82,8 +82,20 @@ const ResetDataModal = () => {
                             Please enter your account password to proceed with data reset.
                         </p>
 
-                        <LabelProps title={"Account Password"} />
-
+                        {/* <LabelProps title={"Account Password"} /> */}
+                        <div className="border rounded-2xl border-pink-200 relative flex justify-center gap-2 flex-col h-12 px-2">
+                            <input
+                                className='outline-none peer px-2'
+                                type="password"
+                                name='password'
+                            />
+                            <label
+                                className='text-pink-200 text-sm absolute bg-white peer-focus:-top-5 peer-focus:text-sm transition-all
+                                 pointer-events-none left-2 p-2 lg:text-base'
+                                htmlFor="account-password">
+                                Account Password
+                            </label>
+                        </div>
                         <div className="flex justify-center items-center gap-3 mt-6">
                             <button
                                 onClick={() => setIsConfirmed(false)}
