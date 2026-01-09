@@ -69,13 +69,13 @@ const CreateProfile = () => {
                         }
                     }
                 )
-                const data = response.data.user
+                const data = response.data
 
                 if (data.success) {
                     toast.success(data.message || "Profile saved!");
                     navigate("/allow-notification");
                 } else {
-                    toast.error("Something went wrong, please try again")
+                    toast.error("Failed to save profile")
                 }
             } catch (error) {
                 console.error("Profile update error:", error);
