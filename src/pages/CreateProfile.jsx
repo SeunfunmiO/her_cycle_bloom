@@ -20,6 +20,12 @@ const CreateProfile = () => {
 
         if (!file) return;
 
+        if (file.size > 5 * 1024 * 1024) {
+            toast.error("Image must be smaller than 5MB");
+            return;
+        }
+
+
         setLoading(true);
         const reader = new FileReader()
         reader.onloadend = () => {
