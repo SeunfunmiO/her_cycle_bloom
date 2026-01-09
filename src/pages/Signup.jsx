@@ -52,8 +52,8 @@ const Signup = () => {
                 .oneOf([yup.ref("password")], "Passwords must match"),
         }),
         onSubmit: async (values) => {
-            setLoading(true)
             try {
+                setLoading(true)
                 const payload = {
                     email: values.email,
                     password: values.password
@@ -71,12 +71,8 @@ const Signup = () => {
 
                 if (!data.success) {
                     toast.error(data.message || "Email already in use");
-                    setLoading(false)
                 } else {
                     toast.success(data.message || 'Account created successfully');
-
-                    setLoading(false)
-
                     setTimeout(() => {
                         navigate('/create-profile');
                     }, 1200);
@@ -84,6 +80,7 @@ const Signup = () => {
             } catch (error) {
                 console.log("Error signing up user : ", error);
                 toast.error('Something went wrong , please try again')
+            }finally{
                 setLoading(false)
             }
         }
@@ -158,7 +155,7 @@ const Signup = () => {
                         type='submit'
                         className={`mt-10 mb-14 w-full py-2 shadow-lg text-lg font-bold lg:text-xl rounded-3xl
                       ${loading ? 'bg-pink-300 cursor-not-allowed' : 'bg-palevioletred'}`}
-                        disabled={loading && !formik.values}
+                        disabled={loading}
                     >
                         {loading ? 'Creating...' : 'Create Account'}
                     </button>

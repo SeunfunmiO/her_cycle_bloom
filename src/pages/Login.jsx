@@ -102,7 +102,6 @@ const Login = () => {
             />
             {formik.touched.password ? <small className="text-red-600 dark:text-red-500">{formik.errors.password}</small> : ''}
             <button
-              onClick={() => navigate('/forgot-password')}
               type='button'
               className="text-sm font-medium gap-0 outline-none border-0 hover:underline">
               Forgot password ?
