@@ -10,7 +10,7 @@ import {
 import { ChevronDownIcon } from 'lucide-react'
 
 
-const DateofBirth = ({value,onChange,onBlur}) => {
+const DateofBirth = ({value,onChange,onBlur,name}) => {
     const [open, setOpen] = useState(false)
 
 
@@ -27,6 +27,7 @@ const DateofBirth = ({value,onChange,onBlur}) => {
                         className="w-48 border border-black rounded-lg bg-transparent justify-between font-semibold"
                     >
                         {value ? new Date(value).toLocaleDateString() : "Select date"}
+                        {name}
                         <ChevronDownIcon />
                     </Button>
                 </PopoverTrigger>

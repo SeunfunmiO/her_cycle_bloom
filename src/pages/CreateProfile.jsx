@@ -26,7 +26,6 @@ const CreateProfile = () => {
             const photoBase64 = reader.result
             setPreview(photoBase64);
             formik.setFieldValue('profilePicture', photoBase64);
-            toast.success("Photo Added");
             setLoading(false);
         }
 
@@ -70,6 +69,8 @@ const CreateProfile = () => {
                     }
                 )
                 const data = response.data
+                console.log(data);
+                
 
                 if (data.success) {
                     toast.success(data.message || "Profile saved!");
@@ -155,6 +156,7 @@ const CreateProfile = () => {
 
                     <DateofBirth
                         value={formik.values.dateOfBirth}
+                        name='dateOfBirth'
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                     />
