@@ -75,8 +75,7 @@ const CreateProfile = () => {
                     }
                 )
                 const data = response.data
-                console.log(data);
-                
+             
 
                 if (data.success) {
                     toast.success(data.message || "Profile saved!");

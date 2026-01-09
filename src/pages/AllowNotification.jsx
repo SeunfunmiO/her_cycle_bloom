@@ -34,7 +34,7 @@ const AllowNotification = () => {
                     }
                 }
             );
-            const data = response.data.user;
+            const data = response.data;
 
             if (isGranted) {
                 toast.success(data.message || "Notifications enabled!");
