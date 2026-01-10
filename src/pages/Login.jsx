@@ -41,8 +41,16 @@ const Login = () => {
           email: values.email,
           password: values.password
         }
-        const response = await axios.post("https://her-cycle-bloom-backend.onrender.com/user/sign-in", payload)
+        const response = await axios.post("https://her-cycle-bloom-backend.onrender.com/user/sign-in", payload, {
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+        )
+
+
         const data = response.data
+        localStorage.setItem('token', response.data.token)
 
         if (!data.success) {
           toast.error(data.message || 'Invalid email or password');
