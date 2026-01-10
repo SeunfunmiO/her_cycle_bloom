@@ -50,7 +50,7 @@ const Account = () => {
                     </div>
                 </div>
 
-                <div className='px-3 pt-8'>
+                <div className='px-3 pt-8 mb-5'>
                     <h1 className="font-bold text-palevioletred text-lg md:text-xl lg:text-2xl">Manage Access</h1>
 
                     <div

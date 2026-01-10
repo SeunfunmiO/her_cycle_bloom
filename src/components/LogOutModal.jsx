@@ -31,7 +31,7 @@ const LogOutModal = () => {
         <div>
             <button
                 onClick={() => setOpenLogoutModal(true)}
-                className="flex items-center justify-between cursor-pointer w-full p-2 mb-5 hover:bg-gray-100 dark:hover:bg-neutral-700 rounded-lg"
+                className="flex items-center justify-between cursor-pointer w-full p-2 hover:bg-gray-100 dark:hover:bg-neutral-700 rounded-lg"
             >
                 <div className="flex items-center gap-3">
                     <LogOut className="text-darkslategray dark:text-white" size={24} />
