@@ -24,19 +24,17 @@ const SettingsProfile = () => {
                     }
                 )
                 const data = response.data
+     
 
-                console.log(data);
-                
-
-                const dateOfBirth = new Date(data.dateOfBirth).toLocaleDateString()
+                const dateOfBirth = new Date(data.user.dateOfBirth).toLocaleDateString()
 
                 if (!data.success) {
                    return toast.error(data.message || "Unable to load data")
                 } else {
-                    setName(data.name)
-                    setPhoto(data.profilePicture)
-                    setEmail(data.email)
-                    setAddress(data.address)
+                    setName(data.user.name)
+                    setPhoto(data.user.profilePicture)
+                    setEmail(data.user.email)
+                    setAddress(data.user.address)
                     setDateOfBirth(dateOfBirth)
                 }
             } catch (error) {
