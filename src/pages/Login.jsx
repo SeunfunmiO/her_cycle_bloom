@@ -42,7 +42,7 @@ const Login = () => {
           password: values.password
         }
         const response = await axios.post("https://her-cycle-bloom-backend.onrender.com/user/sign-in", payload)
-        const data = response.data.user
+        const data = response.data
 
         if (!data.success) {
           toast.error(data.message || 'Invalid email or password');

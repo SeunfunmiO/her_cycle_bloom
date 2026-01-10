@@ -34,7 +34,7 @@ const SettingsProfile = () => {
                     setName(data.user.name)
                     setPhoto(data.user.profilePicture)
                     setEmail(data.user.email)
-                    setAddress(data.user.address)
+                    setAddress(data.user.address || 'No address yet')
                     setDateOfBirth(dateOfBirth)
                 }
             } catch (error) {
