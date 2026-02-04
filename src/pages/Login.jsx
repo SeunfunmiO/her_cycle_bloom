@@ -48,9 +48,9 @@ const Login = () => {
         }
         )
 
-
         const data = response.data
-        localStorage.setItem('token', response.data.token)
+        
+        localStorage.setItem('token', data.token)
 
         if (!data.success) {
           toast.error(data.message || 'Invalid email or password');
@@ -109,11 +109,11 @@ const Login = () => {
               value={formik.values.password}
             />
             {formik.touched.password ? <small className="text-red-600 dark:text-red-500">{formik.errors.password}</small> : ''}
-            <button
-              type='button'
-              className="text-sm font-medium gap-0 outline-none border-0 hover:underline">
-              Forgot password ?
-            </button>
+          <button
+            type='button'
+            className="text-sm text-start font-medium gap-0 outline-none border-0 hover:underline">
+            Forgot password ?
+          </button>
           </div>
 
           <button

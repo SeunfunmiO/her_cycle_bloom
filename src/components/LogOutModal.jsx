@@ -28,7 +28,7 @@ const LogOutModal = () => {
     };
 
     return (
-        <div>
+        <div >
             <button
                 onClick={() => setOpenLogoutModal(true)}
                 className="flex items-center justify-between cursor-pointer w-full p-2 hover:bg-gray-100 dark:hover:bg-neutral-700 rounded-lg"

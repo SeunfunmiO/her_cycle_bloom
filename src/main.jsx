@@ -6,7 +6,9 @@ import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
 import userSlice from './redux/userSlice.js'
+import { registerSW } from 'virtual:pwa-register'
 
+registerSW({ immediate: true })
 
 export const store = configureStore({
   reducer: {

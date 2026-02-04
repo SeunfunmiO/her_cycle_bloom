@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import CalendarComponent from '../components/Calendar'
 import Navbar from '../components/Navbar'
 import axios from 'axios'
+import CalendarLegend from '../components/CalendarLegend'
 
 const ViewCalendar = () => {
     const [daysUntilPeriod, setDaysUntilPeriod] = useState("")
@@ -21,8 +22,8 @@ const ViewCalendar = () => {
                         }
                     }
                 )
-                const data = res.data.entry
-
+                const data = res.data.entries
+                
                 if (!Array.isArray(data.periodStart) || data.periodStart.length < 2) return
 
                 const dates = data.periodStart.map(date => new Date(date))
@@ -134,8 +135,9 @@ const ViewCalendar = () => {
                 <div
                     className='p-5'
                 >
-                    <h2 className='font-medium text-lg text-neutral-900 dark:text-neutral-100'>Calendar</h2>
+                    <h2 className='font-medium text-lg text-neutral-900 dark:text-neutral-100 mb-2'>Calendar</h2>
                     <CalendarComponent />
+                    <CalendarLegend/>
                 </div>
 
                 <div

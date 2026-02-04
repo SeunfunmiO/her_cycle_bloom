@@ -17,10 +17,12 @@ const Theme = () => {
         if (isDark) {
             html.classList.add("dark");
             localStorage.setItem("theme", "dark")
+            document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#000000');
             setDarkMode(true)
         } else {
             html.classList.remove("dark");
             localStorage.setItem("theme", "light")
+            document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#ffffff');
             setDarkMode(false)
         }
 

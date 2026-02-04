@@ -35,6 +35,26 @@ import SetRemainder from './pages/SetRemainder'
 import ForgotPassword from './pages/ForgotPassword'
 import OtpPage from './pages/OtpPage'
 import ResetPassword from './pages/ResetPassword'
+import { useRegisterSW } from 'virtual:pwa-register/react';
+
+function PWAUpdate() {
+  const {
+    needRefresh: [needRefresh],
+    updateServiceWorker,
+  } = useRegisterSW();
+
+  useEffect(() => {
+    if (needRefresh) {
+      // Show a notification or banner
+      const update = confirm('New version available! Update now?');
+      if (update) {
+        updateServiceWorker(true);
+      }
+    }
+  }, [needRefresh,updateServiceWorker]);
+
+  return null;
+}
 
 
 const lightOnlyRoutes = [
@@ -71,6 +91,7 @@ const App = () => {
   return (
     <>
       <ToastContainer />
+      <PWAUpdate/>
       <Routes>
         <Route path='/' element={< SplashScreen />} />
         <Route path='/onboarding' element={<Onboarding />} />

@@ -11,6 +11,7 @@ import DateofBirth from '../components/DateofBirth';
 
 const CreateProfile = () => {
     const [preview, setPreview] = useState(null);
+    const [profilePicture,setProfilePicture]=useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
@@ -31,6 +32,7 @@ const CreateProfile = () => {
         reader.onloadend = () => {
             const photoBase64 = reader.result
             setPreview(photoBase64);
+            setProfilePicture(photoBase64)
             formik.setFieldValue('profilePicture', photoBase64);
             setLoading(false);
         }
@@ -49,13 +51,14 @@ const CreateProfile = () => {
             dateOfBirth: "",
             cycleLength: 28,
             lastPeriodDate: "",
-            profilePicture: ""
+            profilePicture: "",
         },
         validationSchema: yup.object({
             name: yup.string().required("Name is required!"),
             dateOfBirth: yup.string().required("Birth year is required!"),
             cycleLength: yup.number().required("Cycle length is required!"),
-            lastPeriodDate: yup.string().required("Last period date is required!")
+            lastPeriodDate: yup.string().required("Last period date is required!"),
+            profilePicture:yup.string().notRequired()
         }),
         onSubmit: async (values) => {
             try {
@@ -63,7 +66,8 @@ const CreateProfile = () => {
                     name: values.name,
                     dateOfBirth: values.dateOfBirth,
                     cycleLength: values.cycleLength,
-                    lastPeriodDate: values.lastPeriodDate
+                    lastPeriodDate: values.lastPeriodDate,
+                    profilePicture:profilePicture
                 }
                 const response = await axios.put(
                     `https://her-cycle-bloom-backend.onrender.com/user/create-profile`,

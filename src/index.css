@@ -17,6 +17,26 @@
   --breakpoint-smd: 430px;
 }
 
+/* Solid pink period */
+.period-day {
+  @apply bg-pink-500 text-white rounded-full;
+}
+
+/* Predicted period (dotted pink) */
+.predicted-period {
+  @apply text-pink-400 border border-dashed border-pink-400 rounded-full;
+}
+
+/* Ovulation (blue dotted circle) */
+.ovulation-day {
+  @apply border-2 border-dotted border-cyan-400 text-cyan-400 rounded-full;
+}
+
+/* Fertile window (blue text only) */
+.fertile-day {
+  @apply text-cyan-400 font-medium;
+}
+
 .swiper-pagination-bullet {
   background-color: #000000 !important;
 }

@@ -18,7 +18,7 @@ const CycleInformation = () => {
                     }
                 }
             )
-            const data = res.data.entry
+            const data = res.data.entries
 
             const cycle = data.cycleLength || 29
             setCycleLength(cycle)
@@ -45,7 +45,7 @@ const CycleInformation = () => {
 
         }
         fetchEntry()
-    }, [])
+    }, [periodStart])
 
     return (
         <div className='bg-[#f9f9f9] dark:bg-neutral-900 transition-colors duration-200 h-screen flex flex-col gap-5'>

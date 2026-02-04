@@ -2,7 +2,6 @@
 import axios from 'axios'
 import { Settings } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
-import { toast } from 'react-toastify'
 import Navbar from '../components/Navbar'
 import { Bell, Calendar, Heart, Plus } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
@@ -14,6 +13,7 @@ const Home = () => {
   const [nextPeriodDate, setNextPeriodDate] = useState('')
   const [currentDay, setCurrentDay] = useState(0)
   const [tapMore, setTapMore] = useState(false)
+  const token = localStorage.getItem("token")
 
 
   const [formattedDate, setFormattedDate] = useState("")
@@ -28,7 +28,9 @@ const Home = () => {
     }
   ];
 
-
+  if (!token) {
+    navigate('/create-account')
+  }
 
   useEffect(() => {
     setInterval(() => {
@@ -68,24 +70,17 @@ const Home = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        // const user = JSON.parse(localStorage.getItem('user'))
-        // const id = user?.id
-
-        // if (!id) {
-        //   toast.error("User ID not found")
-        //   return
-        // }
 
         const response = await axios.get(`https://her-cycle-bloom-backend.onrender.com/user/get-user`,
-           {
+          {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`
+              Authorization: `Bearer ${token}`
             }
           }
         )
         const data = response.data
-
-
+  
+        
         if (data?.user) {
           setName(data.user.name)
 
@@ -123,12 +118,11 @@ const Home = () => {
         }
       } catch (error) {
         console.error("Error fetching user:", error)
-        toast.error("Failed to load user data")
       }
     }
 
     fetchUser()
-  }, [])
+  }, [token])
 
 
   return (
@@ -136,7 +130,7 @@ const Home = () => {
       className='pb-40 bg-white dark:bg-neutral-900 
       transition-colors duration-300'
     >
-      <div className='max-w-md mx-auto mt-5 px-4 flex flex-col gap-5'>
+      <div className='max-w-md mx-auto pt-5 px-4 flex flex-col gap-5'>
         <div className="flex items-center justify-between">
           <div>
             <h2 className='font-bold text-xl text-neutral-900 dark:text-neutral-100'>{greeting}, {name || "User"}!</h2>

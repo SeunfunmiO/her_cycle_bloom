@@ -67,7 +67,7 @@ const AllowNotification = () => {
                     />
                 </div>
 
-                <div>
+                <div className='text-black '>
                     <h6 className="font-bold mt-8 text-center text-2xl">Never miss a Reminder</h6>
                     <p className='mt-8 font-medium'>
                         Get timely alerts for your period, ovulation and health tips- only when it matters most.

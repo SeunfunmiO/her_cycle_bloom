@@ -10,9 +10,9 @@ const Account = () => {
 
 
     return (
-        <div className='bg-[#f9f9f9] dark:bg-neutral-900 h-screen transition-colors duration-200'>
-            <div className="max-w-md mx-auto">
-                <div className="bg-white dark:bg-neutral-800 flex w-full items-center pt-10 pb-5 px-3">
+        <div className='bg-[#f9f9f9] dark:bg-neutral-900 transition-colors duration-200'>
+            <div className="max-w-md mx-auto h-screen">
+                <div className="bg-white dark:bg-neutral-800 flex w-full items-center pt-10 pb-3 px-3">
                     <img
                         className='cursor-pointer dark:invert'
                         onClick={() => navigate(-1)}
@@ -50,7 +50,7 @@ const Account = () => {
                     </div>
                 </div>
 
-                <div className='px-3 pt-8 mb-5'>
+                <div className='px-3 pt-8 mb-6'>
                     <h1 className="font-bold text-palevioletred text-lg md:text-xl lg:text-2xl">Manage Access</h1>
 
                     <div

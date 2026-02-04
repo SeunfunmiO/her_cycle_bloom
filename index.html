@@ -5,8 +5,11 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/LOGO.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="apple-touch-icon" href="/pwa-192x192.png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
   <title>hercyclebloom</title>
-  <link href="/src/style.css" rel="stylesheet">
+  <link href="/src/index.css" rel="stylesheet">
 </head>
 
 <body>
@@ -17,16 +20,21 @@
         var theme = localStorage.getItem('theme');
         var lightOnly = ["/", "/onboarding", "/get-ready", "/allow-Notification", "/create-profile"];
         var path = window.location.pathname;
+        var metaThemeColor = document.querySelector('meta[name="theme-color"]');
+        
         if (lightOnly.indexOf(path) !== -1) {
           document.documentElement.classList.remove('dark');
+          if (metaThemeColor) metaThemeColor.setAttribute('content', '#ffffff');
         } else if (theme === 'dark') {
           document.documentElement.classList.add('dark');
+          if (metaThemeColor) metaThemeColor.setAttribute('content', '#000000');
+        } else {
+          if (metaThemeColor) metaThemeColor.setAttribute('content', '#ffffff');
         }
       } catch (e) { }
     })();
   </script>
   <script type="module" src="/src/main.jsx"></script>
-  <!-- <script src="/path-to-the-file/splide.min.js"></script> -->
 </body>
 
 </html>

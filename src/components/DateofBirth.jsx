@@ -32,7 +32,7 @@ const DateofBirth = ({value,onChange,onBlur}) => {
                 </PopoverTrigger>
                 <PopoverContent className="w-auto overflow-hidden p-0" align="start">
                     <Calendar
-                        className="w-70 outline-0"
+                        className="w-80 outline-0"
                         mode="single"
                         selected={value ? new Date(value):"Undefined"}
                         captionLayout="dropdown"

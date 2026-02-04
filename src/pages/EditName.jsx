@@ -3,6 +3,7 @@ import { useState } from "react";
 import { X, Check, Loader } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 export default function EditName() {
     const [value, setValue] = useState("");
@@ -15,7 +16,13 @@ export default function EditName() {
         setLoading(true);
         setSaved(false);
 
-        await new Promise((res) => setTimeout(res, 2000));
+        await axios.put('https://her-cycle-bloom-backend.onrender.com/user/create-profile', { name: value },
+            {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            }
+        );
         toast.success('Name updated successfuly')
 
         setLoading(false);
