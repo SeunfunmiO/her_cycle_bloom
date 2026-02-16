@@ -13,23 +13,29 @@ const History = () => {
 
 
     const formatFullDate = (dateString) => {
-        const date = new Date(dateString)
+        if (!dateString) return "Not set"; // <--- show placeholder
+
+        const date = new Date(dateString);
+        if (isNaN(date)) return "Invalid date";
 
         return date.toLocaleDateString("en-US", {
             month: "long",
             day: "numeric",
             year: "numeric",
-        })
-    }
+        });
+    };
 
     const formatMonthYear = (dateString) => {
-        const date = new Date(dateString)
+        if (!dateString) return "Not set";
+
+        const date = new Date(dateString);
+        if (isNaN(date)) return "Invalid date";
 
         return date.toLocaleDateString("en-US", {
             month: "long",
             year: "numeric",
-        })
-    }
+        });
+    };
 
     useEffect(() => {
         const fetchData = async () => {
