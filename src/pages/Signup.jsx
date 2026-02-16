@@ -6,24 +6,32 @@ import { toast } from 'react-toastify';
 import * as yup from 'yup';
 import axios from 'axios';
 import GoogleSignIn from '../config/firebaseAuth';
+import { useTranslation } from 'react-i18next';
 
 
 
 const Signup = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false)
+    const { t } = useTranslation([
+        "authoptions",
+        "common",
+        "toast",
+        "placeholder"
+    ]);
+
 
     const handleGoogleSignIn = async () => {
         try {
             const user = await GoogleSignIn()
             if (user) {
-                toast.success(user.message || 'Account created successfully')
+                toast.success(t("toast:account_created"));
                 navigate('/create-profile');
             } else {
-                toast.error(user.message || "Invalid Credentials")
+                toast.error(t("toast:email_used"));
             }
         } catch (error) {
-            toast.error("Something went wrong, please try again");
+            toast.error(t("toast:email_used"));
             return error
         }
     }
@@ -36,12 +44,12 @@ const Signup = () => {
             confirmPassword: "",
         },
         validationSchema: yup.object({
-            email: yup.string().required("Email is required!").email("Please enter a valid email address"),
+            email: yup.string().required(t("toast:email_required")).email(t("toast:valid_email")),
             password: yup.string()
-                .required("Password is required!").matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&])[A-Za-z\d@$!%?&]{6,}$/,
-                    'Password must contain at least 6 characters, one uppercase, one lowercase, one number, and one special character'),
-            confirmPassword: yup.string().required("Please confirm your password")
-                .oneOf([yup.ref("password")], "Passwords must match"),
+                .required(t("toast:password_required")).matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&])[A-Za-z\d@$!%?&]{6,}$/,
+                    t("toast:password_rules")),
+            confirmPassword: yup.string().required(t("toast:confirm_password"))
+                .oneOf([yup.ref("password")], t("toast:password_match")),
         }),
         onSubmit: async (values) => {
             try {
@@ -62,17 +70,17 @@ const Signup = () => {
                 localStorage.setItem('token', response.data.token)
 
                 if (!data.success) {
-                    toast.error(data.message || "Email already in use");
+                    toast.error(t("toast:email_used"));
                 } else {
-                    toast.success(data.message || 'Account created successfully');
+                    toast.success(t("toast:account_created"));
                     setTimeout(() => {
                         navigate('/create-profile');
                     }, 1200);
                 }
             } catch (error) {
                 console.log("Error signing up user : ", error);
-                toast.error('Something went wrong , please try again')
-            }finally{
+                toast.error(t("toast:email_used"));
+            } finally {
                 setLoading(false)
             }
         }
@@ -88,14 +96,14 @@ const Signup = () => {
 
                 <form className='flex flex-col justify-center gap-4 mt-20' onSubmit={formik.handleSubmit}>
                     <div className='flex flex-col gap-2'>
-                        <label className='font-medium' htmlFor="email">Email</label>
+                        <label className='font-medium' htmlFor="email">{t("common:email")}</label>
                         <input
                             className={`border border-black dark:border-neutral-100 rounded-lg py-3 px-2 bg-transparent
                                  placeholder:font-medium
                           ${formik.touched.email && formik.errors.email ? 'border-red-600 dark:border-red-500' : ''}`}
                             type="email"
                             name="email"
-                            placeholder='Enter email'
+                            placeholder={t("placeholder:enter_email")}
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             value={formik.values.email}
@@ -106,7 +114,7 @@ const Signup = () => {
                     </div>
 
                     <div className='flex flex-col gap-2'>
-                        <label className='font-medium' htmlFor="password">Create Password</label>
+                        <label className='font-medium' htmlFor="password">{t("common:create_password")}</label>
                         <input
                             className={`border border-black  dark:border-neutral-100  rounded-lg py-3 px-2 bg-transparent
                                  placeholder:font-medium
@@ -114,7 +122,7 @@ const Signup = () => {
                                     ? 'border-red-600 dark:border-red-500' : ''}`}
                             type="password"
                             name="password"
-                            placeholder='Enter password'
+                            placeholder={t("placeholder:enter_password")}
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             value={formik.values.password}
@@ -124,7 +132,7 @@ const Signup = () => {
                     </div>
 
                     <div className='flex flex-col gap-2'>
-                        <label className='font-medium' htmlFor="confirmPassword">Confirm Password</label>
+                        <label className='font-medium' htmlFor="confirmPassword">{t("common:confirm_password")}</label>
                         <input
                             className={`border border-black  dark:border-neutral-100  rounded-lg py-3 px-2 bg-transparent
                                  placeholder:font-medium  
@@ -132,7 +140,7 @@ const Signup = () => {
                                     'border-red-600 dark:border-red-500' : ''}`}
                             type="password"
                             name="confirmPassword"
-                            placeholder='Re-enter password'
+                            placeholder={t("placeholder:re_enter_password")}
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             value={formik.values.confirmPassword}
@@ -149,14 +157,14 @@ const Signup = () => {
                       ${loading ? 'bg-pink-300 cursor-not-allowed' : 'bg-palevioletred'}`}
                         disabled={loading}
                     >
-                        {loading ? 'Creating...' : 'Create Account'}
+                        {loading ? t("common:creating") : t("common:create_account")}
                     </button>
 
                 </form>
 
                 <div className="flex items-center gap-4 my-6">
                     <div className="flex-1 h-px bg-neutral-300 dark:bg-neutral-100"></div>
-                    <span className="text-neutral-500 text-sm dark:text-neutral-300">OR</span>
+                    <span className="text-neutral-500 text-sm dark:text-neutral-300">{t("common:or")}</span>
                     <div className="flex-1 h-px bg-neutral-300 dark:bg-neutral-100"></div>
                 </div>
 
@@ -169,17 +177,16 @@ const Signup = () => {
                     >
                         <img className='w-4 h-4'
                             src="./devicon_google.svg" alt="Google Icon" />
-                        sign-up with google
+                        {t("authoptions:sign_up_google")}
                     </button>
                     <button
                         type='button'
                         className="flex font-medium items-center justify-center gap-3 w-full rounded-full py-3 border border-black 
                         dark:border-neutral-100 ">
                         <img className='w-3 h-3 dark:invert' src="./Vector.svg" alt="Apple Icon" />
-                        sign-up with Apple
+                        {t("authoptions:sign_up_apple")}
                     </button>
                 </div>
-
             </div >
         </div >
     )

@@ -66,7 +66,7 @@ const Login = () => {
           navigate('/home');
         }
       } catch (error) {
-        toast.error(t("toast:went_wrong"))
+        toast.error(t("toast:invalid_credentials"))
         console.log("Error logging in : ", error);
         setLoading(false)
       } finally {
@@ -131,7 +131,7 @@ const Login = () => {
             type='submit'
             disabled={loading}
           >
-            {loading ? t("common:logging_in") : t("common:log_in")}
+            {loading ? t("common:logging_in") : t("common:login")}
           </button>
 
         </form >

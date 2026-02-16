@@ -7,7 +7,7 @@
     "valid_email":"Please enter a valid email",
     "password_required":"Password is required!",
     "email_used": "Email already in use",
-    "account_created":"Account created successfully",
+    "account_created":"Account created successfully!",
     "password_rules":"Password must contain at least 6 characters, one uppercase, one lowercase, one number, and one special character",
     "confirm_password":"Please confirm your password",
     "password_match":"Passwords must match"
