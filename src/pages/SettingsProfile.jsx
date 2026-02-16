@@ -12,8 +12,6 @@ const SettingsProfile = () => {
     const [email, setEmail] = useState("")
     const [address, setAddress] = useState("")
     const [dateOfBirth, setDateOfBirth] = useState("")
-    const token = localStorage.getItem('token')
-
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -46,25 +44,6 @@ const SettingsProfile = () => {
         }
         fetchUser()
     }, [])
-
-    const handleSave = async () => {
-        try {
-            const res = await axios.put('https://her-cycle-bloom-backend.onrender.com/user/create-profile', { profilePicture: photo },
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                }
-            );
-            if (!res.status) {
-                toast.error('Failed to edit picture')
-            }
-            toast.success('picture updated successfuly')
-
-        } catch (error) {
-            console.log('Error saving picture : ', error);
-        }
-    };
 
 
     return (
