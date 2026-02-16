@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Check, Loader, Search, X } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export default function CountryStateSelect() {
     const [countries, setCountries] = useState([]);
@@ -11,27 +12,35 @@ export default function CountryStateSelect() {
     const [loading, setLoading] = useState(false);
     const [saved, setSaved] = useState(false);
     const navigate = useNavigate()
+    const token = localStorage.getItem('token')
 
 
     const handleSave = async () => {
+        if (!selectedLocation.trim()) return;
         setLoading(true);
+        setSaved(false);
+
         try {
             setSaved(false);
 
-            await new Promise((res) => setTimeout(res, 2000));
+            const res = await axios.put('https://her-cycle-bloom-backend.onrender.com/user/create-profile', { address: selectedLocation },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            );
+            if (!res.status) {
+                toast.error('Failed to edit address')
+            }
+            toast.success('address updated successfuly')
 
-            const user = localStorage.getItem("user")
-
-            const id = user?.id
-
-            if (!id) return;
-
-            await axios.put(`https://her-cycle-bloom-backend.onrender.com/user/create-profile/${id}`, {
-                selectedLocation
-            })
+            setLoading(false);
             setSaved(true);
 
             setTimeout(() => setSaved(false), 2000);
+            redirect('/profile-settings')
+
         } catch (error) {
             console.log('Error saving address : ', error);
         }
@@ -45,7 +54,7 @@ export default function CountryStateSelect() {
             .catch((err) => console.error(err));
     }, []);
 
-    useEffect(() => { 
+    useEffect(() => {
         if (!searchTerm) {
             setSuggestions([]);
             return;

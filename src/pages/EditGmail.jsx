@@ -1,6 +1,8 @@
+import axios from 'axios';
 import { Check, Loader, X } from 'lucide-react';
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { redirect, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const EditGmail = () => {
     const [value, setValue] = useState("");
@@ -13,12 +15,24 @@ const EditGmail = () => {
         setLoading(true);
         setSaved(false);
 
-        await new Promise((res) => setTimeout(res, 2000));
+      const res=  await axios.put('https://her-cycle-bloom-backend.onrender.com/user/create-profile', { email: value },
+            {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            }
+        );
+        if(!res.status){
+            toast.error('Failed to edit email')
+        }
+        toast.success('Email updated successfuly')
 
         setLoading(false);
         setSaved(true);
 
         setTimeout(() => setSaved(false), 2000);
+                redirect('/profile-settings')
+        
     };
 
     const handleClear = () => setValue("");

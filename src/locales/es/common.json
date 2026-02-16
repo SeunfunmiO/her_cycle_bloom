@@ -1,0 +1,18 @@
+{
+    "welcome": "Bienvenida de nuevo",
+    "language": "Idioma",
+    "languages": "Idiomas",
+    "search_language": "Buscar idioma...",
+    "no_language_found": "No se encontró ningún idioma",
+    "login": "Iniciar sesión",
+    "sign_up": "Registrarse",
+    "logging_in": "Iniciando sesión...",
+    "email": "Correo electrónico",
+    "create_password": "Crear contraseña",
+    "password": "Contraseña",
+    "confirm_password": "Confirmar contraseña",
+    "forgot_password": "¿Olvidaste tu contraseña?",
+    "or": "O",
+    "creating": "Creando...",
+    "create_account": "Crear cuenta"
+}

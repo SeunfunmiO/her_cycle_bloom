@@ -7,6 +7,8 @@ import { Provider } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
 import userSlice from './redux/userSlice.js'
 import { registerSW } from 'virtual:pwa-register'
+import "./i18n";
+
 
 registerSW({ immediate: true })
 
@@ -20,7 +22,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <App />
+          <App />
       </Provider>
     </BrowserRouter>
   </StrictMode>,

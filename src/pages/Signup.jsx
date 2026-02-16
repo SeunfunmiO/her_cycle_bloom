@@ -20,7 +20,7 @@ const Signup = () => {
                 toast.success(user.message || 'Account created successfully')
                 navigate('/create-profile');
             } else {
-                toast.error(user.message || "User not found")
+                toast.error(user.message || "Invalid Credentials")
             }
         } catch (error) {
             toast.error("Something went wrong, please try again");
@@ -28,13 +28,6 @@ const Signup = () => {
         }
     }
 
-    // const handleAppleSignIn = async () => {
-    //     try {
-    //         const user = await AppleSig
-    //     } catch (error) {
-
-    //     }
-    // }
 
     const formik = useFormik({
         initialValues: {
@@ -46,8 +39,7 @@ const Signup = () => {
             email: yup.string().required("Email is required!").email("Please enter a valid email address"),
             password: yup.string()
                 .required("Password is required!").matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&])[A-Za-z\d@$!%?&]{6,}$/,
-                    'Password must contain at least 6 characters, one uppercase, one lowercase, one number, and one special character')
-                .min(6, 'Password must be at least 6 characters'),
+                    'Password must contain at least 6 characters, one uppercase, one lowercase, one number, and one special character'),
             confirmPassword: yup.string().required("Please confirm your password")
                 .oneOf([yup.ref("password")], "Passwords must match"),
         }),
@@ -140,7 +132,7 @@ const Signup = () => {
                                     'border-red-600 dark:border-red-500' : ''}`}
                             type="password"
                             name="confirmPassword"
-                            placeholder='Enter password'
+                            placeholder='Re-enter password'
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             value={formik.values.confirmPassword}

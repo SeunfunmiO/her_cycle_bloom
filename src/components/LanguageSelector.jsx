@@ -1,41 +1,45 @@
 "use client";
 import { Check } from "lucide-react";
 import React, { useState, useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 
 const languageOptions = [
-    { code: "ar", label: "Arabic", countryCode: "sa" },
     { code: "en", label: "English", countryCode: "gb" },
-    { code: "bn", label: "Bengali", countryCode: "bd" },
     { code: "fr", label: "French", countryCode: "fr" },
+    { code: "es", label: "Spanish", countryCode: "es" },
+    { code: "zh", label: "Chinese", countryCode: "cn" },
+    { code: "ar", label: "Arabic", countryCode: "sa" },
+    { code: "bn", label: "Bengali", countryCode: "bd" },
     { code: "de", label: "German", countryCode: "de" },
     { code: "hi", label: "Hindi", countryCode: "in" },
     { code: "it", label: "Italian", countryCode: "it" },
-    { code: "jp", label: "Japanese", countryCode: "jp" },
+    { code: "ja", label: "Japanese", countryCode: "jp" },
     { code: "jv", label: "Javanese", countryCode: "id" },
-    { code: "kr", label: "Korean", countryCode: "kr" },
+    { code: "ko", label: "Korean", countryCode: "kr" },
     { code: "mr", label: "Marathi", countryCode: "in" },
-    { code: "es", label: "Spanish", countryCode: "es" },
-    { code: "zh", label: "Chinese", countryCode: "cn" },
     { code: "pt", label: "Portuguese", countryCode: "pt" },
     { code: "ru", label: "Russian", countryCode: "ru" },
 ];
 
 const LanguageSelector = () => {
-    const [selectedLang, setSelectedLang] = useState(null);
+    const [selectedLang, setSelectedLang] = useState("en");
     const [search, setSearch] = useState("");
+    const { t, i18n } = useTranslation("common");
+
+    const changeLanguage = (lang) => {
+        i18n.changeLanguage(lang.code);
+        setSelectedLang(lang.code);
+        localStorage.setItem("selectedLang", lang.code);
+    };
 
 
     useEffect(() => {
         const saved = localStorage.getItem("selectedLang");
-        if (saved) setSelectedLang(JSON.parse(saved));
-        else setSelectedLang(languageOptions[1]); // default to English
-    }, []);
-
-    useEffect(() => {
-        if (selectedLang) {
-            localStorage.setItem("selectedLang", JSON.stringify(selectedLang));
+        if (saved) {
+            setSelectedLang(saved);
+            i18n.changeLanguage(saved);
         }
-    }, [selectedLang]);
+    }, [i18n]);
 
     const filteredLanguages = languageOptions.filter((lang) =>
         lang.label.toLowerCase().includes(search.toLowerCase())
@@ -48,7 +52,7 @@ const LanguageSelector = () => {
         >
             <input
                 type="text"
-                placeholder="Search language..."
+                placeholder={t("search_language")}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="w-full mb-3 px-3 py-2 text-sm border rounded-lg border-pink-50 outline-0"
@@ -59,9 +63,10 @@ const LanguageSelector = () => {
                     <div key={lang.code}>
                         <button
 
-                            onClick={() => setSelectedLang(lang)}
+                            onClick={() => changeLanguage(lang)}
                             className={`flex items-center justify-between w-full px-3 py-2 rounded-lg transition
-                             ${selectedLang?.code === lang.code
+                             ${selectedLang === lang.code
+
                                     ? ""
                                     : "hover:bg-gray-100 dark:hover:bg-palevioletred"
                                 }`}
@@ -77,9 +82,10 @@ const LanguageSelector = () => {
                                 </span>
                             </div>
 
-                            {selectedLang?.code === lang.code && (
-                                <span className="text-palevioletred font-bold"><Check size={20} /></span>
-                            )}
+                            {selectedLang === lang.code
+                                && (
+                                    <span className="text-palevioletred font-bold"><Check size={20} /></span>
+                                )}
                         </button>
 
                         {index !== filteredLanguages.length - 1 && (
@@ -92,7 +98,7 @@ const LanguageSelector = () => {
 
                 {filteredLanguages.length === 0 && (
                     <p className="text-sm text-gray-500 dark:text-neutral-400 text-center py-3">
-                        No language found
+                        {t('no_language_found')}
                     </p>
                 )}
             </div>

@@ -1,0 +1,14 @@
+{
+    "login_error": "Error al iniciar sesión: ",
+    "sigup_error": "Error al registrar usuario: ",
+    "invalid_credentials": "Correo electrónico o contraseña incorrectos",
+    "went_wrong": "Algo salió mal, por favor intenta de nuevo",
+    "email_required": "El correo electrónico es obligatorio",
+    "valid_email": "Por favor ingresa un correo electrónico válido",
+    "password_required": "La contraseña es obligatoria",
+    "email_used": "Este correo electrónico ya está en uso",
+    "account_created": "Cuenta creada exitosamente",
+    "password_rules": "La contraseña debe contener al menos 6 caracteres, una mayúscula, una minúscula, un número y un carácter especial",
+    "confirm_password": "Por favor confirma tu contraseña",
+    "password_match": "Las contraseñas deben coincidir"
+}

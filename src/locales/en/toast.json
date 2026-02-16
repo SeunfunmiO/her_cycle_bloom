@@ -1,0 +1,15 @@
+{
+    "login_error":"Error logging in : ",
+    "sigup_error":"Error signing up user : ",
+    "invalid_credentials":"Invalid email or password",
+    "went_wrong":"Something went wrong, please try again",
+    "email_required":"Email is required!",
+    "valid_email":"Please enter a valid email",
+    "password_required":"Password is required!",
+    "email_used": "Email already in use",
+    "account_created":"Account created successfully",
+    "password_rules":"Password must contain at least 6 characters, one uppercase, one lowercase, one number, and one special character",
+    "confirm_password":"Please confirm your password",
+    "password_match":"Passwords must match"
+
+} 

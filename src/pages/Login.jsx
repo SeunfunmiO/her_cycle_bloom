@@ -5,11 +5,19 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import GoogleSignIn from '../config/firebaseAuth';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 
 
 const Login = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false)
+  const { t } = useTranslation([
+    "authoptions",
+    "common",
+    "toast",
+    "placeholder"
+  ]);
+
 
   const handleGoogleSignIn = async () => {
     try {
@@ -17,10 +25,10 @@ const Login = () => {
       if (user) {
         navigate('/home');
       } else {
-        toast.error(user.message || "User not found")
+        toast.error(t("toast:invalid_credentials"))
       }
     } catch (error) {
-      toast.error("Something went wrong, please try again");
+      toast.error(t("toast:went_wrong"));
       return error
     }
   }
@@ -31,8 +39,8 @@ const Login = () => {
       password: ''
     },
     validationSchema: yup.object({
-      email: yup.string().required('Email is required!').email('Please enter a valid email'),
-      password: yup.string().required('Password is required!'),
+      email: yup.string().required(t("toast:email_required")).email(t("toast:valid_email")),
+      password: yup.string().required(t("toast:password_required")),
     }),
     onSubmit: async (values) => {
       try {
@@ -49,16 +57,16 @@ const Login = () => {
         )
 
         const data = response.data
-        
+
         localStorage.setItem('token', data.token)
 
         if (!data.success) {
-          toast.error(data.message || 'Invalid email or password');
+          toast.error(t("toast:invalid_credentials"));
         } else {
           navigate('/home');
         }
       } catch (error) {
-        toast.error('Something went wrong , please try again')
+        toast.error(t("toast:went_wrong"))
         console.log("Error logging in : ", error);
         setLoading(false)
       } finally {
@@ -80,14 +88,14 @@ const Login = () => {
 
         <form className='flex flex-col gap-4 justify-center mt-36' onSubmit={formik.handleSubmit}>
           <div className='flex flex-col gap-2 text-neutral-900 dark:text-neutral-100'>
-            <label className='text-base font-medium ' htmlFor="email">Email</label>
+            <label className='text-base font-medium ' htmlFor="email">{t("common:email")}</label>
             <input
               className={`border border-black dark:border-neutral-100 rounded-lg py-3 px-2 w-full bg-transparent
                  placeholder:font-medium
             ${formik.touched.email && formik.errors.email ? `border-red-600  dark:border-red-500` : ''}`}
               type="email"
               name="email"
-              placeholder='Enter email'
+              placeholder={t("placeholder:enter_email")}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.email}
@@ -97,23 +105,23 @@ const Login = () => {
           </div>
 
           <div className='flex flex-col gap-2 text-neutral-900 dark:text-neutral-100'>
-            <label className='text-base font-medium' htmlFor="password">Password</label>
+            <label className='text-base font-medium' htmlFor="password">{t("common:password")}</label>
             <input
               className={`border border-black dark:border-neutral-100 rounded-lg py-3 px-2 w-full bg-transparent placeholder:font-medium 
               ${formik.touched.password && formik.errors.password ? `border-red-600 dark:border-red-500` : ''}`}
               type="password"
               name="password"
-              placeholder='Enter password'
+              placeholder={t("placeholder:enter_password")}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.password}
             />
             {formik.touched.password ? <small className="text-red-600 dark:text-red-500">{formik.errors.password}</small> : ''}
-          <button
-            type='button'
-            className="text-sm text-start font-medium gap-0 outline-none border-0 hover:underline">
-            Forgot password ?
-          </button>
+            <button
+              type='button'
+              className="text-sm text-start font-medium gap-0 outline-none border-0 hover:underline">
+              {t("common:forgot_password")}
+            </button>
           </div>
 
           <button
@@ -123,14 +131,14 @@ const Login = () => {
             type='submit'
             disabled={loading}
           >
-            {loading ? 'Logging In...' : 'Login'}
+            {loading ? t("common:logging_in") : t("common:log_in")}
           </button>
 
         </form >
 
         <div className="flex items-center gap-4 my-6">
           <div className="flex-1 h-px bg-neutral-300 dark:bg-neutral-100"></div>
-          <span className="text-neutral-500 text-sm dark:text-neutral-300">OR</span>
+          <span className="text-neutral-500 text-sm dark:text-neutral-300">{t("common:or")}</span>
           <div className="flex-1 h-px bg-neutral-300 dark:bg-neutral-100"></div>
         </div>
 
@@ -143,14 +151,14 @@ const Login = () => {
           >
             <img className='w-4 h-4'
               src="./devicon_google.svg" alt="Google Icon" />
-            sign-up with google
+            {t("authoptons:log_in_google")}
           </button>
           <button
             type='submit'
             className="flex font-medium items-center justify-center gap-3 w-full rounded-full py-3 border border-black
              dark:border-neutral-100 text-neutral-900 dark:text-neutral-100">
             <img className='w-3 h-3 dark:invert' src="./Vector.svg" alt="Apple Icon" />
-            sign-up with Apple
+            {t("authoptons:log_in_apple")}
           </button>
         </div>
       </div >

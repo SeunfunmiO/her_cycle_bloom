@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { X, Check, Loader } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 
@@ -16,19 +16,25 @@ export default function EditName() {
         setLoading(true);
         setSaved(false);
 
-        await axios.put('https://her-cycle-bloom-backend.onrender.com/user/create-profile', { name: value },
+        const res = await axios.put('https://her-cycle-bloom-backend.onrender.com/user/create-profile', { name: value },
             {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
             }
         );
+
+        if(!res.status){
+            toast.error('Failed to edit name')
+        }
+        
         toast.success('Name updated successfuly')
 
         setLoading(false);
         setSaved(true);
 
         setTimeout(() => setSaved(false), 2000);
+        redirect('/profile-settings')
     };
 
     const handleClear = () => setValue("");

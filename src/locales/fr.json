@@ -1,0 +1,15 @@
+{
+    "app_name": "Cycle Bloom",
+    "welcome": "Bon retour",
+    "log_period": "Enregistrer les règles",
+    "fertile_window": "Fenêtre fertile",
+    "ovulation": "Ovulation",
+    "symptoms": "Symptômes",
+    "mood": "Humeur",
+    "flow": "Flux",
+    "save": "Enregistrer",
+    "settings": "Paramètres",
+    "language": "Langue",
+    "search_language": "Rechercher une langue...",
+    "no_language_found": "Aucune langue trouvée"
+}

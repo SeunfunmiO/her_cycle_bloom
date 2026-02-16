@@ -1,0 +1,19 @@
+{
+    "slides": {
+        "slide1": {
+            "title": "Bienvenida — Tu ciclo, a tu manera",
+            "desc": "Registra tu período, predice la ovulación y comprende mejor tu cuerpo con información personalizada hecha para ti."
+        },
+        "slide2": {
+            "title": "Descubre cómo te ayudamos cada día",
+            "desc": "Predice tu período y ovulación, registra síntomas para detectar patrones y recibe información personalizada para ti."
+        },
+        "slide3": {
+            "title": "Ya estás lista para tomar el control",
+            "desc": "Comienza a registrar, obtén información más inteligente y siéntete segura en cada fase de tu ciclo."
+        }
+    },
+    "skip": "Saltar",
+    "next": "Siguiente",
+    "get_started": "Comenzar"
+}

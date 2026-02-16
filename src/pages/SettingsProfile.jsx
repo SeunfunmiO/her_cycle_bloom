@@ -3,6 +3,7 @@ import { ChevronRight, Edit, LucideCalendarDays } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import EditPicture from './EditPicture'
 
 const SettingsProfile = () => {
     const navigate = useNavigate()
@@ -11,6 +12,7 @@ const SettingsProfile = () => {
     const [email, setEmail] = useState("")
     const [address, setAddress] = useState("")
     const [dateOfBirth, setDateOfBirth] = useState("")
+    const token = localStorage.getItem('token')
 
 
     useEffect(() => {
@@ -24,12 +26,12 @@ const SettingsProfile = () => {
                     }
                 )
                 const data = response.data
-     
+
 
                 const dateOfBirth = new Date(data.user.dateOfBirth).toLocaleDateString()
 
                 if (!data.success) {
-                   return toast.error(data.message || "Unable to load data")
+                    return toast.error(data.message || "Unable to load data")
                 } else {
                     setName(data.user.name)
                     setPhoto(data.user.profilePicture)
@@ -45,48 +47,30 @@ const SettingsProfile = () => {
         fetchUser()
     }, [])
 
+    const handleSave = async () => {
+        try {
+            const res = await axios.put('https://her-cycle-bloom-backend.onrender.com/user/create-profile', { profilePicture: photo },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            );
+            if (!res.status) {
+                toast.error('Failed to edit picture')
+            }
+            toast.success('picture updated successfuly')
+
+        } catch (error) {
+            console.log('Error saving picture : ', error);
+        }
+    };
+
 
     return (
         <div className='bg-[#f9f9f9] h-screen dark:bg-neutral-900 transition-colors duration-300'>
-
             <div className="max-w-md mx-auto">
-                <div className="bg-white dark:bg-neutral-800 flex w-full items-center pt-10 pb-5">
-                    <img
-                        onClick={() => navigate(-1)}
-                        className='dark:invert'
-                        src="./Arrow Left.svg" alt="arrow left"
-                    />
-                    <h1 className="font-bold text-lg lg:text-xl w-full text-center text-neutral-900 dark:text-neutral-100">
-                        Profile
-                    </h1>
-                </div>
-
-                <div className='flex justify-center mt-5 relative'>
-                    <div className="bg-[#febcb7] rounded-full flex justify-center items-center size-16 dark:bg-neutral-900">
-                        <img
-                            className='size-16 rounded-full w-fit'
-                            src={photo || "User Pic.png"} alt="Profile Picture"
-                        />
-                    </div>
-
-                    <label
-                        htmlFor='photo'
-                        className='size-6 rounded-full bg-palevioletred items-center flex justify-center absolute top-12'>
-                        <img
-                            src="./edit-2.svg" alt="Edit"
-                        />
-                    </label>
-
-                    <input
-                        className='hidden'
-                        accept='image/*'
-                        name='photo'
-                        id='photo'
-                        type="file"
-                    />
-                </div>
-
-
+                <EditPicture photo={photo}/>
                 <div className="bg-white dark:bg-neutral-800 shadow my-8 h-60 rounded-xl px-3 flex flex-col justify-center gap-4 w-full">
                     <div className='flex justify-between items-center md:text-xl'>
                         <h3
@@ -131,7 +115,7 @@ const SettingsProfile = () => {
                             Date of birth
                         </h3>
                         <button
-                            onClick={() => navigate('/date-of-birth')}
+                            onClick={() => navigate('/edit-date-of-birth')}
                             className='text-gray-400 dark:text-neutral-500 text-[15px] md:text-base font-medium
                                 flex items-center gap-3 lg:text-lg'>
                             {dateOfBirth || ""}
@@ -160,7 +144,7 @@ const SettingsProfile = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 
 }

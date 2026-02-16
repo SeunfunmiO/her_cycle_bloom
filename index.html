@@ -8,8 +8,11 @@
   <meta name="theme-color" content="#ffffff" />
   <link rel="apple-touch-icon" href="/pwa-192x192.png" />
   <link rel="manifest" href="/manifest.webmanifest" />
-  <title>hercyclebloom</title>
+  <title>Her Cycle Bloom</title>
   <link href="/src/index.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -21,7 +24,7 @@
         var lightOnly = ["/", "/onboarding", "/get-ready", "/allow-Notification", "/create-profile"];
         var path = window.location.pathname;
         var metaThemeColor = document.querySelector('meta[name="theme-color"]');
-        
+
         if (lightOnly.indexOf(path) !== -1) {
           document.documentElement.classList.remove('dark');
           if (metaThemeColor) metaThemeColor.setAttribute('content', '#ffffff');
