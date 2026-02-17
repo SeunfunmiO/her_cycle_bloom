@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Check, Loader, Search, X } from "lucide-react";
-import { redirect, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
@@ -39,7 +39,7 @@ export default function CountryStateSelect() {
             setSaved(true);
 
             setTimeout(() => setSaved(false), 2000);
-            redirect('/profile-settings')
+            navigate('/profile-settings')
 
         } catch (error) {
             console.log('Error saving address : ', error);

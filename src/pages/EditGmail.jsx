@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Check, Loader, X } from 'lucide-react';
 import React, { useState } from 'react'
-import { redirect, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const EditGmail = () => {
@@ -15,14 +15,14 @@ const EditGmail = () => {
         setLoading(true);
         setSaved(false);
 
-      const res=  await axios.put('https://her-cycle-bloom-backend.onrender.com/user/create-profile', { email: value },
+        const res = await axios.put('https://her-cycle-bloom-backend.onrender.com/user/create-profile', { email: value },
             {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
             }
         );
-        if(!res.status){
+        if (!res.status) {
             toast.error('Failed to edit email')
         }
         toast.success('Email updated successfuly')
@@ -31,8 +31,8 @@ const EditGmail = () => {
         setSaved(true);
 
         setTimeout(() => setSaved(false), 2000);
-                redirect('/profile-settings')
-        
+        navigate('/profile-settings')
+
     };
 
     const handleClear = () => setValue("");

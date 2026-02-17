@@ -36,7 +36,6 @@ import ForgotPassword from './pages/ForgotPassword'
 import OtpPage from './pages/OtpPage'
 import ResetPassword from './pages/ResetPassword'
 import { useRegisterSW } from 'virtual:pwa-register/react';
-import EditDob from './pages/EditDob'
 
 function PWAUpdate() {
   const {
@@ -112,7 +111,6 @@ const App = () => {
         <Route path='/profile-settings' element={<SettingsProfile />} />
         <Route path='/edit-name' element={<EditName />} />
         <Route path='/edit-gmail' element={<EditGmail />} />
-        <Route path='/edit-date-of-birth' element={<EditDob />} />
         <Route path='/edit-address' element={<CountryStateSelect />} />
         <Route path='/cycle-information' element={<CycleInformation />} />
         <Route path='/period-duration' element={<EditPeriodDuration />} />

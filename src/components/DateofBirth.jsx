@@ -8,17 +8,43 @@ import {
     PopoverTrigger,
 } from "../../src/components/ui/popover"
 import { ChevronDownIcon } from 'lucide-react'
+import axios from 'axios'
+import { toast } from 'react-toastify'
 
-
-const DateofBirth = ({value,onChange,onBlur}) => {
+const DateofBirth = ({ value, onChange }) => {
     const [open, setOpen] = useState(false)
 
+    const handleSave = async (formattedDate) => {
+        try {
+            const res = await axios.put(
+                'https://her-cycle-bloom-backend.onrender.com/user/create-profile',
+                { dateOfBirth: formattedDate },
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
+                    }
+                }
+            )
+
+            if (res.status !== 200) {
+                toast.error("Failed to edit date of birth")
+                return
+            }
+
+            toast.success("Date of birth updated successfully")
+
+        } catch (error) {
+            console.error(error)
+            toast.error("Something went wrong")
+        }
+    }
 
     return (
-        <div className="flex flex-col gap-3">
+        <div className="flex items-center justify-between">
             <Label htmlFor="date" className="px-1">
                 Date of birth
             </Label>
+
             <Popover open={open} onOpenChange={setOpen}>
                 <PopoverTrigger asChild>
                     <Button
@@ -30,28 +56,31 @@ const DateofBirth = ({value,onChange,onBlur}) => {
                         <ChevronDownIcon />
                     </Button>
                 </PopoverTrigger>
+
                 <PopoverContent className="w-auto overflow-hidden p-0" align="start">
                     <Calendar
                         className="w-80 outline-0"
                         mode="single"
-                        selected={value ? new Date(value):"Undefined"}
+                        selected={value ? new Date(value) : undefined}
                         captionLayout="dropdown"
-                        onSelect={(date) => {
-                            if (date) {
-                                const formatted = date.toISOString().split("T")[0];
-                                onChange({ target: { name: "dateOfBirth", value: formatted } });
-                            }
-                            setOpen(false);
+                        fromYear={1950}
+                        toYear={new Date().getFullYear()}
+                        onSelect={async (date) => {
+                            if (!date) return
+
+                            const formatted = date.toISOString().split("T")[0]
+
+                            onChange({
+                                target: { name: "dateOfBirth", value: formatted }
+                            })
+
+                            await handleSave(formatted)
+
+                            setOpen(false)
                         }}
                     />
                 </PopoverContent>
             </Popover>
-
-            {onBlur && (
-                <small className="text-red-600">
-                  </small>
-                    )}
-               
         </div>
     )
 }

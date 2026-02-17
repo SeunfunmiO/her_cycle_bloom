@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { X, Check, Loader } from "lucide-react";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 
@@ -34,7 +34,7 @@ export default function EditName() {
         setSaved(true);
 
         setTimeout(() => setSaved(false), 2000);
-        redirect('/profile-settings')
+        navigate('/profile-settings')
     };
 
     const handleClear = () => setValue("");
