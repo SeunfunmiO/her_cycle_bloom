@@ -54,8 +54,8 @@ import enCommon from "./locales/en/common.json";
 import enAuthoptions from "./locales/en/authoptions.json";
 import enPlaceholder from "./locales/en/placeholder.json";
 import enToast from "./locales/en/toast.json";
+import enSettings from "./locales/en/settings.json";
 // import enCycle from "./locales/en/cycle.json";
-// import enSettings from "./locales/en/settings.json";
 
 // import frCommon from "./locales/fr/common.json";
 // import frCycle from "./locales/fr/cycle.json";
@@ -66,8 +66,8 @@ import esCommon from "./locales/es/common.json";
 import esAuthoptions from "./locales/es/authoptions.json";
 import esPlaceholder from "./locales/es/placeholder.json";
 import esToast from "./locales/es/toast.json";
+import esSettings from "./locales/es/settings.json";
 // import esCycle from "./locales/es/cycle.json";
-// import esSettings from "./locales/es/settings.json";
 
 // import znCommon from "./locales/zn/common.json";
 // import znCycle from "./locales/zn/cycle.json";
@@ -86,9 +86,9 @@ i18n
                 common: enCommon,
                 authoptions:enAuthoptions,
                 placeholder:enPlaceholder,
-                toast:enToast
+                toast:enToast,
+                settings: enSettings
                 // cycle: enCycle,
-                // settings: enSettings
             },
             // fr: {
             //     common: frCommon,
@@ -105,9 +105,9 @@ i18n
                 common: esCommon,
                 authoptions: esAuthoptions,
                 placeholder: esPlaceholder,
-                toast: esToast
+                toast: esToast,
+                settings: esSettings
                 // cycle: esCycle,
-                // settings: esSettings
             }
         },
         lng: selectedLang || "en",

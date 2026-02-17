@@ -1,11 +1,16 @@
 
 import axios from 'axios'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 const AllowNotification = () => {
     const navigate = useNavigate()
+    const {t}=useTranslation([
+        "settings",
+        "toast"
+    ])
 
     const handleEnableNotifications = async () => {
         if (!("Notification" in window)) {
