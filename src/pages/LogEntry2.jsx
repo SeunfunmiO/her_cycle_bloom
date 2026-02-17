@@ -8,26 +8,8 @@ import { toast } from 'react-toastify';
 import { FlowButton } from '../components/FlowButton';
 import { MoodButton } from '../components/MoodButton';
 import { HighlightText } from '../components/HighlightText';
+import { useTranslation } from 'react-i18next';
 
-
-
-const symptomsList = [
-    { id: 1, label: "Cramps", icon: "./Vector (1).svg" },
-    { id: 2, label: "Back Pain", icon: "./Vector (2).svg" },
-    { id: 3, label: "Nausea", icon: "./vector (3).svg" },
-    { id: 4, label: "Headache", icon: "./Vector (4).svg" },
-    { id: 5, label: "Fatigue", icon: "./Vector (5).svg" },
-    { id: 6, label: "Bloating", icon: "./Vector (6).svg" },
-];
-
-const moodList = [
-    { id: 1, label: "Happy", icon: "./Group.svg" },
-    { id: 2, label: "Sad", icon: "./Group (1).svg" },
-    { id: 3, label: "Irritable", icon: "./Vector (8).svg" },
-    { id: 4, label: "Anxious", icon: "./Group (3).svg" },
-    { id: 5, label: "Emotional", icon: "./Group (2).svg" },
-    { id: 6, label: "Energetic", icon: "./Vector (7).svg" },
-];
 
 
 const LogEntry2 = () => {
@@ -38,6 +20,31 @@ const LogEntry2 = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [loading, setLoading] = useState("");
     const [notes, setNotes] = useState("");
+    const { t } = useTranslation([
+        "common",
+        "cycle",
+        "toast",
+        "placeholder"
+    ])
+
+
+    const symptomsList = [
+        { id: 1, label: t("cycle:cramps"), icon: "./Vector (1).svg" },
+        { id: 2, label: t("cycle:back_pain"), icon: "./Vector (2).svg" },
+        { id: 3, label: t("cycle:nausea"), icon: "./vector (3).svg" },
+        { id: 4, label: t("cycle:headache"), icon: "./Vector (4).svg" },
+        { id: 5, label: t("cycle:fatigue"), icon: "./Vector (5).svg" },
+        { id: 6, label: t("cycle:bloating"), icon: "./Vector (6).svg" },
+    ];
+
+    const moodList = [
+        { id: 1, label: t("cycle:happy"), icon: "./Group.svg" },
+        { id: 2, label: t("cycle:sad"), icon: "./Group (1).svg" },
+        { id: 3, label: t("cycle:irritable"), icon: "./Vector (8).svg" },
+        { id: 4, label: t("cycle:anxious"), icon: "./Group (3).svg" },
+        { id: 5, label: t("cycle:emotional"), icon: "./Group (2).svg" },
+        { id: 6, label: t("cycle:energetic"), icon: "./Vector (7).svg" },
+    ];
 
     const fuzzySearch = (text, search) => {
         text = text.toLowerCase();
@@ -94,7 +101,7 @@ const LogEntry2 = () => {
             navigate('/success')
         } catch (error) {
             console.log("Error saving entry : ", error);
-            toast.error("Something went wrong , try again")
+            toast.error(t("toast:entry_failed"))
         }
         setLoading(false)
     }
@@ -107,7 +114,7 @@ const LogEntry2 = () => {
                     onClick={() => navigate(-1)}
                     className='flex items-center gap-5 mb-3 dark:invert'>
                     <img className='size-4' src="./caret.svg" alt="" />
-                    <h2 className='font-medium text-lg text-neutral-900 dark:neutral-100'>Record Data</h2>
+                    <h2 className='font-medium text-lg text-neutral-900 dark:neutral-100'>{t("common:record")}</h2>
                 </div>
 
                 <div className="border-b border-gray-400 dark:border-neutral-700 mt-5"></div>
@@ -116,11 +123,11 @@ const LogEntry2 = () => {
 
                     <div className='bg-white dark:bg-neutral-800 max-w-100 justify-center rounded-xl flex flex-col p-5 gap-5'>
                         <h1 className="font-semibold text lg:text-lg text-neutral-900 dark:text-neutral-100">
-                            Flow Intensity
+                            {t("cycle:flow_intensity")}
                         </h1>
                         <div className="flex gap-2 flex-wrap items-center">
                             <FlowButton
-                                label="Light"
+                                label={t("cycle:flow.light")}
                                 droplets={1}
                                 color="#ff8be0"
                                 selected={flow === "Light"}
@@ -128,7 +135,7 @@ const LogEntry2 = () => {
                             />
 
                             <FlowButton
-                                label="Medium"
+                                label={t("cycle:flow.medium")}
                                 droplets={2}
                                 color="#e365c1"
                                 selected={flow === "Medium"}
@@ -136,7 +143,7 @@ const LogEntry2 = () => {
                             />
 
                             <FlowButton
-                                label="Heavy"
+                                label={t("cycle:flow.heavy")}
                                 droplets={3}
                                 color="#e210a9"
                                 selected={flow === "Heavy"}
@@ -147,7 +154,7 @@ const LogEntry2 = () => {
 
                     <div className='bg-white dark:bg-neutral-800 max-w-100 justify-center rounded-xl p-5 flex flex-col gap-3'>
                         <h1 className="font-semibold lg:text-lg text-neutral-900 dark:text-neutral-100">
-                            Symptoms
+                            {t("cycle:symptoms")}
                         </h1>
 
                         <div
@@ -159,7 +166,7 @@ const LogEntry2 = () => {
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 type="text"
                                 className="border-0 outline-0 bg-transparent"
-                                placeholder='search for symptoms'
+                                placeholder={t("placeholder:search_symptoms")}
                             />
                         </div>
 
@@ -195,14 +202,14 @@ const LogEntry2 = () => {
                         </div>
                         {
                             searchSymptoms.length === 0 && (
-                                <p className="text-gray-400 dark:text-neutral-400 text-sm text-center">No symptoms found</p>
+                                <p className="text-gray-400 dark:text-neutral-400 text-sm text-center">{t("common:no_symptoms")}</p>
                             )
                         }
                     </div>
 
 
                     <div className='bg-white dark:bg-neutral-800 max-w-100 rounded-xl p-5 flex flex-col gap-5'>
-                        <h1 className="font-semibold lg:text-lg text-neutral-900 dark:text-neutral-100">Mood</h1>
+                        <h1 className="font-semibold lg:text-lg text-neutral-900 dark:text-neutral-100">{t("common:mood")}</h1>
                         <div className='flex gap-5 flex-wrap'>
                             {
                                 moodList.map((mood) => (
@@ -218,13 +225,13 @@ const LogEntry2 = () => {
                     </div>
 
                     <div className='bg-white dark:bg-neutral-800 max-w-100 rounded-xl p-5 flex flex-col gap-5'>
-                        <h1 className="font-semibold lg:text-lg text-neutral-900 dark:text-neutral-100">Notes</h1>
+                        <h1 className="font-semibold lg:text-lg text-neutral-900 dark:text-neutral-100">{t("common:toast")}</h1>
                         <textarea
                             onChange={(e) => setNotes(e.target.value)}
                             className='bg-gray-100 dark:bg-neutral-700 rounded-lg placeholder:text-sm px-5 pt-3 pb-5'
                             name="notes"
                             value={notes}
-                            placeholder='Add any additional details about your day...'>
+                            placeholder={t("placeholder:additional_details")}>
                         </textarea>
                     </div>
                 </div>
@@ -235,7 +242,7 @@ const LogEntry2 = () => {
                     className={`text-white font-bold py-2 mt-5 mb-8 rounded-lg w-full
                     ${loading ? "bg-pink-300 cursor-not-allowed" : "bg-palevioletred"}
                     `}>
-                    {loading ? "Saving..." : " Save Entry"}
+                    {loading ? t("common:saving") : t("common:save_entry")}
                 </button>
 
             </div>

@@ -8,6 +8,9 @@ import {
     detectCycleIrregularity,
     isPeriodLate,
 } from "../lib/cyclePrediction"
+import { useTranslation } from "react-i18next"
+import { enUS, fr, es, zhCN, arSA } from "date-fns/locale"
+import i18n from "../i18n"
 
 /* ---------- HELPERS ---------- */
 const isSameDay = (a, b) =>
@@ -42,8 +45,21 @@ const CalendarComponent = () => {
     const [prediction, setPrediction] = useState(null)
     const [selectedRange, setSelectedRange] = useState()
     const [cycleInfo, setCycleInfo] = useState(null)
-
     const token = localStorage.getItem("token")
+    const { t } = useTranslation([
+        "common",
+        "placeholder",
+        "toast"
+    ])
+
+    const localeMap = {
+        en: enUS,
+        fr: fr,
+        es: es,
+        zh: zhCN,
+        ar: arSA,
+    }
+
 
     /* ---------- FETCH USER PROFILE ---------- */
     useEffect(() => {
@@ -146,7 +162,7 @@ const CalendarComponent = () => {
     /* ---------- LOG PERIOD ---------- */
     const logPeriod = async () => {
         if (!selectedRange?.from) {
-            toast.error("Select a start date")
+            toast.error(t("toast:select_start_date"))
             return
         }
 
@@ -160,10 +176,10 @@ const CalendarComponent = () => {
                 { headers: { Authorization: `Bearer ${token}` } }
             )
 
-            toast.success("Period logged")
+            toast.success(t("toast:period_logged"))
             window.location.reload()
         } catch (err) {
-            toast.error("Failed to log period")
+            toast.error(t("toast:period_failed"))
             console.error(err)
         }
     }
@@ -236,7 +252,7 @@ const CalendarComponent = () => {
     return (
         <div className="space-y-4">
             <Calendar
-
+                locale={localeMap[i18n.language] || enUS}
                 mode="range"
                 selected={selectedRange}
                 onSelect={setSelectedRange}
@@ -268,7 +284,7 @@ const CalendarComponent = () => {
                             <span>{date.getDate()}</span>
                             {isSameDay(date, new Date()) && (
                                 <span className="text-[10px] text-blue-500">
-                                    Today
+                                   {t("common:today")}
                                 </span>
                             )}
                         </div>
@@ -281,18 +297,18 @@ const CalendarComponent = () => {
                 onClick={logPeriod}
                 className="w-full bg-palevioletred text-white py-2 rounded-lg mb-3"
             >
-                Log period
+                {t("common:log_period")}
             </button>
 
             {cycleInfo?.late && (
                 <p className="text-red-500 text-sm">
-                    Your period may be late
+               {t("common:late_period")}
                 </p>
             )}
 
             {cycleInfo?.irregularity?.irregular && (
                 <p className="text-orange-500 text-sm">
-                    Irregular cycle detected
+                  {t("commo:irregular_cycle")}
                 </p>
             )}
         </div>

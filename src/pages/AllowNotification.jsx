@@ -7,57 +7,51 @@ import { toast } from 'react-toastify'
 
 const AllowNotification = () => {
     const navigate = useNavigate()
-    const {t}=useTranslation([
+    const { t } = useTranslation([
         "settings",
         "toast"
     ])
 
     const handleEnableNotifications = async () => {
         if (!("Notification" in window)) {
-            toast.error("This browser does not support notifications.");
+            toast.error(t("toast:browser_support"));
             return;
         }
 
         try {
-            const user = JSON.parse(localStorage.getItem('user'));
-            const id = user?.id;
-
-            if (!id) {
-                toast.error("User not found. Please log in again.");
-                return;
-            }
-
             const permission = await Notification.requestPermission();
             const isGranted = permission === "granted";
+            const token = localStorage.getItem("token")
+            if (!token) return;
 
             const response = await axios.put(
                 `https://her-cycle-bloom-backend.onrender.com/user/enable-notification`,
                 { isNotification: isGranted },
                 {
                     headers: {
-                        Authorization: `Bearer ${localStorage.getItem("token")}`
+                        Authorization: `Bearer ${token}`
                     }
                 }
             );
             const data = response.data;
 
             if (isGranted) {
-                toast.success(data.message || "Notifications enabled!");
+                toast.success(t("toast:notif_enabled"));
             } else if (permission === "denied") {
-                toast.error("Notifications denied!");
+                toast.error(t("toast:notif_denied"));
             } else {
-                toast.info("Notifications permission dismissed.");
+                toast.info(t("toast:notif_dismissed"));
             }
 
-            if (data?.success) {
-                navigate('/get-ready');
-            }
+            setTimeout(()=>{
+                if (data?.success) {
+                    navigate('/get-ready');
+                }
+            },3000)
+
         } catch (error) {
             console.error("Notification Error:", error);
-            toast.error(
-                error.response?.data?.message ||
-                "Something went wrong, please try again"
-            );
+            toast.error(t("toast:notif_denied"));
         }
     };
 
@@ -73,9 +67,9 @@ const AllowNotification = () => {
                 </div>
 
                 <div className='text-black '>
-                    <h6 className="font-bold mt-8 text-center text-2xl">Never miss a Reminder</h6>
+                    <h6 className="font-bold mt-8 text-center text-2xl">{t("settings:reminder_info")}</h6>
                     <p className='mt-8 font-medium'>
-                        Get timely alerts for your period, ovulation and health tips- only when it matters most.
+                        {t("settings:reminder_details")}
                     </p>
                 </div>
 
@@ -83,13 +77,13 @@ const AllowNotification = () => {
                     <button type='button'
                         onClick={handleEnableNotifications}
                         className='w-full text-sm text-white py-3 font-semibold outline-0 rounded-full bg-palevioletred'>
-                        Enable Notifications
+                        {t("settings:enable")}
                     </button>
 
                     <button type='button'
                         onClick={() => navigate('/home')}
                         className='w-full text-white text-sm py-3 font-semibold outline-0 rounded-full bg-palevioletred'>
-                        Maybe Later
+                        {t("settings:later")}
                     </button>
                 </div>
             </div>

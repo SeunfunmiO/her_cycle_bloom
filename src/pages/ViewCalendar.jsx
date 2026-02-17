@@ -3,13 +3,14 @@ import CalendarComponent from '../components/Calendar'
 import Navbar from '../components/Navbar'
 import axios from 'axios'
 import CalendarLegend from '../components/CalendarLegend'
+import { useTranslation } from 'react-i18next'
 
 const ViewCalendar = () => {
     const [daysUntilPeriod, setDaysUntilPeriod] = useState("")
     const [follicularPhase, setFollicularPhase] = useState(0)
     const [averageCycleLength, setAverageCycleLength] = useState(28)
     const [phase, setPhase] = useState('')
-
+    const { t } = useTranslation(["common", "cycle"])
 
 
     useEffect(() => {
@@ -23,7 +24,7 @@ const ViewCalendar = () => {
                     }
                 )
                 const data = res.data.entries
-                
+
                 if (!Array.isArray(data.periodStart) || data.periodStart.length < 2) return
 
                 const dates = data.periodStart.map(date => new Date(date))
@@ -93,15 +94,9 @@ const ViewCalendar = () => {
 
                 today.setHours(0, 0, 0, 0)
 
-
-                // const follicularDay = Math.ceil(
-                //     (today - lastPeriod) / (1000 * 60 * 60 * 24)
-                // )
-
                 setFollicularPhase(
                     cycleDay >= 1 && cycleDay < ovulationDay ? cycleDay : 0
                 )
-
 
                 if (cycleDay >= 1 && cycleDay < ovulationDay) {
                     setFollicularPhase(cycleDay)
@@ -135,16 +130,16 @@ const ViewCalendar = () => {
                 <div
                     className='p-5'
                 >
-                    <h2 className='font-medium text-lg text-neutral-900 dark:text-neutral-100 mb-2'>Calendar</h2>
+                    <h2 className='font-medium text-lg text-neutral-900 dark:text-neutral-100 mb-2'>{t("common:calendar")}</h2>
                     <CalendarComponent />
-                    <CalendarLegend/>
+                    <CalendarLegend />
                 </div>
 
                 <div
                     className='bg-white h-60 p-3 dark:bg-neutral-800'
                 >
                     <h1 className='font-medium text-lg lg:text-xl text-neutral-900 dark:text-neutral-100'>
-                        Cycle Overview
+                        {t("common:cycle_overview")}
                     </h1>
                     <div className="grid grid-cols-1 gap-3 mt-3">
                         <div className="flex gap-3 items-center">
@@ -154,12 +149,12 @@ const ViewCalendar = () => {
 
                             <div>
                                 <h3 className="font-semibold lg:text-lg text-neutral-900 dark:text-neutral-100">
-                                    Follicular Phase
+                                    {t("cycle:follicular_phase")}
                                 </h3>
                                 <small
                                     className="text-[#b49ea5] dark:text-[#e0c9cf] font-medium"
                                 >
-                                    Day {follicularPhase || 0}
+                                    {t("common:day")} {follicularPhase || 0}
                                 </small>
                             </div>
                         </div>
@@ -169,9 +164,9 @@ const ViewCalendar = () => {
                             </div>
 
                             <div>
-                                <h3 className="font-semibold lg:text-lg text-neutral-900 dark:text-neutral-100">Next Period</h3>
+                                <h3 className="font-semibold lg:text-lg text-neutral-900 dark:text-neutral-100">{t("common:next_period")}</h3>
                                 <small className="text-[#b49ea5] dark:text-[#e0c9cf] font-medium">
-                                    {daysUntilPeriod || 0} day{daysUntilPeriod === 1 ? '' : "s"} until the next period
+                                    {daysUntilPeriod || 0} {t("common:day")}{daysUntilPeriod === 1 ? '' : "s"} {t("common:until_next_period")}
                                 </small>
                             </div>
                         </div>
@@ -181,9 +176,9 @@ const ViewCalendar = () => {
                             </div>
 
                             <div>
-                                <h3 className="font-semibold lg:text-lg text-neutral-900 dark:text-neutral-100">Cycle Length</h3>
+                                <h3 className="font-semibold lg:text-lg text-neutral-900 dark:text-neutral-100">{t("cycle:cycle_length")}</h3>
                                 <small className="text-[#b49ea5] font-medium dark:text-[#e0c9cf]">
-                                    Average cycle length: {averageCycleLength} days
+                                    {t("common:average_cycle")} {averageCycleLength} {t("common:days")}
                                 </small>
                             </div>
                         </div>

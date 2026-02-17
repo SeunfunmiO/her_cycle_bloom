@@ -12,11 +12,20 @@
     "confirm_password": "Please confirm your password",
     "password_match": "Passwords must match",
     "image_info": "Image must be smaller than 5MB",
-    "failed_file":"Failed to read file",
-    "name_required":"Name is required!",
-    "birth_year_required":"Birth year is required!",
-    "cycle_required":"Cycle length is required!",
-    "last_period_required":"last period date is required!",
-    "profile_created":"Profile created successfully!",
-    "profile_failed":"Failed to save profile"
+    "failed_file": "Failed to read file",
+    "name_required": "Name is required!",
+    "birth_year_required": "Birth year is required!",
+    "cycle_required": "Cycle length is required!",
+    "last_period_required": "last period date is required!",
+    "profile_created": "Profile created successfully!",
+    "profile_failed": "Failed to save profile",
+    "browser_support": "This browser does not support notifications.",
+    "notif_enabled": "Notifications enabled!",
+    "notif_dismissed": "Notifications permission dismissed.",
+    "notif_denied": "Notifications denied!",
+    "select_start_date":"Select a start date",
+    "period_logged":"Period logged",
+    "period_failed":"Failed to log period",
+    "entry_failed":"Failed to save entry"
+
 }

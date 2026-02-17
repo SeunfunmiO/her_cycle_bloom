@@ -1,17 +1,20 @@
 import { useState } from "react"
+import { useTranslation } from "react-i18next"
 import { useNavigate } from "react-router-dom"
 
 
-const tabs = [
-    { id: 1, label: "Overview", icon: "./Vector - 0.svg", path: '/home' },
-    { id: 2, label: "Calendar", icon: "./Vector - 1.svg", path: '/view-calendar' },
-    { id: 3, label: "History", icon: "./Vector - 2.svg", path: '/history' },
-    { id: 4, label: "Settings", icon: "./Vector - 3.svg", path: "/settings" }
-]
 
 const Navbar = () => {
+    const { t } = useTranslation("common")
     const navigate = useNavigate()
     const [activeTab, setActiveTab] = useState("")
+
+    const tabs = [
+        { id: 1, label: t("common:overview"), icon: "./Vector - 0.svg", path: '/home' },
+        { id: 2, label: t("common:calendar"), icon: "./Vector - 1.svg", path: '/view-calendar' },
+        { id: 3, label: t("common:history"), icon: "./Vector - 2.svg", path: '/history' },
+        { id: 4, label: t("common:settings"), icon: "./Vector - 3.svg", path: "/settings" }
+    ]
 
 
     return (

@@ -3,5 +3,7 @@
     "enter_password": "Ingresa tu contraseña",
     "re_enter_password": "Vuelve a ingresar tu contraseña",
     "name_placeholder": "ej. Sarah",
-    "select_date": "Seleccionar fecha"
+    "select_date": "Seleccionar fecha",
+    "search_symptoms": "Buscar síntomas",
+    "additional_details": "Añade cualquier detalle adicional sobre tu día..."
 }

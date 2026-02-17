@@ -18,5 +18,13 @@
     "cycle_required": "¡La duración del ciclo es obligatoria!",
     "last_period_required": "¡La fecha del último período es obligatoria!",
     "profile_created": "¡Perfil creado exitosamente!",
-    "profile_failed": "Error al guardar el perfil"
+    "profile_failed": "Error al guardar el perfil",
+    "browser_support": "Este navegador no es compatible con las notificaciones.",
+    "notif_enabled": "¡Notificaciones activadas!",
+    "notif_dismissed": "Permiso de notificaciones descartado.",
+    "notif_denied": "¡Notificaciones denegadas!",
+    "select_start_date": "Selecciona una fecha de inicio",
+    "period_logged": "Período registrado exitosamente",
+    "period_failed": "Error al registrar el período",
+    "entry_failed": "Error al guardar el registro"
 }

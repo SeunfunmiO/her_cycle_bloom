@@ -151,14 +151,14 @@ const Login = () => {
           >
             <img className='w-4 h-4'
               src="./devicon_google.svg" alt="Google Icon" />
-            {t("authoptons:log_in_google")}
+            {t("authoptions:log_in_google")}
           </button>
           <button
             type='submit'
             className="flex font-medium items-center justify-center gap-3 w-full rounded-full py-3 border border-black
              dark:border-neutral-100 text-neutral-900 dark:text-neutral-100">
             <img className='w-3 h-3 dark:invert' src="./Vector.svg" alt="Apple Icon" />
-            {t("authoptons:log_in_apple")}
+            {t("authoptions:log_in_apple")}
           </button>
         </div>
       </div >

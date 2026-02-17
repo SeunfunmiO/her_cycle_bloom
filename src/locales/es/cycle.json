@@ -1,0 +1,27 @@
+{
+    "cramps": "Cólicos",
+    "back_pain": "Dolor de espalda",
+    "nausea": "Náuseas",
+    "headache": "Dolor de cabeza",
+    "fatigue": "Fatiga",
+    "bloating": "Hinchazón",
+    "happy": "Feliz",
+    "sad": "Triste",
+    "irritable": "Irritable",
+    "anxious": "Ansiosa",
+    "emotional": "Emocional",
+    "energetic": "Enérgica",
+    "flow_intensity": "Intensidad del flujo",
+    "symptoms": "Síntomas",
+    "flow": {
+        "light": "Ligero",
+        "medium": "Moderado",
+        "heavy": "Abundante"
+    },
+    "period": "Período",
+    "predicted_period": "Período previsto",
+    "ovulation": "Ovulación",
+    "fertile_window": "Ventana fértil",
+    "follicular_phase": "Fase folicular",
+    "cycle_length": "Duración del ciclo"
+}
