@@ -7,14 +7,19 @@ import { Popover, PopoverPanel } from '@headlessui/react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import DateofBirth from '../components/DateofBirth';
+import { useTranslation } from 'react-i18next';
 
 
 const CreateProfile = () => {
     const [preview, setPreview] = useState(null);
-    const [profilePicture,setProfilePicture]=useState('');
+    const [profilePicture, setProfilePicture] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-
+    const { t } = useTranslation([
+        "common",
+        "toast",
+        "placeholder"
+    ])
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
@@ -22,7 +27,7 @@ const CreateProfile = () => {
         if (!file) return;
 
         if (file.size > 5 * 1024 * 1024) {
-            toast.error("Image must be smaller than 5MB");
+            toast.error(t("toast:image_info"));
             return;
         }
 
@@ -38,7 +43,7 @@ const CreateProfile = () => {
         }
 
         reader.onerror = () => {
-            toast.error("Failed to read file");
+            toast.error(t("toast:failed_file"));
             setLoading(false);
         };
 
@@ -54,11 +59,11 @@ const CreateProfile = () => {
             profilePicture: "",
         },
         validationSchema: yup.object({
-            name: yup.string().required("Name is required!"),
-            dateOfBirth: yup.string().required("Birth year is required!"),
-            cycleLength: yup.number().required("Cycle length is required!"),
-            lastPeriodDate: yup.string().required("Last period date is required!"),
-            profilePicture:yup.string().notRequired()
+            name: yup.string().required(t("toast:name_required")),
+            dateOfBirth: yup.string().required(t("toast:birth_year_required")),
+            cycleLength: yup.number().required(t("toast:cycle_required")),
+            lastPeriodDate: yup.string().required(t("toast:last_period_required")),
+            profilePicture: yup.string().notRequired()
         }),
         onSubmit: async (values) => {
             try {
@@ -67,7 +72,7 @@ const CreateProfile = () => {
                     dateOfBirth: values.dateOfBirth,
                     cycleLength: values.cycleLength,
                     lastPeriodDate: values.lastPeriodDate,
-                    profilePicture:profilePicture
+                    profilePicture: profilePicture
                 }
                 const response = await axios.put(
                     `https://her-cycle-bloom-backend.onrender.com/user/create-profile`,
@@ -79,17 +84,17 @@ const CreateProfile = () => {
                     }
                 )
                 const data = response.data
-             
+
 
                 if (data.success) {
-                    toast.success(data.message || "Profile saved!");
+                    toast.success(t("toast:profile_created"));
                     navigate("/allow-notification");
                 } else {
-                    toast.error("Failed to save profile")
+                    toast.error(t("toast:profile_failed"))
                 }
             } catch (error) {
                 console.error("Profile update error:", error);
-                toast.error(error.response?.data?.message || "Failed to save profile");
+                toast.error(t("toast:profile_filed"));
             }
         },
     });
@@ -98,9 +103,9 @@ const CreateProfile = () => {
     return (
         <div className="bg-lavender min-h-screen">
             <div className="max-w-md mx-auto px-4">
-                <h1 className="font-bold pt-5 text-xl lg:text-2xl">Create profile</h1>
+                <h1 className="font-bold pt-5 text-xl lg:text-2xl">{t("common:create_profile")}</h1>
                 <p className="lg:text-lg mt-5 font-medium">
-                    Tell us a bit about yourself to personalize your cycle tracking
+                    {t("common:profile_info")}
                 </p>
 
                 <form onSubmit={formik.handleSubmit} className="grid gap-5 mt-8">
@@ -125,7 +130,7 @@ const CreateProfile = () => {
                             className={`border text-sm cursor-pointer rounded-lg py-1.5 px-3 font-medium border-black 
                             ${loading && 'text-zinc-400 cursor-not-allowed'}`}
                         >
-                            {loading ? "Adding..." : "Add Photo"}
+                            {loading ? t("common:adding") : t("common:add_photo")}
                             <input
                                 id="photo"
                                 type="file"
@@ -140,15 +145,15 @@ const CreateProfile = () => {
                         className="text-neutral-700 flex items-center font-bold gap-2 text-[10px]"
                     >
                         <InfoIcon size={15} />
-                        Image shouldn't be larger than 5mb
+                        {t("toast:image_info")}
                     </small>
 
                     <div className="flex flex-col gap-2">
-                        <label className="font-medium">Name</label>
+                        <label className="font-medium">{t("common:name")}</label>
                         <input
                             name="name"
                             type="text"
-                            placeholder="e.g. Sarah"
+                            placeholder={t("placeholder:name_placeholder")}
                             value={formik.values.name}
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
@@ -172,7 +177,7 @@ const CreateProfile = () => {
 
 
                     <div className="flex flex-col gap-2">
-                        <label className="font-medium">Cycle length (days)</label>
+                        <label className="font-medium">{t("common:cycle_length")}</label>
 
                         <div className="relative w-full flex flex-col items-center gap-4 pt-8">
                             <Popover className="w-full">
@@ -215,7 +220,7 @@ const CreateProfile = () => {
                     </div>
 
                     <div className="flex flex-col gap-2">
-                        <label className="font-medium">Last Period Date</label>
+                        <label className="font-medium">{t("common:last_period")}</label>
                         <div className="bg-transparent py-2 px-3 w-fit border border-black rounded-lg flex items-center gap-3">
                             <input
                                 type="date"
@@ -237,7 +242,7 @@ const CreateProfile = () => {
                         disabled={formik.isSubmitting}
                         className='mt-20 mb-14 w-full py-2 shadow-lg font-bold text-lg lg:text-xl rounded-full
                         flex justify-center items-center gap-3 bg-palevioletred disabled:opacity-50'>
-                        {formik.isSubmitting ? 'Saving...' : 'Continue'}
+                        {formik.isSubmitting ? t("common:saving") : t("common:continue")}
                         <img className='size-5' src="./arrowRight.svg" alt="arrow" />
                     </button>
                 </form >

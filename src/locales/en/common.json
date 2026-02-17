@@ -14,5 +14,15 @@
     "forgot_password": "Forgot password ? ",
     "or": "OR",
     "creating": "Creating...",
-    "create_account":"Create Account"
+    "create_account": "Create Account",
+    "create_profile": "Create profile",
+    "name":"Name",
+    "profile_info":"Tell us a bit about yourself to personalize your cycle tracking",
+    "add_photo":"Add photo",
+    "birth_year":"Birth Year",
+    "cycle_length":"Cycle length(days)",
+    "last_period":"Last Period Date",
+    "continue":"Continue",
+    "adding":"Adding... ",
+    "saving":"Saving..."
 }

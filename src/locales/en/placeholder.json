@@ -1,5 +1,7 @@
 {
     "enter_email": "Enter email",
     "enter_password":"Enter password",
-    "re_enter_password":"Re-enter password"
+    "re_enter_password":"Re-enter password",
+    "name_placeholder":"e.g Sarah",
+    "select_date":"Select date"
 }

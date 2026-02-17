@@ -1,15 +1,22 @@
 {
-    "login_error":"Error logging in : ",
-    "sigup_error":"Error signing up user : ",
-    "invalid_credentials":"Invalid email or password",
-    "went_wrong":"Something went wrong, please try again",
-    "email_required":"Email is required!",
-    "valid_email":"Please enter a valid email",
-    "password_required":"Password is required!",
+    "login_error": "Error logging in : ",
+    "sigup_error": "Error signing up user : ",
+    "invalid_credentials": "Invalid email or password",
+    "went_wrong": "Something went wrong, please try again",
+    "email_required": "Email is required!",
+    "valid_email": "Please enter a valid email",
+    "password_required": "Password is required!",
     "email_used": "Email already in use",
-    "account_created":"Account created successfully!",
-    "password_rules":"Password must contain at least 6 characters, one uppercase, one lowercase, one number, and one special character",
-    "confirm_password":"Please confirm your password",
-    "password_match":"Passwords must match"
-
-} 
+    "account_created": "Account created successfully!",
+    "password_rules": "Password must contain at least 6 characters, one uppercase, one lowercase, one number, and one special character",
+    "confirm_password": "Please confirm your password",
+    "password_match": "Passwords must match",
+    "image_info": "Image must be smaller than 5MB",
+    "failed_file":"Failed to read file",
+    "name_required":"Name is required!",
+    "birth_year_required":"Birth year is required!",
+    "cycle_required":"Cycle length is required!",
+    "last_period_required":"last period date is required!",
+    "profile_created":"Profile created successfully!",
+    "profile_failed":"Failed to save profile"
+}

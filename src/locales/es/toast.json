@@ -10,5 +10,13 @@
     "account_created": "Cuenta creada exitosamente",
     "password_rules": "La contraseña debe contener al menos 6 caracteres, una mayúscula, una minúscula, un número y un carácter especial",
     "confirm_password": "Por favor confirma tu contraseña",
-    "password_match": "Las contraseñas deben coincidir"
+    "password_match": "Las contraseñas deben coincidir",
+    "image_info": "La imagen debe ser menor a 5MB",
+    "failed_file": "Error al leer el archivo",
+    "name_required": "¡El nombre es obligatorio!",
+    "birth_year_required": "¡El año de nacimiento es obligatorio!",
+    "cycle_required": "¡La duración del ciclo es obligatoria!",
+    "last_period_required": "¡La fecha del último período es obligatoria!",
+    "profile_created": "¡Perfil creado exitosamente!",
+    "profile_failed": "Error al guardar el perfil"
 }
