@@ -59,25 +59,24 @@ const DateofBirth = ({ value, onChange }) => {
 
                 <PopoverContent className="w-auto overflow-hidden p-0" align="start">
                     <Calendar
-                        className="w-80 outline-0"
+                        className="w-80 outline-0 bg-neutral-800 border-neutral-800"
                         mode="single"
                         selected={value ? new Date(value) : undefined}
                         captionLayout="dropdown"
                         fromYear={1950}
                         toYear={new Date().getFullYear()}
                         onSelect={async (date) => {
-                            if (!date) return
+                            if (!date) return;
 
-                            const formatted = date.toISOString().split("T")[0]
+                            const formatted = date.toISOString().split("T")[0];
 
-                            onChange({
-                                target: { name: "dateOfBirth", value: formatted }
-                            })
+                            onChange(formatted);  
 
-                            await handleSave(formatted)
+                            await handleSave(formatted);
 
-                            setOpen(false)
+                            setOpen(false);
                         }}
+
                     />
                 </PopoverContent>
             </Popover>

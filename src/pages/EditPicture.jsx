@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { BarLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
 
-const EditPicture = ({ photo }) => {
+const EditPicture = ({ photo, setPhoto }) => {
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
 
@@ -31,7 +31,7 @@ const EditPicture = ({ photo }) => {
 
                 const res = await axios.put(
                     'https://her-cycle-bloom-backend.onrender.com/user/create-profile',
-                    { profilePicture: base64 }, // ✅ correct value
+                    { profilePicture: base64 }, 
                     {
                         headers: { Authorization: `Bearer ${token}` }
                     }
@@ -41,7 +41,7 @@ const EditPicture = ({ photo }) => {
                     toast.error("Failed to update picture");
                     return;
                 }
-
+                setPhoto(base64);
                 toast.success("Picture updated successfully");
 
             } catch (error) {
@@ -73,7 +73,7 @@ const EditPicture = ({ photo }) => {
                 <div className="bg-[#febcb7] rounded-full flex justify-center items-center size-16 dark:bg-neutral-900">
                     <img
                         className='size-16 rounded-full object-cover'
-                        src={profilePicture || "/User Pic.png"}
+                        src={photo || "/User Pic.png"}
                         alt="Profile"
                     />
                 </div>

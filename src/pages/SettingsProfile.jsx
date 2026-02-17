@@ -26,7 +26,7 @@ const SettingsProfile = () => {
                 )
                 const data = response.data
 
-                const dateOfBirth = new Date(data.user.dateOfBirth).toLocaleDateString()
+                // const dateOfBirth = new Date(data.user.dateOfBirth).toLocaleDateString()
 
                 if (!data.success) {
                     return toast.error(data.message || "Unable to load data")
@@ -35,7 +35,7 @@ const SettingsProfile = () => {
                     setPhoto(data.user.profilePicture)
                     setEmail(data.user.email)
                     setAddress(data.user.address || 'No address yet')
-                    setDateOfBirth(dateOfBirth)
+                    setDateOfBirth(data.user.dateOfBirth)
                 }
             } catch (error) {
                 console.error("Error fetching user:", error)
@@ -49,7 +49,7 @@ const SettingsProfile = () => {
     return (
         <div className='bg-[#f9f9f9] h-screen dark:bg-neutral-900 transition-colors duration-300'>
             <div className="max-w-md mx-auto">
-                <EditPicture photo={photo} />
+                <EditPicture photo={photo} setPhoto={setPhoto}/>
                 <div className="bg-white dark:bg-neutral-800 shadow my-8 h-60 rounded-xl px-3 flex flex-col justify-center gap-4 w-full">
                     <div className='flex justify-between items-center md:text-xl'>
                         <h3
@@ -91,6 +91,7 @@ const SettingsProfile = () => {
 
                     <DateofBirth
                         value={dateOfBirth}
+                        onChange={setDateOfBirth}
                     />
 
                     <div className="border-b border-gray-200 dark:border-neutral-700"></div>

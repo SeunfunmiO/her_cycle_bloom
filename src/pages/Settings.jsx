@@ -65,9 +65,9 @@ const Settings = () => {
 
                 <div className="bg-white dark:bg-neutral-800 shadow mx-3 my-8 h-30 rounded-xl flex justify-between items-center px-3">
                     <div className='flex items-center gap-5'>
-                        <div className="bg-[#febcb7] rounded-full flex justify-center items-center w-fit size-16">
+                        <div className="bg-[#febcb7] rounded-full flex justify-center items-center size-16">
                             <img
-                                className='rounded-full size-16'
+                                className='rounded-full size-16 object-fit'
                                 src={photo || "User Pic.png"}
                                 alt="Profile Picture"
                             />
