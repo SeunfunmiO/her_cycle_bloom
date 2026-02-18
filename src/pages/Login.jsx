@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 import * as yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import GoogleSignIn from '../config/firebaseAuth';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
+import { GoogleSignIn } from '../config/firebaseAuth';
 
 
 const Login = () => {

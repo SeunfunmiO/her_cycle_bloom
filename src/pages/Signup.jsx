@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import * as yup from 'yup';
 import axios from 'axios';
-import GoogleSignIn from '../config/firebaseAuth';
+import {GoogleSignIn} from '../config/firebaseAuth';
 import { useTranslation } from 'react-i18next';
 
 
