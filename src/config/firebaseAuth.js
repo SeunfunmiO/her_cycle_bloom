@@ -1,5 +1,5 @@
 import axios from "axios";
-import { auth, provider } from "../firebase";
+import { auth, provider } from "./firebase";
 import { signInWithPopup } from "firebase/auth";
 
 
