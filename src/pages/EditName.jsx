@@ -16,7 +16,7 @@ export default function EditName() {
         setLoading(true);
         setSaved(false);
 
-        const res = await axios.put(`${import.meta.env.APP_URL}/user/create-profile`, { name: value },
+        const res = await axios.put(`https://hercyclebloom.vercel.app/user/create-profile`, { name: value },
             {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -24,10 +24,10 @@ export default function EditName() {
             }
         );
 
-        if(!res.status){
+        if (!res.status) {
             toast.error('Failed to edit name')
         }
-        
+
         toast.success('Name updated successfuly')
 
         setLoading(false);

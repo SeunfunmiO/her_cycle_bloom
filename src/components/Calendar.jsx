@@ -68,7 +68,7 @@ const CalendarComponent = () => {
                 if (!token) return
 
                 const res = await axios.get(
-                    `${import.meta.env.APP_URL}/user/user-profile`,
+                    `https://hercyclebloom.vercel.app/user/user-profile`,
                     { headers: { Authorization: `Bearer ${token}` } }
                 )
 
@@ -101,7 +101,7 @@ const CalendarComponent = () => {
                 if (!token) return
 
                 const res = await axios.get(
-                    `${import.meta.env.APP_URL}/period/get-entries`,
+                    `https://hercyclebloom.vercel.app/period/get-entries`,
                     { headers: { Authorization: `Bearer ${token}` } }
                 )
 
@@ -168,7 +168,7 @@ const CalendarComponent = () => {
 
         try {
             await axios.post(
-                `${import.meta.env.APP_URL}/period/create-period-details`,
+                `https://hercyclebloom.vercel.app/period/create-period-details`,
                 {
                     periodStart: selectedRange.from,
                     periodEnd: selectedRange.to || null,

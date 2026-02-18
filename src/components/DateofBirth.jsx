@@ -14,14 +14,14 @@ import { useTranslation } from 'react-i18next'
 
 const DateofBirth = ({ value, onChange }) => {
     const [open, setOpen] = useState(false)
-    const{t}=useTranslation([
+    const { t } = useTranslation([
         "placeholder"
     ])
 
     const handleSave = async (formattedDate) => {
         try {
             const res = await axios.put(
-                `${import.meta.env.APP_URL}/user/create-profile`,
+                `https://hercyclebloom.vercel.app/user/create-profile`,
                 { dateOfBirth: formattedDate },
                 {
                     headers: {
@@ -74,7 +74,7 @@ const DateofBirth = ({ value, onChange }) => {
 
                             const formatted = date.toISOString().split("T")[0];
 
-                            onChange(formatted);  
+                            onChange(formatted);
 
                             await handleSave(formatted);
 

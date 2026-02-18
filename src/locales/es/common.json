@@ -84,5 +84,8 @@
     "newest": "Más recientes primero",
     "oldest": "Más antiguos primero",
     "longest": "Ciclo más largo primero",
-    "shortest": "Ciclo más corto primero"
+    "shortest": "Ciclo más corto primero",
+    "cycle":"Ciclo",
+    "loading": "Cargando...",
+    "average_flow": "Flujo promedio"
 }

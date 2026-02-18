@@ -162,18 +162,20 @@ import { ArrowLeft, ChevronDown } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
+import { useTranslation } from 'react-i18next'
 
 const CycleDetails = () => {
     const navigate = useNavigate()
     const { _id } = useParams()
     const token = localStorage.getItem('token')
     const [cycle, setCycle] = useState(null)
+    const { t, i18n } = useTranslation(["common", "cycle"])
 
     useEffect(() => {
         const fetchCycle = async () => {
             try {
                 const res = await axios.get(
-                    `${import.meta.env.APP_URL}/period/get-entry/${_id}`,
+                    `https://hercyclebloom.vercel.app/period/get-entry/${_id}`,
                     {
                         headers: { Authorization: `Bearer ${token}` }
                     }
@@ -191,7 +193,7 @@ const CycleDetails = () => {
     }, [_id, token])
 
     if (!cycle) {
-        return <p className="text-center mt-20">Loading...</p>
+        return <p className="text-center mt-20">{t("common:loading")}</p>
     }
 
     const getCycleLength = (start, end) => {
@@ -213,20 +215,20 @@ const CycleDetails = () => {
                             onClick={() => navigate(-1)}
                         />
                         <h1 className="text-lg font-bold">
-                            {new Date(cycle.periodStart).toLocaleDateString('en-US', {
+                            {new Date(cycle.periodStart).toLocaleDateString(i18n.language, {
                                 month: 'long',
                                 year: 'numeric'
-                            })} Cycle
+                            })} {t("common:cycle")}
                         </h1>
                     </div>
 
                     <div className="mt-5">
-                        <h1 className="font-bold text-lg">Cycle Overview</h1>
+                        <h1 className="font-bold text-lg">{t("common:cycle_overview")}</h1>
 
                         <div className="grid gap-5 mt-5">
 
                             <div className='flex gap-3'>
-                                <p className="text-gray-500 font-semibold">Period :</p>
+                                <p className="text-gray-500 capitalize font-semibold">{t("cycle:period")} :</p>
                                 <p className="font-semibold">
                                     {new Date(cycle.periodStart).toLocaleDateString()} -{" "}
                                     {new Date(cycle.periodEnd).toLocaleDateString()}
@@ -234,14 +236,14 @@ const CycleDetails = () => {
                             </div>
 
                             <div className='flex gap-3'>
-                                <p className="text-gray-500 font-semibold">Cycle Length :</p>
-                                <p className="font-semibold">
-                                    {getCycleLength(cycle.periodStart, cycle.periodEnd)} days
+                                <p className="text-gray-500 font-semibold">{t("cycle:cycle_length")} :</p>
+                                <p className="font-semibold lowercase">
+                                    {getCycleLength(cycle.periodStart, cycle.periodEnd)} {t("common:days")}
                                 </p>
                             </div>
 
                             <div className='flex gap-3'>
-                                <p className="text-gray-500 font-semibold">Average Flow :</p>
+                                <p className="text-gray-500 font-semibold">{t("common:average_flow")} :</p>
                                 <p className="font-semibold">
                                     {cycle.flowIntensity}
                                 </p>

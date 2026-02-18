@@ -25,7 +25,7 @@ const AllowNotification = () => {
             if (!token) return;
 
             const response = await axios.put(
-                `${import.meta.env.APP_URL}/user/enable-notification`,
+                `https://hercyclebloom.vercel.app/user/enable-notification`,
                 { isNotification: isGranted },
                 {
                     headers: {
@@ -43,11 +43,11 @@ const AllowNotification = () => {
                 toast.info(t("toast:notif_dismissed"));
             }
 
-            setTimeout(()=>{
+            setTimeout(() => {
                 if (data?.success) {
                     navigate('/get-ready');
                 }
-            },3000)
+            }, 3000)
 
         } catch (error) {
             console.error("Notification Error:", error);

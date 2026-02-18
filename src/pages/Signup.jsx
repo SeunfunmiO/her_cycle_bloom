@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import * as yup from 'yup';
 import axios from 'axios';
-import {GoogleSignIn} from '../config/firebaseAuth';
+import { GoogleSignIn } from '../config/firebaseAuth';
 import { useTranslation } from 'react-i18next';
 
 
@@ -58,7 +58,7 @@ const Signup = () => {
                     email: values.email,
                     password: values.password
                 }
-                const response = await axios.post(`${import.meta.env.APP_URL}/user/sign-up`, payload,
+                const response = await axios.post(`https://hercyclebloom.vercel.app/user/sign-up`, payload,
                     {
                         headers: {
                             "Content-Type": "application/json"

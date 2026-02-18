@@ -9,12 +9,12 @@ const GoogleSignIn = async () => {
         const result = await signInWithPopup(auth, provider);
         const user = result.user;
         const token = await user.getIdToken();
-        
+
         localStorage.setItem('user', JSON.stringify(user))
         localStorage.setItem('token', token);
         // localStorage.setItem('token', user.accessToken)
 
-        await axios.post(`${import.meta.env.APP_URL}/user/google-signin`, {
+        await axios.post(`https://hercyclebloom.vercel.app/user/google-signin`, {
             email: user.email,
             name: user.displayName,
             uid: user.uid,
@@ -37,4 +37,4 @@ const GoogleSignIn = async () => {
 
 }
 
-export {GoogleSignIn}
+export { GoogleSignIn }

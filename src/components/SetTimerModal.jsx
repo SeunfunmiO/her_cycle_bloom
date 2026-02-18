@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const SetTimeModal = () => {
-    const{t}=useTranslation("common")
+    const { t } = useTranslation("common")
     const [time, setTime] = useState({
         hour: "10",
         minute: "00",
@@ -28,7 +28,7 @@ const SetTimeModal = () => {
                 return;
             }
 
-            await axios.put(`${import.meta.env.APP_URL}/user/set-reminder`, {
+            await axios.put(`https://hercyclebloom.vercel.app/user/set-reminder`, {
                 reminderTime: true,
                 reminderTypes: {
                     periodStartAlarm: true,
@@ -70,7 +70,7 @@ const SetTimeModal = () => {
             <div className="flex justify-between items-center w-full">
                 <h1
                     className="font-medium text-neutral-900 dark:text-neutral-100">
-                   {t("set_time")}
+                    {t("set_time")}
                 </h1>
 
                 <button
@@ -94,7 +94,7 @@ const SetTimeModal = () => {
                         onClick={(e) => e.stopPropagation()}
                     >
                         <h2 className="text-lg font-bold text-center mb-4 text-gray-800 dark:text-neutral-100">
-                           {t("common:set_time")}
+                            {t("common:set_time")}
                         </h2>
 
                         <hr className="border dark:border-neutral-700 border-gray-200 mb-4" />
@@ -172,7 +172,7 @@ const SetTimeModal = () => {
                                 onClick={() => setOpenModal(false)}
                                 className="py-2 rounded-lg outline outline-pink-400 hover:bg-palevioletred hover:text-white text-palevioletred font-medium w-full text-sm lg:text-base"
                             >
-                              {t("common:cancel")}
+                                {t("common:cancel")}
                             </button>
                             <button
                                 onClick={handleSave}

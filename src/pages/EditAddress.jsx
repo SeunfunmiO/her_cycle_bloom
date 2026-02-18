@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Check, Loader, Search, X } from "lucide-react";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
@@ -23,7 +23,7 @@ export default function CountryStateSelect() {
         try {
             setSaved(false);
 
-            const res = await axios.put(`${import.meta.env.APP_URL}/user/create-profile`, { address: selectedLocation },
+            const res = await axios.put(`https://hercyclebloom.vercel.app/user/create-profile`, { address: selectedLocation },
                 {
                     headers: {
                         Authorization: `Bearer ${token}`

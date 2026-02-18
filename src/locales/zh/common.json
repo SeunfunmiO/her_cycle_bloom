@@ -84,5 +84,8 @@
     "newest": "最新优先",
     "oldest": "最旧优先",
     "longest": "最长周期优先",
-    "shortest": "最短周期优先"
+    "shortest": "最短周期优先",
+    "cycle": "周期",
+    "loading": "加载中...",
+    "average_flow": "平均流量"
 }

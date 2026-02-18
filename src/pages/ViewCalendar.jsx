@@ -16,7 +16,7 @@ const ViewCalendar = () => {
     useEffect(() => {
         const fetchEntry = async () => {
             try {
-                const res = await axios.get(`${import.meta.env.APP_URL}/period/get-entries`,
+                const res = await axios.get(`https://hercyclebloom.vercel.app/period/get-entries`,
                     {
                         headers: {
                             Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -57,7 +57,7 @@ const ViewCalendar = () => {
         const fetchUserData = async () => {
             try {
                 const res = await axios.get(
-                    `${import.meta.env.APP_URL}/user/user-profile`,
+                    `https://hercyclebloom.vercel.app/user/user-profile`,
                     {
                         headers: {
                             Authorization: `Bearer ${localStorage.getItem("token")}`

@@ -72,7 +72,7 @@ const Home = () => {
     const fetchUser = async () => {
       try {
 
-        const response = await axios.get(`${import.meta.env.APP_URL}/user/get-user`,
+        const response = await axios.get(`https://hercyclebloom.vercel.app/user/get-user`,
           {
             headers: {
               Authorization: `Bearer ${token}`

@@ -42,11 +42,11 @@ const History = () => {
         const fetchData = async () => {
             try {
                 const res = await axios.get(
-                    `${import.meta.env.APP_URL}/period/get-entries`,
+                    `https://hercyclebloom.vercel.app/period/get-entries`,
                     {
                         headers: { Authorization: `Bearer ${token}` },
                     }
-                )  
+                )
 
                 const data = res.data.entries || []
                 setPeriodHistories(data)

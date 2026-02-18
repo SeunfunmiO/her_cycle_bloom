@@ -84,5 +84,8 @@
     "newest": "Plus récents d'abord",
     "oldest": "Plus anciens d'abord",
     "longest": "Cycle le plus long d'abord",
-    "shortest": "Cycle le plus court d'abord"
+    "shortest": "Cycle le plus court d'abord",
+    "cycle":"Cycle",
+    "loading": "Chargement...",
+    "average_flow": "Flux moyen"
 }

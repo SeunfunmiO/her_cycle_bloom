@@ -14,7 +14,7 @@ const EditPeriodDuration = () => {
         const fetchPeriodData = async () => {
             try {
                 const response = await axios.get(
-                    `${import.meta.env.APP_URL}/user/profile`
+                    `https://hercyclebloom.vercel.app/user/profile`
                 );
                 const currentDuration = response.data.user.periodDuration || 0;
                 setValue(currentDuration);
@@ -34,7 +34,7 @@ const EditPeriodDuration = () => {
 
         try {
             const response = await axios.put(
-                `${import.meta.env.APP_URL}/user/create-profile`,
+                `https://hercyclebloom.vercel.app/user/create-profile`,
                 { periodDuration: value }
             );
 

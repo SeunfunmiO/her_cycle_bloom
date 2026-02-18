@@ -86,7 +86,7 @@ const LogEntry2 = () => {
 
             const token = localStorage.getItem("token");
 
-            await axios.put(`${import.meta.env.APP_URL}/period/save-entry`, {
+            await axios.put(`https://hercyclebloom.vercel.app/period/save-entry`, {
                 symptoms: symptomsSelected,
                 flowIntensity: flow,
                 mood: moodsSelected,

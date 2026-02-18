@@ -84,5 +84,8 @@
     "newest": "Newest First",
     "oldest": "Oldest First",
     "longest": "Longest Cycle First",
-    "shortest": "Shortest Cycle First"
+    "shortest": "Shortest Cycle First",
+    "cycle":"Cycle",
+    "loading":"Loading...",
+    "average_flow":"Average Flow"
 }

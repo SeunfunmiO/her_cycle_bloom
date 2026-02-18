@@ -25,7 +25,7 @@ const ChangePassword = () => {
                     oldPassword: values.oldPassword,
                     newPassword: values.newPassword
                 }
-                const res = await axios.put(`${import.meta.env.APP_URL}/user/change-password`,
+                const res = await axios.put(`https://hercyclebloom.vercel.app/user/change-password`,
                     payload,
                     {
                         headers: {
@@ -208,7 +208,7 @@ const ChangePassword = () => {
                           ${loading || saved
                                 ? "bg-pink-300 cursor-not-allowed"
                                 : "bg-palevioletred cursor-pointer"
-                          }
+                            }
                     `}
                     >
                         {loading ? "Saving..." : saved ? "Saved" : "Save"}

@@ -17,7 +17,7 @@ const SettingsProfile = () => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await axios.get(`${import.meta.env.APP_URL}/user/get-user`,
+                const response = await axios.get(`https://hercyclebloom.vercel.app/user/get-user`,
                     {
                         headers: {
                             Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -49,7 +49,7 @@ const SettingsProfile = () => {
     return (
         <div className='bg-[#f9f9f9] h-screen dark:bg-neutral-900 transition-colors duration-300'>
             <div className="max-w-md mx-auto">
-                <EditPicture photo={photo} setPhoto={setPhoto}/>
+                <EditPicture photo={photo} setPhoto={setPhoto} />
                 <div className="bg-white dark:bg-neutral-800 shadow my-8 h-60 rounded-xl px-3 flex flex-col justify-center gap-4 w-full">
                     <div className='flex justify-between items-center md:text-xl'>
                         <h3

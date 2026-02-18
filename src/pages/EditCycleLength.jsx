@@ -16,7 +16,7 @@ const EditCycleLength = () => {
         const fetchCycleLength = async () => {
             try {
                 const response = await axios.get(
-                    `${import.meta.env.APP_URL}/user/user-profile`                );
+                    `https://hercyclebloom.vercel.app/user/user-profile`);
                 const initialLength = response.data.user.cycleLength || 0;
                 setValue(initialLength);
                 setCycleLength(initialLength);
@@ -35,13 +35,13 @@ const EditCycleLength = () => {
 
         try {
             const response = await axios.put(
-                `${import.meta.env.APP_URL}/user/create-profile`,
+                `https://hercyclebloom.vercel.app/user/create-profile`,
                 { cycleLength: value }
             );
 
             const savedLength = response.data.user.cycleLength;
             setCycleLength(savedLength);
-            setValue(savedLength); 
+            setValue(savedLength);
             setSaved(true);
 
             setTimeout(() => setSaved(false), 2000);

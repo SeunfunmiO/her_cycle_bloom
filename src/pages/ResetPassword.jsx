@@ -40,7 +40,7 @@ const ResetPassword = () => {
                 };
 
                 const { data } = await axios.post(
-                    `${import.meta.env.APP_URL}/user/reset-password`,
+                    `https://hercyclebloom.vercel.app/user/reset-password`,
                     payload,
                     { headers: { 'Content-Type': 'application/json' } }
                 );
@@ -80,8 +80,8 @@ const ResetPassword = () => {
                         onBlur={formik.handleBlur}
                         value={formik.values.password}
                         className={`border rounded-lg py-2 px-3 bg-transparent outline-none
-                        ${formik.touched.password && formik.errors.password ? 'border-red-500' 
-                            : 'border-gray-300 dark:border-neutral-600'}
+                        ${formik.touched.password && formik.errors.password ? 'border-red-500'
+                                : 'border-gray-300 dark:border-neutral-600'}
                         text-neutral-900 dark:text-neutral-100`}
                     />
                     {formik.touched.password && formik.errors.password && (

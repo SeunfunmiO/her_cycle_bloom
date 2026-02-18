@@ -75,7 +75,7 @@ const CreateProfile = () => {
                     profilePicture: profilePicture
                 }
                 const response = await axios.put(
-                    `${import.meta.env.APP_URL}/user/create-profile`,
+                    `https://hercyclebloom.vercel.app/user/create-profile`,
                     payload,
                     {
                         headers: {

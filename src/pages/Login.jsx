@@ -49,7 +49,7 @@ const Login = () => {
           email: values.email,
           password: values.password
         }
-        const response = await axios.post(`${import.meta.env.APP_URL}/user/sign-in`, payload, {
+        const response = await axios.post(`https://hercyclebloom.vercel.app/user/sign-in`, payload, {
           headers: {
             "Content-Type": "application/json"
           }

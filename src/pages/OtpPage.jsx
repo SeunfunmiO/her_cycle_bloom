@@ -11,7 +11,7 @@ const OtpPage = () => {
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
 
-   
+
     const params = new URLSearchParams(location.search);
     const email = params.get("email");
 
@@ -21,7 +21,7 @@ const OtpPage = () => {
         setMessage("");
 
         try {
-            const res = await axios.post(`${import.meta.env.APP_URL}/user/verify-otp`, {
+            const res = await axios.post(`https://hercyclebloom.vercel.app/user/verify-otp`, {
                 email,
                 otp
             });
