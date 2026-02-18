@@ -1,14 +1,16 @@
 import { ChevronsDownIcon } from "lucide-react";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const HistoryFilter = ({ selected, setSelected }) => {
   const [openFilter, setOpenFilter] = useState(false);
+  const {t}=useTranslation("common")
 
   const options = [
-    { id: "newest", label: "Newest First" },
-    { id: "oldest", label: "Oldest First" },
-    { id: "longest", label: "Longest Cycle First" },
-    { id: "shortest", label: "Shortest Cycle First" },
+    { id: "newest", label: t("common:newest")},
+    { id: "oldest", label: t("common:oldest") },
+    { id: "longest", label: t("common:longest") },
+    { id: "shortest", label: t("common:shortest") },
   ];
 
   return (

@@ -1,0 +1,19 @@
+{
+    "slides": {
+        "slide1": {
+            "title": "Bienvenue - Votre cycle, à votre façon",
+            "desc": "Suivez vos règles, prédisez votre ovulation et comprenez mieux votre corps avec des informations personnalisées conçues juste pour vous."
+        },
+        "slide2": {
+            "title": "Découvrez comment nous vous aidons chaque jour",
+            "desc": "Prédisez vos règles et votre ovulation, enregistrez vos symptômes pour repérer des tendances et obtenez des informations personnalisées rien que pour vous."
+        },
+        "slide3": {
+            "title": "Vous êtes prête à prendre le contrôle",
+            "desc": "Commencez le suivi, obtenez des informations plus intelligentes et sentez-vous en confiance à chaque phase de votre cycle."
+        }
+    },
+    "skip": "Passer",
+    "next": "Suivant",
+    "get_started": "Commencer"
+}

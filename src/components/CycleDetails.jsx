@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 const CycleDetails = () => {
     const navigate = useNavigate()
+    
 
     return (
         <div className='bg-white dark:bg-neutral-900 transition-colors duration-200'>

@@ -1,0 +1,27 @@
+{
+    "cramps": "痉挛",
+    "back_pain": "背痛",
+    "nausea": "恶心",
+    "headache": "头痛",
+    "fatigue": "疲劳",
+    "bloating": "腹胀",
+    "happy": "开心",
+    "sad": "悲伤",
+    "irritable": "易怒",
+    "anxious": "焦虑",
+    "emotional": "情绪化",
+    "energetic": "精力充沛",
+    "flow_intensity": "流量强度",
+    "symptoms": "症状",
+    "flow": {
+        "light": "少量",
+        "medium": "中等",
+        "heavy": "大量"
+    },
+    "period": "月经",
+    "predicted_period": "预测月经",
+    "ovulation": "排卵",
+    "fertile_window": "排卵期",
+    "follicular_phase": "卵泡期",
+    "cycle_length": "周期长度"
+}

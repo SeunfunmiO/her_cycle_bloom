@@ -1,0 +1,27 @@
+{
+    "cramps": "Crampes",
+    "back_pain": "Mal de dos",
+    "nausea": "Nausées",
+    "headache": "Mal de tête",
+    "fatigue": "Fatigue",
+    "bloating": "Ballonnements",
+    "happy": "Heureuse",
+    "sad": "Triste",
+    "irritable": "Irritable",
+    "anxious": "Anxieuse",
+    "emotional": "Émotive",
+    "energetic": "Énergique",
+    "flow_intensity": "Intensité du flux",
+    "symptoms": "Symptômes",
+    "flow": {
+        "light": "Léger",
+        "medium": "Modéré",
+        "heavy": "Abondant"
+    },
+    "period": "Règles",
+    "predicted_period": "Règles prévues",
+    "ovulation": "Ovulation",
+    "fertile_window": "Période fertile",
+    "follicular_phase": "Phase folliculaire",
+    "cycle_length": "Durée du cycle"
+}

@@ -76,5 +76,13 @@
     "cancel": "Cancelar",
     "save": "Guardar",
     "am": "a. m.",
-    "pm": "p. m."
+    "pm": "p. m.",
+    "past_cycles": "Ciclos anteriores",
+    "no_data": "Aún no hay datos de períodos registrados",
+    "not_set": "Sin establecer",
+    "invalid_date": "Fecha inválida",
+    "newest": "Más recientes primero",
+    "oldest": "Más antiguos primero",
+    "longest": "Ciclo más largo primero",
+    "shortest": "Ciclo más corto primero"
 }

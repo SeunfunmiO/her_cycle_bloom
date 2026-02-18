@@ -120,7 +120,7 @@ const App = () => {
         <Route path='/set-reminder' element={<SetRemainder />} />
         <Route path='/languages' element={<Languages />} />
         <Route path='/history' element={<History />} />
-        <Route path='/cycle-details' element={<CycleDetails />} />
+        <Route path='/cycle-details/:_id' element={<CycleDetails />} />
         <Route path='/export-data' element={<ExportDataCycle />} />
         <Route path='/flow-care' element={<FlowCare />} />
         <Route path='/ai-chat' element={<AiChat />} />

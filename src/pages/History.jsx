@@ -4,21 +4,22 @@ import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import HistoryFilter from '../components/HistoryFilter'
 import axios from 'axios'
+import { useTranslation } from 'react-i18next'
 
 const History = () => {
     const navigate = useNavigate()
     const token = localStorage.getItem('token')
     const [periodHistories, setPeriodHistories] = useState([])
     const [selectedFilter, setSelectedFilter] = useState("newest");
-
+    const { t, i18n } = useTranslation(["common", "cycle"])
 
     const formatFullDate = (dateString) => {
-        if (!dateString) return "Not set"; // <--- show placeholder
+        if (!dateString) return t("common:not_set"); // <--- show placeholder
 
         const date = new Date(dateString);
-        if (isNaN(date)) return "Invalid date";
+        if (isNaN(date)) return t("common:invalid_date");
 
-        return date.toLocaleDateString("en-US", {
+        return date.toLocaleDateString(i18n.language, {
             month: "long",
             day: "numeric",
             year: "numeric",
@@ -26,12 +27,12 @@ const History = () => {
     };
 
     const formatMonthYear = (dateString) => {
-        if (!dateString) return "Not set";
+        if (!dateString) return t("common:not_set");
 
         const date = new Date(dateString);
-        if (isNaN(date)) return "Invalid date";
+        if (isNaN(date)) return t("common:invalid_date");
 
-        return date.toLocaleDateString("en-US", {
+        return date.toLocaleDateString(i18n.language, {
             month: "long",
             year: "numeric",
         });
@@ -49,7 +50,6 @@ const History = () => {
 
                 const data = res.data.entries || []
                 setPeriodHistories(data)
-
             } catch (err) {
                 console.log('Error fetching data: ', err);
             }
@@ -113,23 +113,23 @@ const History = () => {
                         src="./Arrow Left.svg"
                         alt="arrow left"
                     />
-                    <h1 className="text-lg font-bold">History</h1>
+                    <h1 className="text-lg font-bold">{t("common:history")}</h1>
 
                     <HistoryFilter
-                    selected={selectedFilter}
-                    setSelected={setSelectedFilter}
+                        selected={selectedFilter}
+                        setSelected={setSelectedFilter}
                     />
 
                 </div>
 
-                <h1 className="font-bold text-lg">Past Cycles</h1>
+                <h1 className="font-bold text-lg">{t("past_cycles")}</h1>
 
                 <div className='mt-8 flex flex-col gap-3 pb-20'>
                     {
-                       sortedHistories.length > 0 ? (
-                           sortedHistories.map((history, index) => (
+                        sortedHistories.length > 0 ? (
+                            sortedHistories.map((history, index) => (
                                 <div
-                                    onClick={() => navigate('/cycle-details')}
+                                    onClick={() => navigate(`/cycle-details/${history._id}`)}
                                     className='flex justify-between items-center cursor-pointer'
                                     key={index}
                                 >
@@ -147,7 +147,11 @@ const History = () => {
                                     <div className="flex items-center gap-8">
                                         <div className='flex items-center gap-2'>
                                             <small className='font-medium'>
-                                                {history.flowIntensity || "Light"}
+                                                {history.flowIntensity === "Medium" ? t("cycle:flow.medium") :
+                                                    history.flowIntensity === "Heavy" ? t("cycle:flow.heavy") :
+                                                        t("cycle:flow.light")
+                                                        || t("cycle:flow.light")
+                                                }
                                             </small>
                                             <img
                                                 src={flowIcons[history.flowIntensity] || "./light-flow.svg"}
@@ -160,11 +164,11 @@ const History = () => {
                                 </div>
                             ))
                         ) : <h2 className='text-gray-400 dark:invert font-medium text-sm lg:text-base'>
-                            No period data found
+                            {t("common:no_data")}
                         </h2>
                     }
-
                     <div className="border-b border-gray-200 dark:border-neutral-700"></div>
+
                 </div>
             </div>
             <Navbar />

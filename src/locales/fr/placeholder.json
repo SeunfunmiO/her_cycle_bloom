@@ -1,0 +1,9 @@
+{
+    "enter_email": "Entrez votre e-mail",
+    "enter_password": "Entrez votre mot de passe",
+    "re_enter_password": "Entrez à nouveau votre mot de passe",
+    "name_placeholder": "ex. Sarah",
+    "select_date": "Sélectionnez une date",
+    "search_symptoms": "Rechercher des symptômes",
+    "additional_details": "Ajoutez des détails supplémentaires sur votre journée..."
+}
