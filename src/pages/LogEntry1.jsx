@@ -12,8 +12,8 @@ const LogEntry1 = () => {
     ])
 
     return (
-        <div className='bg-lavender h-screen dark:bg-neutral-900'>
-            <div className='max-w-md mx-auto p-4 max-h-120 lg:max-h-130 overflow-y-auto custom-scrollbar scrollbar-hide'>
+        <div className='bg-lavender h-screen dark:bg-neutral-900 mb-14'>
+            <div className='max-w-md mx-auto p-4 /max-h-120 /lg:max-h-130 /overflow-y-auto /custom-scrollbar /scrollbar-hide'>
                 <div className='flex items-center gap-5 mb-3'>
                     <img
                         onClick={() => navigate(-1)}

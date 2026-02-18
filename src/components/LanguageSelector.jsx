@@ -58,7 +58,7 @@ const LanguageSelector = () => {
                 className="w-full mb-3 px-3 py-2 text-sm border rounded-lg border-pink-50 outline-0"
             />
 
-            <div className="max-h-90 overflow-y-auto custom-scrollbar scrollbar-hide flex flex-col gap-5 ">
+            <div className="max-h-90 overflow-y-auto /custom-scrollbar /scrollbar-hide flex flex-col gap-5 ">
                 {filteredLanguages.map((lang, index) => (
                     <div key={lang.code}>
                         <button

@@ -1,13 +1,15 @@
 import axios from "axios";
 import { Clock } from "lucide-react";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const SetTimeModal = () => {
+    const{t}=useTranslation("common")
     const [time, setTime] = useState({
         hour: "10",
         minute: "00",
         second: "00",
-        period: "PM",
+        period: t("common:pm"),
     });
     const [openModal, setOpenModal] = useState(false);
 
@@ -68,7 +70,7 @@ const SetTimeModal = () => {
             <div className="flex justify-between items-center w-full">
                 <h1
                     className="font-medium text-neutral-900 dark:text-neutral-100">
-                    Set Time
+                   {t("set_time")}
                 </h1>
 
                 <button
@@ -92,7 +94,7 @@ const SetTimeModal = () => {
                         onClick={(e) => e.stopPropagation()}
                     >
                         <h2 className="text-lg font-bold text-center mb-4 text-gray-800 dark:text-neutral-100">
-                            Set Time
+                           {t("common:set_time")}
                         </h2>
 
                         <hr className="border dark:border-neutral-700 border-gray-200 mb-4" />
@@ -149,7 +151,7 @@ const SetTimeModal = () => {
 
 
                             <div className="h-32 overflow-y-scroll snap-y snap-mandatory scrollbar-hide w-16 text-center">
-                                {["AM", "PM"].map((period) => (
+                                {[t("common:am"), t("common:pm")].map((period) => (
                                     <div
                                         key={period}
                                         onClick={() => handleChange("period", period)}
@@ -170,13 +172,13 @@ const SetTimeModal = () => {
                                 onClick={() => setOpenModal(false)}
                                 className="py-2 rounded-lg outline outline-pink-400 hover:bg-palevioletred hover:text-white text-palevioletred font-medium w-full text-sm lg:text-base"
                             >
-                                Cancel
+                              {t("common:cancel")}
                             </button>
                             <button
                                 onClick={handleSave}
                                 className="py-2 rounded-lg bg-palevioletred text-white hover:bg-pink-600 font-medium w-full text-sm lg:text-base"
                             >
-                                Save
+                                {t("common:save")}
                             </button>
                         </div>
                     </div>
