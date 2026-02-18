@@ -68,7 +68,7 @@ const CalendarComponent = () => {
                 if (!token) return
 
                 const res = await axios.get(
-                    "https://her-cycle-bloom-backend.onrender.com/user/user-profile",
+                    `${import.meta.env.APP_URL}/user/user-profile`,
                     { headers: { Authorization: `Bearer ${token}` } }
                 )
 
@@ -101,7 +101,7 @@ const CalendarComponent = () => {
                 if (!token) return
 
                 const res = await axios.get(
-                    "https://her-cycle-bloom-backend.onrender.com/period/get-entries",
+                    `${import.meta.env.APP_URL}/period/get-entries`,
                     { headers: { Authorization: `Bearer ${token}` } }
                 )
 
@@ -168,7 +168,7 @@ const CalendarComponent = () => {
 
         try {
             await axios.post(
-                "https://her-cycle-bloom-backend.onrender.com/period/create-period-details",
+                `${import.meta.env.APP_URL}/period/create-period-details`,
                 {
                     periodStart: selectedRange.from,
                     periodEnd: selectedRange.to || null,

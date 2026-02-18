@@ -14,7 +14,7 @@ const EditPeriodDuration = () => {
         const fetchPeriodData = async () => {
             try {
                 const response = await axios.get(
-                    'https://her-cycle-bloom-backend.onrender.com/user/profile'
+                    `${import.meta.env.APP_URL}/user/profile`
                 );
                 const currentDuration = response.data.user.periodDuration || 0;
                 setValue(currentDuration);
@@ -34,7 +34,7 @@ const EditPeriodDuration = () => {
 
         try {
             const response = await axios.put(
-                'https://her-cycle-bloom-backend.onrender.com/user/create-profile',
+                `${import.meta.env.APP_URL}/user/create-profile`,
                 { periodDuration: value }
             );
 

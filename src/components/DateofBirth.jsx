@@ -21,7 +21,7 @@ const DateofBirth = ({ value, onChange }) => {
     const handleSave = async (formattedDate) => {
         try {
             const res = await axios.put(
-                'https://her-cycle-bloom-backend.onrender.com/user/create-profile',
+                `${import.meta.env.APP_URL}/user/create-profile`,
                 { dateOfBirth: formattedDate },
                 {
                     headers: {

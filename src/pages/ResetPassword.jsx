@@ -40,7 +40,7 @@ const ResetPassword = () => {
                 };
 
                 const { data } = await axios.post(
-                    'https://her-cycle-bloom-backend.onrender.com/user/reset-password',
+                    `${import.meta.env.APP_URL}/user/reset-password`,
                     payload,
                     { headers: { 'Content-Type': 'application/json' } }
                 );

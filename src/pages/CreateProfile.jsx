@@ -75,7 +75,7 @@ const CreateProfile = () => {
                     profilePicture: profilePicture
                 }
                 const response = await axios.put(
-                    `https://her-cycle-bloom-backend.onrender.com/user/create-profile`,
+                    `${import.meta.env.APP_URL}/user/create-profile`,
                     payload,
                     {
                         headers: {

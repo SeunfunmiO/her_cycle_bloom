@@ -30,7 +30,7 @@ const EditPicture = ({ photo, setPhoto }) => {
                 setLoading(true);
 
                 const res = await axios.put(
-                    'https://her-cycle-bloom-backend.onrender.com/user/create-profile',
+                    `${import.meta.env.APP_URL}/user/create-profile`,
                     { profilePicture: base64 }, 
                     {
                         headers: { Authorization: `Bearer ${token}` }

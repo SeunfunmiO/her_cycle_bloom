@@ -173,7 +173,7 @@ const CycleDetails = () => {
         const fetchCycle = async () => {
             try {
                 const res = await axios.get(
-                    `https://her-cycle-bloom-backend.onrender.com/period/get-entry/${_id}`,
+                    `${import.meta.env.APP_URL}/period/get-entry/${_id}`,
                     {
                         headers: { Authorization: `Bearer ${token}` }
                     }

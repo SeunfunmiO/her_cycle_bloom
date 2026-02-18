@@ -15,7 +15,7 @@ const EditGmail = () => {
         setLoading(true);
         setSaved(false);
 
-        const res = await axios.put('https://her-cycle-bloom-backend.onrender.com/user/create-profile', { email: value },
+        const res = await axios.put(`${import.meta.env.APP_URL}/user/create-profile`, { email: value },
             {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`

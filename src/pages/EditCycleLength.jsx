@@ -16,8 +16,7 @@ const EditCycleLength = () => {
         const fetchCycleLength = async () => {
             try {
                 const response = await axios.get(
-                    'https://her-cycle-bloom-backend.onrender.com/user/user-profile'
-                );
+                    `${import.meta.env.APP_URL}/user/user-profile`                );
                 const initialLength = response.data.user.cycleLength || 0;
                 setValue(initialLength);
                 setCycleLength(initialLength);
@@ -36,7 +35,7 @@ const EditCycleLength = () => {
 
         try {
             const response = await axios.put(
-                'https://her-cycle-bloom-backend.onrender.com/user/create-profile',
+                `${import.meta.env.APP_URL}/user/create-profile`,
                 { cycleLength: value }
             );
 

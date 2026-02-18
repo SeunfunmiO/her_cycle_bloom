@@ -58,7 +58,7 @@ const Signup = () => {
                     email: values.email,
                     password: values.password
                 }
-                const response = await axios.post("https://her-cycle-bloom-backend.onrender.com/user/sign-up", payload,
+                const response = await axios.post(`${import.meta.env.APP_URL}/user/sign-up`, payload,
                     {
                         headers: {
                             "Content-Type": "application/json"

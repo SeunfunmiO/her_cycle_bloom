@@ -25,7 +25,7 @@ const ChangePassword = () => {
                     oldPassword: values.oldPassword,
                     newPassword: values.newPassword
                 }
-                const res = await axios.put(`https://her-cycle-bloom-backend.onrender.com/user/change-password`,
+                const res = await axios.put(`${import.meta.env.APP_URL}/user/change-password`,
                     payload,
                     {
                         headers: {

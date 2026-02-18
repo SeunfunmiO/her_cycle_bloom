@@ -11,7 +11,7 @@ const CycleInformation = () => {
 
     useEffect(() => {
         const fetchEntry = async () => {
-            const res = await axios.get(`https://her-cycle-bloom-backend.onrender.com/period/get-entries`,
+            const res = await axios.get(`${import.meta.env.APP_URL}/period/get-entries`,
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`

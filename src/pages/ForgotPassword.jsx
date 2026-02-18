@@ -12,7 +12,7 @@ const ForgotPassword = () => {
         setMessage("")
 
         try {
-            const {data} = await axios.post(`https://her-cycle-bloom-backend.onrender.com/user/forgot-password`,
+            const {data} = await axios.post(`${import.meta.env.APP_URL}/user/forgot-password`,
                 { email }
             )
 

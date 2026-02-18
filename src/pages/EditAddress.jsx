@@ -23,7 +23,7 @@ export default function CountryStateSelect() {
         try {
             setSaved(false);
 
-            const res = await axios.put('https://her-cycle-bloom-backend.onrender.com/user/create-profile', { address: selectedLocation },
+            const res = await axios.put(`${import.meta.env.APP_URL}/user/create-profile`, { address: selectedLocation },
                 {
                     headers: {
                         Authorization: `Bearer ${token}`

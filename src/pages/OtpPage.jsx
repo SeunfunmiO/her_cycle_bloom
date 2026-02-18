@@ -21,7 +21,7 @@ const OtpPage = () => {
         setMessage("");
 
         try {
-            const res = await axios.post('https://her-cycle-bloom-backend.onrender.com/user/verify-otp', {
+            const res = await axios.post(`${import.meta.env.APP_URL}/user/verify-otp`, {
                 email,
                 otp
             });

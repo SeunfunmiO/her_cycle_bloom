@@ -16,7 +16,7 @@ const ViewCalendar = () => {
     useEffect(() => {
         const fetchEntry = async () => {
             try {
-                const res = await axios.get(`https://her-cycle-bloom-backend.onrender.com/period/get-entries`,
+                const res = await axios.get(`${import.meta.env.APP_URL}/period/get-entries`,
                     {
                         headers: {
                             Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -57,7 +57,7 @@ const ViewCalendar = () => {
         const fetchUserData = async () => {
             try {
                 const res = await axios.get(
-                    "https://her-cycle-bloom-backend.onrender.com/user/user-profile",
+                    `${import.meta.env.APP_URL}/user/user-profile`,
                     {
                         headers: {
                             Authorization: `Bearer ${localStorage.getItem("token")}`

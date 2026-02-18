@@ -25,7 +25,7 @@ const AllowNotification = () => {
             if (!token) return;
 
             const response = await axios.put(
-                `https://her-cycle-bloom-backend.onrender.com/user/enable-notification`,
+                `${import.meta.env.APP_URL}/user/enable-notification`,
                 { isNotification: isGranted },
                 {
                     headers: {

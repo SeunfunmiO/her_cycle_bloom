@@ -14,7 +14,7 @@ const GoogleSignIn = async () => {
         localStorage.setItem('token', token);
         // localStorage.setItem('token', user.accessToken)
 
-        await axios.post('https://her-cycle-bloom-backend.onrender.com/user/google-signin', {
+        await axios.post(`${import.meta.env.APP_URL}/user/google-signin`, {
             email: user.email,
             name: user.displayName,
             uid: user.uid,
