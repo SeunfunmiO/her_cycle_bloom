@@ -11,7 +11,7 @@ const CycleInformation = () => {
 
     useEffect(() => {
         const fetchEntry = async () => {
-            const res = await axios.get(`https://her-cycle-bloom-backend.onrender.com/period/get-entry`,
+            const res = await axios.get(`https://her-cycle-bloom-backend.onrender.com/period/get-entries`,
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -111,7 +111,7 @@ const CycleInformation = () => {
                             </div>
                             <div className="flex items-center gap-3">
                                 <p className="text-gray-400 dark:invert font-medium text-sm lg:text-base">
-                                   {formattedPeriod.length} Days
+                                    {formattedPeriod.length} Days
                                 </p>
                                 <ChevronRight className="text-gray-300 w-5 dark:text-neutral-100" />
                             </div>
@@ -129,11 +129,11 @@ const CycleInformation = () => {
                                 <h3 className="font-medium">Cycle Length</h3>
                             </div>
                             <div
-                             className="flex items-center gap-3"
-                             onClick={()=>navigate('/cycle-length')}
-                             >
+                                className="flex items-center gap-3"
+                                onClick={() => navigate('/cycle-length')}
+                            >
                                 <p className="text-gray-400 dark:invert font-medium text-sm lg:text-base">
-                                   {cycleLength} Days
+                                    {cycleLength} Days
                                 </p>
                                 <ChevronRight className="text-gray-300 dark:text-neutral-100 w-5" />
                             </div>

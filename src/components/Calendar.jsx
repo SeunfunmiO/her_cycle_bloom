@@ -101,7 +101,7 @@ const CalendarComponent = () => {
                 if (!token) return
 
                 const res = await axios.get(
-                    "https://her-cycle-bloom-backend.onrender.com/period/get-entry",
+                    "https://her-cycle-bloom-backend.onrender.com/period/get-entries",
                     { headers: { Authorization: `Bearer ${token}` } }
                 )
 
@@ -284,7 +284,7 @@ const CalendarComponent = () => {
                             <span>{date.getDate()}</span>
                             {isSameDay(date, new Date()) && (
                                 <span className="text-[10px] text-blue-500">
-                                   {t("common:today")}
+                                    {t("common:today")}
                                 </span>
                             )}
                         </div>
@@ -302,13 +302,13 @@ const CalendarComponent = () => {
 
             {cycleInfo?.late && (
                 <p className="text-red-500 text-sm">
-               {t("common:late_period")}
+                    {t("common:late_period")}
                 </p>
             )}
 
             {cycleInfo?.irregularity?.irregular && (
                 <p className="text-orange-500 text-sm">
-                  {t("commo:irregular_cycle")}
+                    {t("commo:irregular_cycle")}
                 </p>
             )}
         </div>

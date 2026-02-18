@@ -42,7 +42,7 @@ const History = () => {
         const fetchData = async () => {
             try {
                 const res = await axios.get(
-                    "https://her-cycle-bloom-backend.onrender.com/period/get-entry",
+                    "https://her-cycle-bloom-backend.onrender.com/period/get-entries",
                     {
                         headers: { Authorization: `Bearer ${token}` },
                     }

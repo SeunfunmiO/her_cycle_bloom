@@ -16,7 +16,7 @@ const ViewCalendar = () => {
     useEffect(() => {
         const fetchEntry = async () => {
             try {
-                const res = await axios.get(`https://her-cycle-bloom-backend.onrender.com/period/get-entry`,
+                const res = await axios.get(`https://her-cycle-bloom-backend.onrender.com/period/get-entries`,
                     {
                         headers: {
                             Authorization: `Bearer ${localStorage.getItem("token")}`
