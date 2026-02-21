@@ -1,12 +1,13 @@
 import { Check } from 'lucide-react';
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom'
 
 
 const Theme = () => {
     const navigate = useNavigate()
+    const {t}=useTranslation("settings")
     const html = document.documentElement;
-
     const [darkMode, setDarkMode] = useState(() => {
         const savedTheme = localStorage.getItem('theme')
         return savedTheme === "dark" ? true : false
@@ -38,7 +39,7 @@ const Theme = () => {
                         onClick={() => navigate(-1)}
                         src="./Arrow Left.svg" alt="back" />
                     <h1 className="font-bold text-lg lg:text-xl text-center w-full">
-                        Theme
+                       {t("settings:theme")}
                     </h1>
                 </div>
 
@@ -49,7 +50,7 @@ const Theme = () => {
                         <img
                             className='size-4 lg:size-5 dark:invert'
                             src="./sun.svg" alt="Sun Icon" />
-                        <h1 className="font-medium text-neutral-900 dark:text-neutral-100 ">Light Mode</h1>
+                        <h1 className="font-medium text-neutral-900 dark:text-neutral-100 ">{t("settings:light_mode")}</h1>
                         {!darkMode && <Check size={18} className='ml-auto text-palevioletred' />}
                     </button>
 
@@ -62,7 +63,7 @@ const Theme = () => {
                             className='size-4 lg:size-5 dark:invert'
                             src="./moon.svg" alt="Moon Icon"
                         />
-                        <h1 className="font-medium text-neutral-900 dark:text-neutral-100 ">Dark Mode</h1>
+                        <h1 className="font-medium text-neutral-900 dark:text-neutral-100 ">{t("settings:dark_mode")}</h1>
                         {darkMode && <Check size={18} className='ml-auto text-palevioletred' />}
                     </button>
                 </div>

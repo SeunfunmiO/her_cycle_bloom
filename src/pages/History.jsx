@@ -94,13 +94,11 @@ const History = () => {
         }
     });
 
-
     const flowIcons = {
         Light: "./light-flow.svg",
         Medium: "./medium-flow.svg",
         Heavy: "./heavy-flow.svg",
     }
-
 
     return (
 

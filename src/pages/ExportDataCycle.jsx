@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import ExportFile from '../components/ExportFileLoading'
+import { useTranslation } from 'react-i18next'
 
 const ExportDataCycle = () => {
     const navigate = useNavigate()
     const [openExportModal, setOpenExportModal] = useState(false)
+    const {t}=useTranslation("settings")
 
 
     return (
@@ -17,7 +19,7 @@ const ExportDataCycle = () => {
                         onClick={() => navigate(-1)}
                         className='dark:invert'
                         src="./Arrow Left.svg" alt="arrow left" />
-                    <h1 className="text-lg font-bold">Eport Cycle Data</h1>
+                    <h1 className="text-lg font-bold">{t("settings:export_data")}</h1>
                     <div></div>
                 </div>
 

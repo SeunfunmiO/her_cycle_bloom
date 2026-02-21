@@ -163,6 +163,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
+import FlowIntensityRange from './FlowIntensityRange'
 
 const CycleDetails = () => {
     const navigate = useNavigate()
@@ -170,6 +171,25 @@ const CycleDetails = () => {
     const token = localStorage.getItem('token')
     const [cycle, setCycle] = useState(null)
     const { t, i18n } = useTranslation(["common", "cycle"])
+
+    const formatFullDate = (dateString) => {
+        if (!dateString) return t("common:not_set"); // <--- show placeholder
+
+        const date = new Date(dateString);
+        if (isNaN(date)) return t("common:invalid_date");
+
+        return date.toLocaleDateString(i18n.language, {
+            month: "long",
+            day: "numeric"
+        });
+    }
+
+
+    const flowIcons = {
+        Light: "./light-flow.svg",
+        Medium: "./medium-flow.svg",
+        Heavy: "./heavy-flow.svg",
+    }
 
     useEffect(() => {
         const fetchCycle = async () => {
@@ -182,6 +202,7 @@ const CycleDetails = () => {
                 )
 
                 setCycle(res.data.entry)
+                console.log(res.data.entry)
             } catch (err) {
                 console.log("Error fetching cycle:", err)
             }
@@ -204,6 +225,17 @@ const CycleDetails = () => {
         )
     }
 
+    // const symptomsImg = {
+    //     Cramps: "../Cramps.svg",
+    //     BackPain: "Back Pain",
+    //     "nausea": "Nausea",
+    //     "headache": "Headache",
+    //     "fatigue": "Fatigue",
+    //     "bloating":
+
+    // }
+
+
     return (
         <div className='bg-white dark:bg-neutral-900 min-h-screen transition-colors duration-200'>
             <div className="max-w-md mx-auto pb-5">
@@ -220,6 +252,11 @@ const CycleDetails = () => {
                                 year: 'numeric'
                             })} {t("common:cycle")}
                         </h1>
+                        <img
+                            onClick={() => navigate('/export-data')}
+                            className='cursor-pointer dark:invert size-4'
+                            src="../Arrow-circle-up.svg" alt="Export data"
+                        />
                     </div>
 
                     <div className="mt-5">
@@ -230,8 +267,8 @@ const CycleDetails = () => {
                             <div className='flex gap-3'>
                                 <p className="text-gray-500 capitalize font-semibold">{t("cycle:period")} :</p>
                                 <p className="font-semibold">
-                                    {new Date(cycle.periodStart).toLocaleDateString()} -{" "}
-                                    {new Date(cycle.periodEnd).toLocaleDateString()}
+                                    {formatFullDate(new Date(cycle.periodStart).toLocaleDateString())} -{" "}
+                                    {formatFullDate(new Date(cycle.periodEnd).toLocaleDateString())}
                                 </p>
                             </div>
 
@@ -245,15 +282,34 @@ const CycleDetails = () => {
                             <div className='flex gap-3'>
                                 <p className="text-gray-500 font-semibold">{t("common:average_flow")} :</p>
                                 <p className="font-semibold">
-                                    {cycle.flowIntensity}
+                                    {cycle.flowIntensity === "Medium" ? t("cycle:flow.medium") :
+                                        cycle.flowIntensity === "Heavy" ? t("cycle:flow.heavy") :
+                                            t("cycle:flow.light")
+                                            || t("cycle:flow.light")
+                                    }
                                 </p>
+                                <img
+                                    src={flowIcons[cycle.flowIntensity] || "../light-flow.svg"}
+                                    alt="droplet"
+                                />
                             </div>
 
+                            <FlowIntensityRange flow={cycle.FlowIntensity || "Light"}/>
+                        </div>
+                        <div className='flex items-center gap-3 mt-8 justify-between'>
+                            <div className='flex gap-3 items-center'>
+                                <p className="text-gray-500 font-semibold dark:invert">{t("common:top_symptoms")} : </p>
+                                <p className="font-semibold">{
+                                    // history.symptoms===
+                                }</p>
+                            </div>
+                            <img src="../Cramps.svg" alt="Icon" />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     )
 }
 

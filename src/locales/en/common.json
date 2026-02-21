@@ -87,5 +87,6 @@
     "shortest": "Shortest Cycle First",
     "cycle":"Cycle",
     "loading":"Loading...",
-    "average_flow":"Average Flow"
+    "average_flow":"Average Flow",
+    "top_symptoms":"Top Symptoms Logged"
 }

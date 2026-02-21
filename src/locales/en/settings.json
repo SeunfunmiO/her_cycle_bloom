@@ -2,5 +2,11 @@
     "reminder_info": "Never miss a Reminder",
     "reminder_details": "Get timely alerts for your period, ovulation and health tips- only when it matters most.",
     "later":"Maybe later",
-    "enable":"Enable Notifications"
+    "enable":"Enable Notifications",
+    "theme":"Theme",
+    "light_mode":"Light Mode",
+    "dark_mode":"Dark Mode",
+    "export_data":"Export Cycle Data",
+    "export_pdf":"Export as pdf",
+    "export_csv":"Export as csv"
 }
