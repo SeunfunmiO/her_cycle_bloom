@@ -1,10 +1,16 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { useTranslation } from 'react-i18next'
 
 const ForgotPassword = () => {
     const [email, setEmail] = useState("")
     const [loading, setLoading] = useState(false)
     const [message, setMessage] = useState("")
+    const { t } = useTranslation([
+        "toast",
+        "common",
+        "placeholder"
+    ])
 
     const handleForgotPassword = async (e) => {
         e.preventDefault()
@@ -17,15 +23,14 @@ const ForgotPassword = () => {
             )
 
             if (!data.success) {
-                setMessage(data.message || "Error sending reset password link")
+                setMessage(t("toast:reset_link_error"))
             } else {
-                setMessage(data.message || "Reset link sent. Check your email.")
+                setMessage(t("toast:reset_link_sent"))
             }
         } catch (error) {
-            setMessage(
-                error.response?.data?.message ||
-                "Something went wrong. Try again."
-            )
+            setMessage(t("toast:reset_link_error"))
+            console.log("Error sending reset link", error)
+
         } finally {
             setLoading(false)
         }
@@ -39,13 +44,13 @@ const ForgotPassword = () => {
             >
                 <div className="flex flex-col gap-2 text-neutral-900 dark:text-neutral-100">
                     <label className="text-base font-medium" htmlFor="email">
-                        Email
+                        {t("common:email")}
                     </label>
                     <input
                         className="border border-black dark:border-neutral-100 rounded-lg py-3 px-2 w-full bg-transparent"
                         type="email"
                         name="email"
-                        placeholder="Enter email"
+                        placeholder={t("placeholder:enter_email")}
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
@@ -58,7 +63,7 @@ const ForgotPassword = () => {
                     disabled={loading}
                     className="w-full bg-palevioletred text-white py-3 rounded-lg disabled:opacity-50"
                 >
-                    {loading ? "Sending..." : "Send reset link"}
+                    {loading ? t("common:sending") : t("common:send_link")}
                 </button>
 
                 {message && (

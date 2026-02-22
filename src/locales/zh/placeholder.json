@@ -5,5 +5,8 @@
     "name_placeholder": "例如 小美",
     "select_date": "选择日期",
     "search_symptoms": "搜索症状",
-    "additional_details": "添加关于你今天的其他详情..."
+    "additional_details": "添加关于你今天的其他详情...",
+    "type_message": "在此输入你的消息...",
+    "enter_new_password": "输入新密码",
+    "confirm_new_password": "确认新密码"
 }

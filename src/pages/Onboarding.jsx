@@ -31,24 +31,6 @@ const Onboarding = () => {
     }
   ];
 
-  // const slides = [
-  //   {
-  //     img: "./Frame 2131328858.png",
-  //     title: "Welcome - Your Cycle, Your Way",
-  //     desc: "Track your period, predict ovulation, and understand your body better with personalized insights made just for you."
-  //   },
-  //   {
-  //     img: "./Layer_1.png",
-  //     title: "Discover How We Help You Everyday",
-  //     desc: "Predict your period and ovulation, log symptoms to spot patterns, and get personalized insights tailored just for you."
-  //   },
-  //   {
-  //     img: "./herbloomImage.png",
-  //     title: "You're All Set to Take Control",
-  //     desc: "Start tracking, get smarter insights, and feel confident about every phase of your cycle."
-  //   }
-  // ];
-
   const handleNext = () => {
     if (currentSlide === slides.length - 1) {
       navigate('/registration');

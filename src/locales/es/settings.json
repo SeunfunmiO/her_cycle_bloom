@@ -2,5 +2,12 @@
     "reminder_info": "Nunca te pierdas un recordatorio",
     "reminder_details": "Recibe alertas a tiempo para tu período, ovulación y consejos de salud, solo cuando más importa.",
     "later": "Quizás después",
-    "enable": "Activar notificaciones"
+    "enable": "Activar notificaciones",
+    "theme": "Tema",
+    "light_mode": "Modo claro",
+    "dark_mode": "Modo oscuro",
+    "export_data": "Exportar datos del ciclo",
+    "export_pdf": "Exportar como PDF",
+    "export_csv": "Exportar como CSV",
+    "preparing_export": "Preparando la exportación de tu archivo, por favor espera..."
 }

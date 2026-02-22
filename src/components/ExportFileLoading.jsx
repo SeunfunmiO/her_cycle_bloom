@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import Lottie from "lottie-react";
 import hourGlassLoading from "../assets/HOUR GLASS.json";
+import { useTranslation } from "react-i18next";
 
 const ExportFile = () => {
     const [loading, setLoading] = useState(false);
+    const{t}=useTranslation("settings")
 
     const handleExport = async () => {
         setLoading(true);
@@ -23,7 +25,7 @@ const ExportFile = () => {
             <p
                 onClick={handleExport}
                 disabled={loading}
-                className="font-medium text-sm text-center">preparing to export your file , please wait...</p>
+                className="font-medium text-sm text-center">{t("settings:preparing_export")}</p>
         </div>
     );
 };

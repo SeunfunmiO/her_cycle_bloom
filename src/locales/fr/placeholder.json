@@ -5,5 +5,8 @@
     "name_placeholder": "ex. Sarah",
     "select_date": "Sélectionnez une date",
     "search_symptoms": "Rechercher des symptômes",
-    "additional_details": "Ajoutez des détails supplémentaires sur votre journée..."
+    "additional_details": "Ajoutez des détails supplémentaires sur votre journée...",
+    "type_message": "Tapez votre message ici...",
+    "enter_new_password": "Entrez votre nouveau mot de passe",
+    "confirm_new_password": "Confirmez votre nouveau mot de passe"
 }

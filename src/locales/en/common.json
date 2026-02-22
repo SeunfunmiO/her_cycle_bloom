@@ -85,8 +85,16 @@
     "oldest": "Oldest First",
     "longest": "Longest Cycle First",
     "shortest": "Shortest Cycle First",
-    "cycle":"Cycle",
-    "loading":"Loading...",
-    "average_flow":"Average Flow",
-    "top_symptoms":"Top Symptoms Logged"
+    "cycle": "Cycle",
+    "loading": "Loading...",
+    "average_flow": "Average Flow",
+    "top_symptoms": "Top Symptoms Logged",
+    "sending": "Sending...",
+    "send_link": "Send reset link",
+    "enter_otp": "Enter OTP",
+    "verifying": "Verifying...",
+    "verify_otp": "Verify OTP",
+    "reset_password": "Reset Password",
+    "new_password": "New Password",
+    "resetting": "Resetting..."
 }

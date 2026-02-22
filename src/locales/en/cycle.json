@@ -18,10 +18,12 @@
         "light": "Light",
         "medium": "Medium"
     },
-    "period":"period",
-    "predicted_period":"Predicted period",
-    "ovulation":"Ovulation",
-    "fertile_window":"Fertile window",
-    "follicular_phase":"Follicular Phase",
-    "cycle_length":"Cycle Length"
+    "period": "period",
+    "predicted_period": "Predicted period",
+    "ovulation": "Ovulation",
+    "fertile_window": "Fertile window",
+    "follicular_phase": "Follicular Phase",
+    "cycle_length": "Cycle Length",
+    "flow_care": "Flow Care",
+    "health_help": "Here to help you with your health and cycle"
 }

@@ -7,6 +7,7 @@
     "light_mode":"Light Mode",
     "dark_mode":"Dark Mode",
     "export_data":"Export Cycle Data",
-    "export_pdf":"Export as pdf",
-    "export_csv":"Export as csv"
+    "export_pdf":"Export as PDF",
+    "export_csv":"Export as CSV",
+    "preparing_export":"preparing to export your file , please wait..."
 }

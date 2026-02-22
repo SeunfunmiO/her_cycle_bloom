@@ -1,12 +1,15 @@
 import { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator } from '../components/ui/input-otp';
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const OtpPage = () => {
     const navigate = useNavigate();
     const location = useLocation();
-
+    const { t } = useTranslation([
+        "toast"
+    ])
     const [otp, setOtp] = useState("");
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
@@ -29,10 +32,11 @@ const OtpPage = () => {
             if (res.data.success) {
                 navigate(`/reset-password?token=${res.data.token}`);
             } else {
-                setMessage(res.data.message);
+                setMessage(t("toast:wrong_otp"));
             }
         } catch (err) {
-            setMessage(err.response?.data?.message || "Something went wrong");
+            setMessage(t("toast:wrong_otp"));
+            console.log("Error resetting password:",err)
         } finally {
             setLoading(false);
         }
@@ -42,7 +46,7 @@ const OtpPage = () => {
         <div className="bg-white dark:bg-neutral-900 min-h-screen flex items-center">
             <form onSubmit={handleVerifyOtp} className="max-w-md mx-auto w-full space-y-4">
                 <div className="flex flex-col gap-2 text-neutral-900 dark:text-neutral-100">
-                    <label className="text-base font-medium">Enter OTP</label>
+                    <label className="text-base font-medium">{t("common:enter-otp")}</label>
                     <InputOTP value={otp} onChange={setOtp} maxLength={6}>
                         <InputOTPGroup>
                             <InputOTPSlot index={0} />
@@ -63,7 +67,7 @@ const OtpPage = () => {
                     disabled={loading}
                     className="w-full bg-palevioletred text-white py-3 rounded-lg disabled:opacity-50"
                 >
-                    {loading ? "Verifying..." : "Verify OTP"}
+                    {loading ? t("common:verifying"): t("common:verify_otp")}
                 </button>
 
                 {message && <p className="text-sm text-center text-neutral-700 dark:text-neutral-300">{message}</p>}

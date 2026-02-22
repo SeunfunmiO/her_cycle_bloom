@@ -26,5 +26,10 @@
     "select_start_date": "选择开始日期",
     "period_logged": "月经记录成功",
     "period_failed": "记录月经失败",
-    "entry_failed": "保存记录失败"
+    "entry_failed": "保存记录失败",
+    "reset_link_error": "发送密码重置链接失败",
+    "reset_link_sent": "重置链接已发送。请查看你的邮箱。",
+    "reset_failed": "密码重置失败",
+    "reset_success": "密码重置成功！",
+    "wrong_otp": "验证码错误"
 }

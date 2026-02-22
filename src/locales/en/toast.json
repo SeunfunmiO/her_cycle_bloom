@@ -23,9 +23,13 @@
     "notif_enabled": "Notifications enabled!",
     "notif_dismissed": "Notifications permission dismissed.",
     "notif_denied": "Notifications denied!",
-    "select_start_date":"Select a start date",
-    "period_logged":"Period logged",
-    "period_failed":"Failed to log period",
-    "entry_failed":"Failed to save entry"
-
+    "select_start_date": "Select a start date",
+    "period_logged": "Period logged",
+    "period_failed": "Failed to log period",
+    "entry_failed": "Failed to save entry",
+    "reset_link_error": "Error sending reset password link",
+    "reset_link_sent":"Reset link sent. Check your email.",
+    "reset_failed":"Reset password failed",
+    "reset_success":"Reset passsword successful!",
+    "wrong_otp":"Incorrect OTP"
 }

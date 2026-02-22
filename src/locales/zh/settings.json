@@ -2,5 +2,12 @@
     "reminder_info": "不错过任何提醒",
     "reminder_details": "及时收到关于你的月经、排卵期和健康小贴士的提醒 - 仅在最重要的时刻。",
     "later": "稍后再说",
-    "enable": "启用通知"
+    "enable": "启用通知",
+    "theme": "主题",
+    "light_mode": "浅色模式",
+    "dark_mode": "深色模式",
+    "export_data": "导出周期数据",
+    "export_pdf": "导出为PDF",
+    "export_csv": "导出为CSV",
+    "preparing_export": "正在准备导出你的文件，请稍候..."
 }

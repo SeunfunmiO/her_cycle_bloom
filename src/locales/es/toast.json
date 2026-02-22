@@ -26,5 +26,10 @@
     "select_start_date": "Selecciona una fecha de inicio",
     "period_logged": "Período registrado exitosamente",
     "period_failed": "Error al registrar el período",
-    "entry_failed": "Error al guardar el registro"
+    "entry_failed": "Error al guardar el registro",
+    "reset_link_error": "Error al enviar el enlace de restablecimiento de contraseña",
+    "reset_link_sent": "Enlace de restablecimiento enviado. Revisa tu correo.",
+    "reset_failed": "Error al restablecer la contraseña",
+    "reset_success": "¡Contraseña restablecida exitosamente!",
+    "wrong_otp": "Código OTP incorrecto"
 }

@@ -27,7 +27,7 @@ const ExportDataCycle = () => {
                     <div
                         onClick={() => setOpenExportModal(true)}
                         className="border-2 border-gray-100 rounded-xl h-15 flex items-center justify-between px-3 cursor-pointer">
-                        <h1 className="font-medium">Export as PDF</h1>
+                        <h1 className="font-medium">{t("settings:export_pdf")}</h1>
 
                         <img src="./pdf.svg" alt="Icon" />
                     </div>
@@ -35,7 +35,7 @@ const ExportDataCycle = () => {
                     <div
                         onClick={() => setOpenExportModal(true)}
                         className="border-2 border-gray-100 rounded-xl h-15 flex items-center justify-between px-3 cursor-pointer">
-                        <h1 className="font-medium">Export as CSV</h1>
+                        <h1 className="font-medium">{t("settings:export_csv")}</h1>
 
                         <img
                             src="./csv.svg"

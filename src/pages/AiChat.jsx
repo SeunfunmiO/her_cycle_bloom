@@ -1,9 +1,11 @@
 import { ArrowLeft, Dot } from 'lucide-react'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 const AiChat = () => {
     const navigate = useNavigate()
+    const{t}=useTranslation("cycle")
 
     return (
         <div
@@ -16,7 +18,7 @@ const AiChat = () => {
                         className='cursor-pointer'
                     />
 
-                    <h1 className="text-lg font-bold">Flow Care</h1>
+                    <h1 className="text-lg font-bold">{t("cycle:flow_care")}</h1>
                     <div></div>
                 </div>
 

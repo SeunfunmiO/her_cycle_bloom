@@ -25,7 +25,7 @@ import ChangePassword from './pages/ChangePassword'
 import Languages from './pages/Languages'
 import Theme from './pages/Theme'
 import History from './pages/History'
-import CycleDetails from './components/CycleDetails'
+import CycleDetails from './pages/CycleDetails'
 import ExportDataCycle from './pages/ExportDataCycle'
 import FlowCare from './pages/FlowCare'
 import AiChat from './pages/AiChat'
@@ -51,7 +51,7 @@ function PWAUpdate() {
         updateServiceWorker(true);
       }
     }
-  }, [needRefresh,updateServiceWorker]);
+  }, [needRefresh, updateServiceWorker]);
 
   return null;
 }
@@ -91,7 +91,7 @@ const App = () => {
   return (
     <>
       <ToastContainer />
-      <PWAUpdate/>
+      <PWAUpdate />
       <Routes>
         <Route path='/' element={< SplashScreen />} />
         <Route path='/onboarding' element={<Onboarding />} />

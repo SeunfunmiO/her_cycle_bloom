@@ -1,9 +1,14 @@
 import { ArrowLeft, SendHorizonal } from 'lucide-react'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 const FlowCare = () => {
     const navigate = useNavigate()
+    const {t}=useTranslation([
+        "cycle",
+        "placeholder"
+    ])
 
     return (
         <div
@@ -16,7 +21,7 @@ const FlowCare = () => {
                         className='cursor-pointer'
                     />
 
-                    <h1 className="text-lg font-bold">Flow Care</h1>
+                    <h1 className="text-lg font-bold">{t("cycle:flow_care")}</h1>
                     <div></div>
                 </div>
 
@@ -29,7 +34,7 @@ const FlowCare = () => {
                         alt=""
                     />
 
-                    <h1 className="font-bold text-center">Here to help you with your health and cycle</h1>
+                    <h1 className="font-bold text-center">{t("cycle:health_help")}</h1>
 
                     <div
                         className='h-12 rounded-xl w-11/12 bg-gray-200 outline-gray-100 px-3 justify-between flex
@@ -38,7 +43,7 @@ const FlowCare = () => {
                         <input
                             className='w-11/12 outline-0 placeholder:text-[12px] placeholder:font-bold'
                             name="" id=""
-                            placeholder='Type your message here...'
+                            placeholder={t("placeholder:type_message")}
                         />
 
                         <div

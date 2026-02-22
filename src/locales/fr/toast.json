@@ -26,5 +26,10 @@
     "select_start_date": "Sélectionnez une date de début",
     "period_logged": "Règles enregistrées avec succès",
     "period_failed": "Échec de l'enregistrement des règles",
-    "entry_failed": "Échec de l'enregistrement"
+    "entry_failed": "Échec de l'enregistrement",
+    "reset_link_error": "Erreur lors de l'envoi du lien de réinitialisation du mot de passe",
+    "reset_link_sent": "Lien de réinitialisation envoyé. Vérifiez votre e-mail.",
+    "reset_failed": "Échec de la réinitialisation du mot de passe",
+    "reset_success": "Mot de passe réinitialisé avec succès !",
+    "wrong_otp": "Code OTP incorrect"
 }

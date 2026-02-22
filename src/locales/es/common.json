@@ -85,7 +85,16 @@
     "oldest": "Más antiguos primero",
     "longest": "Ciclo más largo primero",
     "shortest": "Ciclo más corto primero",
-    "cycle":"Ciclo",
+    "cycle": "Ciclo",
     "loading": "Cargando...",
-    "average_flow": "Flujo promedio"
+    "average_flow": "Flujo promedio",
+    "top_symptoms": "Síntomas más registrados",
+    "sending": "Enviando...",
+    "send_link": "Enviar enlace de restablecimiento",
+    "enter_otp": "Ingresa el código OTP",
+    "verifying": "Verificando...",
+    "verify_otp": "Verificar código OTP",
+    "reset_password": "Restablecer contraseña",
+    "new_password": "Nueva contraseña",
+    "resetting": "Restableciendo..."
 }

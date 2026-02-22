@@ -2,5 +2,12 @@
     "reminder_info": "Ne manquez jamais un rappel",
     "reminder_details": "Recevez des alertes en temps opportun pour vos règles, votre ovulation et des conseils santé - seulement quand c'est le plus important.",
     "later": "Plus tard peut-être",
-    "enable": "Activer les notifications"
+    "enable": "Activer les notifications",
+    "theme": "Thème",
+    "light_mode": "Mode clair",
+    "dark_mode": "Mode sombre",
+    "export_data": "Exporter les données du cycle",
+    "export_pdf": "Exporter en PDF",
+    "export_csv": "Exporter en CSV",
+    "preparing_export": "Préparation de l'exportation de votre fichier, veuillez patienter..."
 }

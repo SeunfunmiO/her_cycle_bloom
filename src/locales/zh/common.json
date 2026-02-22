@@ -87,5 +87,14 @@
     "shortest": "最短周期优先",
     "cycle": "周期",
     "loading": "加载中...",
-    "average_flow": "平均流量"
+    "average_flow": "平均流量",
+    "top_symptoms": "最常记录的症状",
+    "sending": "发送中...",
+    "send_link": "发送重置链接",
+    "enter_otp": "输入验证码",
+    "verifying": "验证中...",
+    "verify_otp": "验证验证码",
+    "reset_password": "重置密码",
+    "new_password": "新密码",
+    "resetting": "重置中..."
 }

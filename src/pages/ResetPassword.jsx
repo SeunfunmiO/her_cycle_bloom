@@ -4,12 +4,16 @@ import * as yup from 'yup';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 
 const ResetPassword = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [loading, setLoading] = useState(false);
-
+    const { t } = useTranslation([
+        "toast",
+        "common"
+    ])
     const params = new URLSearchParams(location.search);
     const token = params.get('token');
 
@@ -21,15 +25,15 @@ const ResetPassword = () => {
         validationSchema: yup.object({
             password: yup
                 .string()
-                .required('Password is required')
+                .required(t("toast:confirm_password"))
                 .matches(
                     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&])[A-Za-z\d@$!%?&]{6,}$/,
-                    'Password must have at least 6 characters, one uppercase, one lowercase, one number, and one special character'
+                    t("toast:password_rules")
                 ),
             confirmPassword: yup
                 .string()
-                .required('Please confirm your password')
-                .oneOf([yup.ref('password')], 'Passwords must match'),
+                .required(t("toast:re_enter_password"))
+                .oneOf([yup.ref('password')], t("toast:password_match")),
         }),
         onSubmit: async (values) => {
             setLoading(true);
@@ -46,14 +50,14 @@ const ResetPassword = () => {
                 );
 
                 if (!data.success) {
-                    toast.error(data.message || 'Cannot reset password now, try again');
+                    toast.error(t("toast:reset_failed"));
                 } else {
-                    toast.success(data.message || 'Password reset successfully');
-                    setTimeout(() => navigate('/log-in'), 1200);
+                    toast.success(t("toast:reset_success"));
+                    setTimeout(() => navigate('/log-in'), 2000);
                 }
             } catch (error) {
                 console.error('Reset password error:', error);
-                toast.error(error.response?.data?.message || 'Something went wrong');
+                toast.error(t("toast:reset_failed"));
             } finally {
                 setLoading(false);
             }
@@ -67,15 +71,15 @@ const ResetPassword = () => {
                 className="max-w-md w-full mx-auto p-6 space-y-6 bg-gray-50 dark:bg-neutral-800 rounded-xl shadow-md"
             >
                 <h1 className="text-2xl font-bold text-center text-neutral-900 dark:text-neutral-100">
-                    Reset Password
+                    {t("common:reset_password")}
                 </h1>
 
                 <div className="flex flex-col gap-2">
-                    <label className="font-medium text-neutral-900 dark:text-neutral-100">New Password</label>
+                    <label className="font-medium text-neutral-900 dark:text-neutral-100">{t("common:new_password")}</label>
                     <input
                         type="password"
                         name="password"
-                        placeholder="Enter new password"
+                        placeholder={t("placeholder:enter_new_password")}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.password}
@@ -90,11 +94,11 @@ const ResetPassword = () => {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                    <label className="font-medium text-neutral-900 dark:text-neutral-100">Confirm Password</label>
+                    <label className="font-medium text-neutral-900 dark:text-neutral-100">{t("common:confirm_password")}</label>
                     <input
                         type="password"
                         name="confirmPassword"
-                        placeholder="Confirm new password"
+                        placeholder={t("placeholder:confirm_new_password")}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.confirmPassword}
@@ -115,7 +119,7 @@ const ResetPassword = () => {
                     className={`w-full py-3 rounded-xl font-semibold text-white
                         ${loading ? 'bg-pink-300 cursor-not-allowed' : 'bg-palevioletred'}`}
                 >
-                    {loading ? 'Resetting...' : 'Reset Password'}
+                    {loading ? t("common:resetting") : t("common:reset_password")}
                 </button>
             </form>
         </div>

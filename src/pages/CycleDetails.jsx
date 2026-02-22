@@ -163,7 +163,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
-import FlowIntensityRange from './FlowIntensityRange'
+import FlowIntensityRange from '../components/ui/FlowIntensityRange'
 
 const CycleDetails = () => {
     const navigate = useNavigate()
@@ -214,7 +214,7 @@ const CycleDetails = () => {
     }, [_id, token])
 
     if (!cycle) {
-        return <p className="text-center mt-20">{t("common:loading")}</p>
+        return <p className="bg-white h-screen dark:bg-neutral-900 text-center pt-20">{t("common:loading")}</p>
     }
 
     const getCycleLength = (start, end) => {
@@ -294,7 +294,7 @@ const CycleDetails = () => {
                                 />
                             </div>
 
-                            <FlowIntensityRange flow={cycle.FlowIntensity || "Light"}/>
+                            <FlowIntensityRange flow={cycle.FlowIntensity || "Light"} />
                         </div>
                         <div className='flex items-center gap-3 mt-8 justify-between'>
                             <div className='flex gap-3 items-center'>
