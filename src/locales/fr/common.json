@@ -96,5 +96,13 @@
     "verify_otp": "Vérifier le code OTP",
     "reset_password": "Réinitialiser le mot de passe",
     "new_password": "Nouveau mot de passe",
-    "resetting": "Réinitialisation..."
+    "resetting": "Réinitialisation...",
+    "daily_log": "Journal quotidien du cycle",
+    "user_data": "Données utilisateur",
+    "cycle_information": "Informations sur le cycle",
+    "account": "Compte",
+    "preferences": "Préférences",
+    "legal": "Mentions légales",
+    "privacy_policy": "Politique de confidentialité",
+    "terms_of_use": "Conditions d'utilisation"
 }

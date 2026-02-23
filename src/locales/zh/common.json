@@ -96,5 +96,13 @@
     "verify_otp": "验证验证码",
     "reset_password": "重置密码",
     "new_password": "新密码",
-    "resetting": "重置中..."
+    "resetting": "重置中...",
+    "daily_log": "每日周期记录",
+    "user_data": "用户数据",
+    "cycle_information": "周期信息",
+    "account": "账户",
+    "preferences": "偏好设置",
+    "legal": "法律",
+    "privacy_policy": "隐私政策",
+    "terms_of_use": "使用条款"
 }

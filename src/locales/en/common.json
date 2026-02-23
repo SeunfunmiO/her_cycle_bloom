@@ -96,5 +96,13 @@
     "verify_otp": "Verify OTP",
     "reset_password": "Reset Password",
     "new_password": "New Password",
-    "resetting": "Resetting..."
+    "resetting": "Resetting...",
+    "daily_log": "Daily Cycle Log",
+    "user_data": "User Data",
+    "cycle_information": "Cycle Information",
+    "account": "Account",
+    "preferences": "Preferences",
+    "legal": "Legal",
+    "privacy_policy": "Privacy Policy",
+    "terms_of_use": "Terms of Use"
 }

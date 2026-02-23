@@ -1,12 +1,11 @@
 
 import { useNavigate } from 'react-router-dom'
 import LanguageSelector from '../components/LanguageSelector'
+import { useTranslation } from 'react-i18next'
 
 const Languages = () => {
     const navigate = useNavigate()
-
-
-
+    const { t } = useTranslation("common")
 
     return (
         <div className='bg-[#f9f9f9] dark:bg-neutral-900 transition-colors duration-200 h-screen'>
@@ -20,13 +19,11 @@ const Languages = () => {
                         alt="arrow left"
                     />
                     <h1 className="font-bold text-xl md:text-2xl w-full flex justify-center">
-                        Languages
+                        {t("common:languages")}
                     </h1>
                 </div>
 
-
                 <LanguageSelector />
-
             </div>
 
         </div>

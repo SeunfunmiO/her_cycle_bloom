@@ -171,6 +171,7 @@ const CycleDetails = () => {
     const token = localStorage.getItem('token')
     const [cycle, setCycle] = useState(null)
     const { t, i18n } = useTranslation(["common", "cycle"])
+    const [symptoms, setSymptoms] = useState([])
 
     const formatFullDate = (dateString) => {
         if (!dateString) return t("common:not_set"); // <--- show placeholder
@@ -184,11 +185,22 @@ const CycleDetails = () => {
         });
     }
 
+    const formatMonthYear = (dateString) => {
+        if (!dateString) return t("common:not_set");
+
+        const date = new Date(dateString);
+        if (isNaN(date)) return t("common:invalid_date");
+
+        return date.toLocaleDateString(i18n.language, {
+            month: "long",
+            year: "numeric",
+        });
+    };
 
     const flowIcons = {
-        Light: "./light-flow.svg",
-        Medium: "./medium-flow.svg",
-        Heavy: "./heavy-flow.svg",
+        Light: "../light-flow.svg",
+        Medium: "../medium-flow.svg",
+        Heavy: "../heavy-flow.svg",
     }
 
     useEffect(() => {
@@ -202,7 +214,7 @@ const CycleDetails = () => {
                 )
 
                 setCycle(res.data.entry)
-                console.log(res.data.entry)
+                setSymptoms(res.data.entry.symptoms)
             } catch (err) {
                 console.log("Error fetching cycle:", err)
             }
@@ -231,7 +243,8 @@ const CycleDetails = () => {
     //     "nausea": "Nausea",
     //     "headache": "Headache",
     //     "fatigue": "Fatigue",
-    //     "bloating":
+    //     "bloating":,
+    //     
 
     // }
 
@@ -247,10 +260,7 @@ const CycleDetails = () => {
                             onClick={() => navigate(-1)}
                         />
                         <h1 className="text-lg font-bold">
-                            {new Date(cycle.periodStart).toLocaleDateString(i18n.language, {
-                                month: 'long',
-                                year: 'numeric'
-                            })} {t("common:cycle")}
+                            {formatMonthYear(cycle.periodStart)} {t("common:cycle")}
                         </h1>
                         <img
                             onClick={() => navigate('/export-data')}
@@ -267,8 +277,8 @@ const CycleDetails = () => {
                             <div className='flex gap-3'>
                                 <p className="text-gray-500 capitalize font-semibold">{t("cycle:period")} :</p>
                                 <p className="font-semibold">
-                                    {formatFullDate(new Date(cycle.periodStart).toLocaleDateString())} -{" "}
-                                    {formatFullDate(new Date(cycle.periodEnd).toLocaleDateString())}
+                                    {formatFullDate(cycle.periodStart)} - {" "}
+                                    {formatFullDate(cycle.periodEnd)}
                                 </p>
                             </div>
 
@@ -294,16 +304,44 @@ const CycleDetails = () => {
                                 />
                             </div>
 
-                            <FlowIntensityRange flow={cycle.FlowIntensity || "Light"} />
+                            <FlowIntensityRange flow={cycle.FlowIntensity === "Medium" ? "Medium" :
+                                cycle.flowIntensity === "Heavy" ? "Heavy" : "Light"}
+                            />
                         </div>
                         <div className='flex items-center gap-3 mt-8 justify-between'>
                             <div className='flex gap-3 items-center'>
                                 <p className="text-gray-500 font-semibold dark:invert">{t("common:top_symptoms")} : </p>
-                                <p className="font-semibold">{
-                                    // history.symptoms===
+                                <p className="font-semibold text-sm /flex">{
+                                    symptoms.map((each, index) => (
+                                        <div key={index}>
+                                            {each}
+                                        </div>
+                                    ))
                                 }</p>
                             </div>
                             <img src="../Cramps.svg" alt="Icon" />
+                        </div>
+
+                        <div className='px-4 mt-5'>
+                            <h1 className="font-bold text-lg lg:text-xl mb-3">{t("common:daily_log")}</h1>
+
+                            <div className="grid grid-cols-1 gap-2">
+                                <div className="border-2 border-gray-100 rounded-xl h-20 flex items-center justify-between px-3">
+                                    <div className="flex flex-col">
+                                        <h1 className="font-medium">July 3 <span className='text-gray-500 dark:invert'> (Day 1)</span></h1>
+                                        <div className='flex items-center gap-2'>
+                                            <p className="font-semibold">Light</p>
+                                            <img src="../light-flow.svg" alt="droplet" />
+                                        </div>
+                                    </div>
+
+                                    <div className='flex items-center gap-5'>
+                                        <h3 className="font-semibold">Cramps</h3>
+                                        <img src="../Cramps.svg" alt="Icon" />
+                                        <ChevronDown />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

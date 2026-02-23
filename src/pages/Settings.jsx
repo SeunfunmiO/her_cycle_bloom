@@ -2,8 +2,8 @@ import { ChevronRight } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
 import axios from 'axios'
+import { useTranslation } from 'react-i18next'
 
 
 const Settings = () => {
@@ -11,6 +11,7 @@ const Settings = () => {
     const [name, setName] = useState('')
     const [photo, setPhoto] = useState(null)
     const [email, setEmail] = useState("")
+    const { t } = useTranslation(["common", "settings"])
 
     const maskEmail = (email) => {
         if (!email) return '';
@@ -47,7 +48,6 @@ const Settings = () => {
                 }
             } catch (error) {
                 console.error("Error fetching user:", error)
-                toast.error("Failed to load user data")
             }
         }
         fetchUser()
@@ -60,7 +60,7 @@ const Settings = () => {
             <div className='max-w-md mx-auto'>
 
                 <h1 className="font-bold text-xl lg:text-2xl text-center pt-10 pb-5 bg-white dark:bg-neutral-800">
-                    Settings
+                    {t("common:settings")}
                 </h1>
 
                 <div className="bg-white dark:bg-neutral-800 shadow mx-3 my-8 h-30 rounded-xl flex justify-between items-center px-3">
@@ -92,7 +92,7 @@ const Settings = () => {
                 </div>
 
                 <div className='px-3 text-lg lg:text-xl'>
-                    <h1 className="font-bold text-palevioletred">User Data</h1>
+                    <h1 className="font-bold text-palevioletred">{t("common:user_data")}</h1>
 
                     <div className="bg-white dark:bg-neutral-800 shadow my-5 h-30 rounded-xl px-3 flex flex-col justify-center gap-4">
                         <button className='flex justify-between items-center cursor-pointer outline-0'>
@@ -101,7 +101,7 @@ const Settings = () => {
                                 className='flex items-center gap-5'>
                                 <img className='dark:invert' src="./calendar-circle.svg" alt="Calendar" />
                                 <h3 className="font-medium text-[15px] md:text-base lg:text-lg text-neutral-900 dark:text-neutral-100">
-                                    Cycle Information
+                                    {t("common:cycle_information")}
                                 </h3>
                             </div>
                             <ChevronRight className="text-gray-400 w-5 md:w-6 dark:invert" />
@@ -116,7 +116,7 @@ const Settings = () => {
                                 <img className=' dark:invert' src="./profile-circle.svg" alt="Profile" />
                                 <h3
                                     className="text-neutral-900 dark:text-neutral-100 font-medium text-[15px] md:text-base lg:text-lg">
-                                    Account
+                                    {t("common:account")}
                                 </h3>
                             </div>
                             <ChevronRight className="text-gray-400 w-5 md:w-6 dark:invert" />
@@ -125,7 +125,7 @@ const Settings = () => {
                 </div>
 
                 <div className='px-3 text-lg lg:text-xl'>
-                    <h1 className="font-bold text-palevioletred">Preferences</h1>
+                    <h1 className="font-bold text-palevioletred">{t("common:preferences")}</h1>
 
                     <div className="bg-white dark:bg-neutral-800 shadow my-5 h-50 rounded-xl px-3 flex flex-col justify-center gap-4">
                         <button
@@ -135,7 +135,7 @@ const Settings = () => {
                                 <img className='dark:invert' src="./notification.svg" alt="Bell" />
                                 <h3
                                     className="font-medium text-[15px] md:text-base lg:text-lg text-neutral-900 dark:text-neutral-100">
-                                    Reminders
+                                    {t("common:reminders")}
                                 </h3>
                             </div>
                             <ChevronRight className="text-gray-400 w-5 md:w-6 dark:invert" />
@@ -150,7 +150,7 @@ const Settings = () => {
                             <div className='flex items-center gap-5'>
                                 <img className=' dark:invert' src="./language-circle.svg" alt="Languages" />
                                 <h3 className="font-medium text-[15px] md:text-base lg:text-lg text-neutral-900 dark:text-neutral-100">
-                                    Language
+                                    {t("common:language")}
                                 </h3>
                             </div>
                             <ChevronRight className="text-gray-400 w-5 md:w-6 dark:invert" />
@@ -164,7 +164,7 @@ const Settings = () => {
                             <div className='flex items-center gap-5'>
                                 <img className=' dark:invert' src="./brush.svg" alt="Brush" />
                                 <h3 className="font-medium text-[15px] md:text-base lg:text-lg text-neutral-900 dark:text-neutral-100">
-                                    Theme
+                                    {t("settings:theme")}
                                 </h3>
                             </div>
                             <ChevronRight className="text-gray-400 w-5 md:w-6 dark:invert" />
@@ -173,7 +173,7 @@ const Settings = () => {
                 </div>
 
                 <div className='px-3 text-lg lg:text-xl pb-20 md:pb-30'>
-                    <h1 className="font-bold text-palevioletred">Legal</h1>
+                    <h1 className="font-bold text-palevioletred">{t("common:legal")}</h1>
 
                     <div className="bg-white dark:bg-neutral-800 shadow my-5 h-30 rounded-xl px-3 flex flex-col justify-center gap-4">
                         <button
@@ -183,7 +183,7 @@ const Settings = () => {
                                 <img className='dark:invert' src="./shield-tick.svg" alt="Bell" />
                                 <h3
                                     className="font-medium text-[15px] md:text-base lg:text-lg text-neutral-900 dark:text-neutral-100">
-                                    Privacy Policy
+                                    {t("common:privacy_policy")}
                                 </h3>
                             </div>
                             <ChevronRight className="text-gray-400 w-5 md:w-6 dark:invert" />
@@ -198,7 +198,7 @@ const Settings = () => {
                             <div className='flex items-center gap-5'>
                                 <img className=' dark:invert' src="./terms.svg" alt="Languages" />
                                 <h3 className="font-medium text-[15px] md:text-base lg:text-lg text-neutral-900 dark:text-neutral-100">
-                                    Terms of Use
+                                    {t("common:terms_of_use")}
                                 </h3>
                             </div>
                             <ChevronRight className="text-gray-400 w-5 md:w-6 dark:invert" />

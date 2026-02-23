@@ -96,5 +96,13 @@
     "verify_otp": "Verificar código OTP",
     "reset_password": "Restablecer contraseña",
     "new_password": "Nueva contraseña",
-    "resetting": "Restableciendo..."
+    "resetting": "Restableciendo...",
+    "daily_log": "Registro diario del ciclo",
+    "user_data": "Datos de usuario",
+    "cycle_information": "Información del ciclo",
+    "account": "Cuenta",
+    "preferences": "Preferencias",
+    "legal": "Legal",
+    "privacy_policy": "Política de privacidad",
+    "terms_of_use": "Términos de uso"
 }
